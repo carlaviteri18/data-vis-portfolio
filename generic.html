@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-    Phantom by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
   <head>
@@ -16,10 +16,6 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
-    <meta
-      name="description"
-      content="Explore Carla Viteri's data visualization assignments for CSI 5900."
-    />
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -29,9 +25,7 @@
         <div class="inner">
           <!-- Logo -->
           <a href="index.html" class="logo">
-            <span class="symbol"
-              ><img src="images/logo02.svg" alt="Portfolio Logo"
-            /></span>
+            <span class="symbol"><img src="images/logo02.svg" alt="" /></span>
             <span class="title">CSI 5900: Data Visualization</span>
           </a>
 
@@ -49,18 +43,46 @@
         <h2>Menu</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="#" onclick="loadContent(1);">Assignment 1</a></li>
-          <li><a href="#" onclick="loadContent(2);">Assignment 2</a></li>
-          <li><a href="#" onclick="loadContent(3);">Assignment 3</a></li>
-          <li><a href="#" onclick="loadContent(4);">Assignment 4</a></li>
-          <li><a href="#" onclick="loadContent(5);">Assignment 5</a></li>
-          <li><a href="#" onclick="loadContent(6);">Assignment 6</a></li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(1);"
+              >Assignment 1</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(2);"
+              >Assignment 2</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(3);"
+              >Assignment 3</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(4);"
+              >Assignment 4</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(5);"
+              >Assignment 5</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(6);"
+              >Assignment 6</a
+            >
+          </li>
         </ul>
       </nav>
 
-      <!-- Content loaded here directly -->
-      <div id="content" class="inner">
-        <!-- Dynamic Content will be injected here -->
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <div id="content">
+            <!-- Dynamic Content will be injected here -->
+          </div>
+        </div>
       </div>
 
       <!-- Footer -->
@@ -136,11 +158,23 @@
         const assignment = assignments.find((ass) => ass.id === assignmentId);
         const contentDiv = document.getElementById("content");
         contentDiv.innerHTML = `
-                <h1>${assignment.title}</h1>
-                <img src="${assignment.image}" alt="${assignment.title} Image" style="max-width:100%;height:auto;"/>
+                <header>
+                    <h1>${assignment.title}</h1>
+                </header>
+                <span class="image main"><img src="${assignment.image}" alt="Image of ${assignment.title}" /></span>
                 <p>${assignment.description}</p>
+                <p>Visualization description will go here.</p>
             `;
       }
+
+      // Optionally load an assignment if a specific query is passed
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const assignmentId = urlParams.get("assignment");
+        if (assignmentId) {
+          loadContent(parseInt(assignmentId));
+        }
+      });
     </script>
   </body>
 </html>
