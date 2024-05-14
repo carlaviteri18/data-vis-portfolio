@@ -119,38 +119,56 @@
         {
           id: 1,
           title: "Assignment 1",
-          description: "Visualization description",
-          image: "",
+          description: "Visualization description for Assignment 1",
+          images: [
+            { src: "", title: "Visualization 1A" },
+            { src: "", title: "Visualization 1B" },
+          ],
         },
         {
           id: 2,
           title: "Assignment 2",
-          description: "Visualization description",
-          image: "",
+          description: "Visualization description for Assignment 2",
+          images: [
+            { src: "", title: "Visualization 2A" },
+            { src: "", title: "Visualization 2B" },
+          ],
         },
         {
           id: 3,
           title: "Assignment 3",
-          description: "Visualization description",
-          image: "",
+          description: "Visualization description for Assignment 3",
+          images: [
+            { src: "", title: "Visualization 3A" },
+            { src: "", title: "Visualization 3B" },
+          ],
         },
         {
           id: 4,
           title: "Assignment 4",
-          description: "Visualization description",
-          image: "",
+          description: "Visualization description for Assignment 4",
+          images: [
+            { src: "", title: "Visualization 4A" },
+            { src: "", title: "Visualization 4B" },
+          ],
         },
         {
           id: 5,
           title: "Assignment 5",
-          description: "Visualization description",
-          image: "",
+          description: "Visualization description for Assignment 5",
+          images: [
+            { src: "", title: "Visualization 5A" },
+            { src: "", title: "Visualization 5B" },
+          ],
         },
         {
           id: 6,
           title: "Assignment 6",
-          description: "Visualization description",
-          image: "",
+          description: "Visualization description for Assignment 6",
+          images: [
+            { src: "", title: "Visualization 6A" },
+            { src: "", title: "Visualization 6B" },
+          ],
         },
       ];
 
@@ -158,11 +176,17 @@
         const assignment = assignments.find((ass) => ass.id === assignmentId);
         if (assignment) {
           const contentDiv = document.getElementById("content");
+          let imagesHtml = assignment.images
+            .map(
+              (img) =>
+                `<div class="image main"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" style="max-width:100%;height:auto;"/></div>`
+            )
+            .join("");
           contentDiv.innerHTML = `
                 <header>
                     <h1>${assignment.title}</h1>
                 </header>
-                <span class="image main"><img src="${assignment.image}" alt="Image of ${assignment.title}" /></span>
+                ${imagesHtml}
                 <p>${assignment.description}</p>
             `;
           // Update URL without reloading the page
