@@ -171,5 +171,16 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      // Ensure the menu links are properly initialized after the page has loaded
+      $(document).ready(function () {
+        $('a[href^="generic.html"]').on("click", function (e) {
+          // Prevent default action if necessary or handle navigation dynamically
+          var url = $(this).attr("href");
+          window.location.href = url; // Ensure navigation happens correctly
+          return false; // Prevent default link behavior
+        });
+      });
+    </script>
   </body>
 </html>
