@@ -16,10 +16,6 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
-    <meta
-      name="description"
-      content="Carla Viteri's main portfolio page featuring overviews of data visualization projects and assignments."
-    />
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -29,10 +25,8 @@
         <div class="inner">
           <!-- Logo -->
           <a href="index.html" class="logo">
-            <span class="symbol"
-              ><img src="images/logo02.svg" alt="Portfolio Logo"
-            /></span>
-            <span class="title">CSI 5900: Data Visualization</span>
+            <span class="symbol"><img src="images/logo02.svg" alt="" /></span
+            ><span class="title">CSI 5900: Data Visualization</span>
           </a>
 
           <!-- Nav -->
@@ -49,24 +43,12 @@
         <h2>Menu</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="generic.html" onclick="loadContent(1);">Assignment 1</a>
-          </li>
-          <li>
-            <a href="generic.html" onclick="loadContent(2);">Assignment 2</a>
-          </li>
-          <li>
-            <a href="generic.html" onclick="loadContent(3);">Assignment 3</a>
-          </li>
-          <li>
-            <a href="generic.html" onclick="loadContent(4);">Assignment 4</a>
-          </li>
-          <li>
-            <a href="generic.html" onclick="loadContent(5);">Assignment 5</a>
-          </li>
-          <li>
-            <a href="generic.html" onclick="loadContent(6);">Assignment 6</a>
-          </li>
+          <li><a href="generic.html?assignment=1">Assignment 1</a></li>
+          <li><a href="generic.html?assignment=2">Assignment 2</a></li>
+          <li><a href="generic.html?assignment=3">Assignment 3</a></li>
+          <li><a href="generic.html?assignment=4">Assignment 4</a></li>
+          <li><a href="generic.html?assignment=5">Assignment 5</a></li>
+          <li><a href="generic.html?assignment=6">Assignment 6</a></li>
         </ul>
       </nav>
 
@@ -74,13 +56,25 @@
       <div id="main">
         <div class="inner">
           <header>
-            <h1>Welcome to My Portfolio</h1>
-            <p>
-              This is the main overview of all data visualization projects and
-              assignments completed for CSI 5900.
-            </p>
+            <h1>Portfolio</h1>
+            <h3>by Carla Viteri</h3>
           </header>
-          <!-- Optionally include a summary or gallery of works here -->
+          <section class="tiles">
+            <!-- Update each article link to point to the generic.html with parameters -->
+            <article class="style1">
+              <span class="image">
+                <img src="images/assignment1.jpg" alt="Assignment 1 Image" />
+              </span>
+              <a href="generic.html?assignment=1">
+                <h2>Assignment 1</h2>
+                <div class="content">
+                  <p>Quick preview of Assignment 1 visualization.</p>
+                </div>
+              </a>
+            </article>
+            <!-- Add more articles similar to the above, updating the href to match the assignment number -->
+            <!-- Continue for each assignment -->
+          </section>
         </div>
       </div>
 
@@ -99,7 +93,7 @@
               </li>
             </ul>
           </section>
-          <ul copyright>
+          <ul class="copyright">
             <li>&copy; Carla Viteri. All rights reserved</li>
             <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
           </ul>
