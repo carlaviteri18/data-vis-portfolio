@@ -119,52 +119,59 @@
         {
           id: 1,
           title: "Assignment 1",
-          description: "Description for Assignment 1",
-          image: "images/assignment1.jpg",
+          description: "Visualization description",
+          image: "",
         },
         {
           id: 2,
           title: "Assignment 2",
-          description: "Description for Assignment 2",
-          image: "images/assignment2.jpg",
+          description: "Visualization description",
+          image: "",
         },
         {
           id: 3,
           title: "Assignment 3",
-          description: "Description for Assignment 3",
-          image: "images/assignment3.jpg",
+          description: "Visualization description",
+          image: "",
         },
         {
           id: 4,
           title: "Assignment 4",
-          description: "Description for Assignment 4",
-          image: "images/assignment4.jpg",
+          description: "Visualization description",
+          image: "",
         },
         {
           id: 5,
           title: "Assignment 5",
-          description: "Description for Assignment 5",
-          image: "images/assignment5.jpg",
+          description: "Visualization description",
+          image: "",
         },
         {
           id: 6,
           title: "Assignment 6",
-          description: "Description for Assignment 6",
-          image: "images/assignment6.jpg",
+          description: "Visualization description",
+          image: "",
         },
       ];
 
       function loadContent(assignmentId) {
         const assignment = assignments.find((ass) => ass.id === assignmentId);
-        const contentDiv = document.getElementById("content");
-        contentDiv.innerHTML = `
+        if (assignment) {
+          const contentDiv = document.getElementById("content");
+          contentDiv.innerHTML = `
                 <header>
                     <h1>${assignment.title}</h1>
                 </header>
                 <span class="image main"><img src="${assignment.image}" alt="Image of ${assignment.title}" /></span>
                 <p>${assignment.description}</p>
-                <p>Visualization description will go here.</p>
             `;
+          // Update URL without reloading the page
+          history.pushState(
+            { id: assignmentId },
+            `${assignment.title}`,
+            `?assignment=${assignmentId}`
+          );
+        }
       }
 
       // Optionally load an assignment if a specific query is passed
