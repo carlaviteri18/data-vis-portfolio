@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Phantom by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
   <head>
@@ -16,6 +16,10 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
+    <meta
+      name="description"
+      content="Carla Viteri's Data Visualization Portfolio for CSI 5900 showcasing various assignments."
+    />
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -25,10 +29,11 @@
         <div class="inner">
           <!-- Logo -->
           <a href="index.html" class="logo">
-            <span class="symbol"><img src="images/logo02.svg" alt="" /></span>
+            <span class="symbol"
+              ><img src="images/logo02.svg" alt="Portfolio Logo"
+            /></span>
             <span class="title">CSI 5900: Data Visualization</span>
           </a>
-
           <!-- Nav -->
           <nav>
             <ul>
@@ -42,11 +47,12 @@
       <nav id="menu">
         <h2>Menu</h2>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="generic.html">Assignment 1</a></li>
-          <li><a href="generic.html">Assignment 2</a></li>
-          <li><a href="generic.html">Assignment 3</a></li>
-          <li><a href="elements.html">Elements</a></li>
+          <li><a href="#" onclick="loadContent(1);">Assignment 1</a></li>
+          <li><a href="#" onclick="loadContent(2);">Assignment 2</a></li>
+          <li><a href="#" onclick="loadContent(3);">Assignment 3</a></li>
+          <li><a href="#" onclick="loadContent(4);">Assignment 4</a></li>
+          <li><a href="#" onclick="loadContent(5);">Assignment 5</a></li>
+          <li><a href="#" onclick="loadContent(6);">Assignment 6</a></li>
         </ul>
       </nav>
 
@@ -54,13 +60,11 @@
       <div id="main">
         <div class="inner">
           <header>
-            <h1>Assignment Contents</h1>
+            <h1>Welcome to My Portfolio</h1>
           </header>
-          <span class="image main"
-            ><img src="" alt="Image of Visualization"
-          /></span>
-          <p>Assignment description will go here.</p>
-          <p>Visualization description will go here.</p>
+          <div id="content">
+            <!-- Content dynamically loaded here -->
+          </div>
         </div>
       </div>
 
@@ -93,5 +97,55 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      const assignments = [
+        {
+          id: 1,
+          title: "Assignment 1",
+          description: "Description for Assignment 1",
+          image: "images/assignment1.jpg",
+        },
+        {
+          id: 2,
+          title: "Assignment 2",
+          description: "Description for Assignment 2",
+          image: "images/assignment2.jpg",
+        },
+        {
+          id: 3,
+          title: "Assignment 3",
+          description: "Description for Assignment 3",
+          image: "images/assignment3.jpg",
+        },
+        {
+          id: 4,
+          title: "Assignment 4",
+          description: "Description for Assignment 4",
+          image: "images/assignment4.jpg",
+        },
+        {
+          id: 5,
+          title: "Assignment 5",
+          description: "Description for Assignment 5",
+          image: "images/assignment5.jpg",
+        },
+        {
+          id: 6,
+          title: "Assignment 6",
+          description: "Description for Assignment 6",
+          image: "images/assignment6.jpg",
+        },
+      ];
+
+      function loadContent(assignmentId) {
+        const assignment = assignments.find((ass) => ass.id === assignmentId);
+        const contentDiv = document.getElementById("content");
+        contentDiv.innerHTML = `
+                <h1>${assignment.title}</h1>
+                <img src="${assignment.image}" alt="${assignment.title} Image" style="max-width:100%;height:auto;"/>
+                <p>${assignment.description}</p>
+            `;
+      }
+    </script>
   </body>
 </html>
