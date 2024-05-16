@@ -2369,6 +2369,15 @@ input, select, textarea {
 				}
 
 			}
+		
+		.assignment-image {
+			max-width: 600px; /* maximum size the image can grow to */
+			width: 100%; /* scale width to maintain aspect ratio */
+			height: auto; /* maintain aspect ratio */
+			display: block; /* block display to apply width and height correctly */
+			margin: 0 auto; /* center the image */
+}
+
 
 /* Table */
 
