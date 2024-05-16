@@ -164,7 +164,7 @@ input, select, textarea {
 
 	p {
 		text-align: justify;
-		color: #3B3B3B;
+		color: #585858;
 		margin: 0 0 2em 0;
 	}
 
@@ -2685,7 +2685,7 @@ input, select, textarea {
 				padding: 1em;
 				border-radius: 4px;
 				border-bottom: 0;
-				color: #ffffff;
+				color: #585858;
 				text-align: center;
 				text-decoration: none;
 				z-index: 3;
