@@ -2375,7 +2375,7 @@ input, select, textarea {
 			width: 100%;
 			height: auto;
 			display: block;
-			margin: 0 auto 20px; /* Adds bottom margin for spacing between images or following text */
+			margin: 0 auto;
 			border: 1px solid #ddd; /* Optional: adds a light border around the image */
 			box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
 			border-radius: 4px; /* Optional: rounds the corners of the image */
