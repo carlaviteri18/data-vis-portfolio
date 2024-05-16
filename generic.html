@@ -197,7 +197,7 @@
           let imagesHtml = assignment.images
             .map(
               (img) =>
-                `<div class="image"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" style="max-width:100%;height:auto;"/></div>`
+                `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}"/><p>${img.description}</p></div>`
             )
             .join("");
           contentDiv.innerHTML = `
