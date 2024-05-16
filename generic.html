@@ -197,15 +197,15 @@
           let imagesHtml = assignment.images
             .map(
               (img) =>
-                `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}"/><p>${img.description}</p></div>`
+                `<div class="image main style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}"/><p>${img.description}</p></div>`
             )
             .join("");
           contentDiv.innerHTML = `
                 <header>
                     <h1>${assignment.title}</h1>
                 </header>
-                ${imagesHtml}
                 <p>${assignment.description}</p>
+				${imagesHtml}
             `;
           // Update URL without reloading the page
           history.pushState(
