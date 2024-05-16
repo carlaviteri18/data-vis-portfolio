@@ -163,6 +163,8 @@ input, select, textarea {
 	}
 
 	p {
+		text-align: justify;
+		color: #3B3B3B;
 		margin: 0 0 2em 0;
 	}
 
