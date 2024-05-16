@@ -2371,12 +2371,16 @@ input, select, textarea {
 			}
 		
 		.assignment-image {
-			max-width: 600px; /* maximum size the image can grow to */
-			width: 100%; /* scale width to maintain aspect ratio */
-			height: auto; /* maintain aspect ratio */
-			display: block; /* block display to apply width and height correctly */
-			margin: 0 auto; /* center the image */
-}
+			max-width: 450px;
+			width: 100%;
+			height: auto;
+			display: block;
+			margin: 0 auto 20px; /* Adds bottom margin for spacing between images or following text */
+			border: 1px solid #ddd; /* Optional: adds a light border around the image */
+			box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
+			border-radius: 4px; /* Optional: rounds the corners of the image */
+		}
+
 
 
 /* Table */
