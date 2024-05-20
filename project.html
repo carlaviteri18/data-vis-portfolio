@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>Portfolio by Carla Viteri</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <span class="symbol"><img src="images/logo02.svg" alt="" /></span
+            ><span class="title">CSI 5900: Data Visualization</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li>
+            <a href="generic.html?assignment=1">Assignment 1</a>
+          </li>
+          <li>
+            <a href="generic.html?assignment=2">Assignment 2</a>
+          </li>
+          <li>
+            <a href="generic.html?assignment=3">Assignment 3</a>
+          </li>
+          <li>
+            <a href="generic.html?assignment=4">Assignment 4</a>
+          </li>
+          <li>
+            <a href="generic.html?assignment=5">Assignment 5</a>
+          </li>
+          <li>
+            <a href="project.html">Project</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <header>
+            <h1>Project</h1>
+            <h3>
+              Using Topic Models to Explore Themes and Topics in Charlotte
+              Bronte’s Jane Eyre
+            </h3>
+            <h4>By Carla Viteri</h4>
+          </header>
+          <section class="">
+            <article class="style1">
+              <span class="image">
+                <img src="" alt="Project Image 1" />
+              </span>
+            </article>
+          </section>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://github.com/carlaviteri18/data-vis-portfolio"
+                  class="icon brands style2 fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+            </ul>
+          </section>
+          <ul class="copyright">
+            <li>&copy; Carla Viteri. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Ensure the menu links are properly initialized after the page has loaded
+      $(document).ready(function () {
+        $('a[href^="generic.html"]').on("click", function (e) {
+          // Prevent default action if necessary or handle navigation dynamically
+          var url = $(this).attr("href");
+          window.location.href = url; // Ensure navigation happens correctly
+          return false; // Prevent default link behavior
+        });
+      });
+    </script>
+  </body>
+</html>
