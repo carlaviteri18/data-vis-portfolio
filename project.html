@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Phantom by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
   <head>
@@ -16,6 +16,20 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
+    <style>
+      .section {
+        padding: 2em;
+        margin: 2em 0;
+      }
+      .section header {
+        margin-bottom: 1em;
+      }
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
+      }
+    </style>
   </head>
   <body class="is-preload">
     <!-- Wrapper -->
@@ -25,8 +39,8 @@
         <div class="inner">
           <!-- Logo -->
           <a href="index.html" class="logo">
-            <span class="symbol"><img src="images/logo02.svg" alt="" /></span
-            ><span class="title">CSI 5900: Data Visualization</span>
+            <span class="symbol"><img src="images/logo02.svg" alt="" /></span>
+            <span class="title">CSI 5900: Data Visualization</span>
           </a>
 
           <!-- Nav -->
@@ -43,24 +57,12 @@
         <h2>Menu</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="generic.html?assignment=1">Assignment 1</a>
-          </li>
-          <li>
-            <a href="generic.html?assignment=2">Assignment 2</a>
-          </li>
-          <li>
-            <a href="generic.html?assignment=3">Assignment 3</a>
-          </li>
-          <li>
-            <a href="generic.html?assignment=4">Assignment 4</a>
-          </li>
-          <li>
-            <a href="generic.html?assignment=5">Assignment 5</a>
-          </li>
-          <li>
-            <a href="project.html">Project</a>
-          </li>
+          <li><a href="generic.html?assignment=1">Assignment 1</a></li>
+          <li><a href="generic.html?assignment=2">Assignment 2</a></li>
+          <li><a href="generic.html?assignment=3">Assignment 3</a></li>
+          <li><a href="generic.html?assignment=4">Assignment 4</a></li>
+          <li><a href="generic.html?assignment=5">Assignment 5</a></li>
+          <li><a href="project.html">Project</a></li>
         </ul>
       </nav>
 
@@ -70,17 +72,83 @@
           <header>
             <h1>Project</h1>
             <h3>
-              Using Topic Models to Explore Themes and Topics in Charlotte
-              Bronte’s Jane Eyre
+              Exploring Jane Eyre: An Interactive Visualization of Themes and
+              Topics
             </h3>
             <h4>By Carla Viteri</h4>
           </header>
-          <section class="">
-            <article class="style1">
-              <span class="image">
-                <img src="" alt="Project Image 1" />
-              </span>
-            </article>
+
+          <!-- Introduction Section -->
+          <section class="section" id="introduction">
+            <header>
+              <h2>Introduction</h2>
+            </header>
+            <p>
+              Explanation of the project's objectives and user instructions.
+            </p>
+          </section>
+
+          <!-- Analysis Section -->
+          <section class="section" id="analysis">
+            <header>
+              <h2>Analysis of Topics and Their Themes</h2>
+            </header>
+            <p>
+              Based on the topic modeling results and their associated
+              probabilities across chapters, we can infer possible themes for
+              each topic and correlate them with the content of the chapters in
+              which they appear.
+            </p>
+          </section>
+
+          <!-- Intertopic Distance Map -->
+          <section class="section" id="intertopic-distance-map">
+            <header>
+              <h2>Intertopic Distance Map</h2>
+            </header>
+            <iframe src="path/to/intertopic_distance_map.html"></iframe>
+          </section>
+
+          <!-- Top-30 Most Relevant Terms for Topic -->
+          <section class="section" id="top-30-terms">
+            <header>
+              <h2>Top-30 Most Relevant Terms for Topic</h2>
+            </header>
+            <iframe src="path/to/top_30_terms.html"></iframe>
+          </section>
+
+          <!-- Sentiment Bubble Chart -->
+          <section class="section" id="sentiment-bubble-chart">
+            <header>
+              <h2>Sentiment Bubble Chart</h2>
+            </header>
+            <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
+          </section>
+
+          <!-- Topic Evolution Line Chart -->
+          <section class="section" id="topic-evolution-line-chart">
+            <header>
+              <h2>Topic Evolution Line Chart</h2>
+            </header>
+            <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
+          </section>
+
+          <!-- Highlighted Text Passages -->
+          <section class="section" id="highlighted-text-passages">
+            <header>
+              <h2>Highlighted Text Passages</h2>
+            </header>
+            <div class="columns">
+              <div class="column">
+                <p>Selected passage 1</p>
+              </div>
+              <div class="column">
+                <p>Selected passage 2</p>
+              </div>
+              <div class="column">
+                <p>Selected passage 3</p>
+              </div>
+            </div>
           </section>
         </div>
       </div>
@@ -95,8 +163,9 @@
                 <a
                   href="https://github.com/carlaviteri18/data-vis-portfolio"
                   class="icon brands style2 fa-github"
-                  ><span class="label">GitHub</span></a
                 >
+                  <span class="label">GitHub</span>
+                </a>
               </li>
             </ul>
           </section>
