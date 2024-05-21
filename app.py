@@ -27,6 +27,7 @@ from gensim.models.ldamodel import LdaModel
 import plotly.express as px
 import pyLDAvis
 import pyLDAvis.gensim_models as genvis
+import dash
 from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
@@ -284,3 +285,59 @@ fig.show()
 
 # Save the interactive plot as an HTML file
 fig.write_html("topic_evolution.html")
+
+# Flask and Dash App
+server = Flask(__name__)
+app = dash.Dash(__name__, server=server, external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+# Select three passages from the text
+passage_indices = [0, 18, 36]  # Change these indices as needed
+passages = [chapters[i] for i in passage_indices]
+
+# Preprocess the passages
+preprocessed_passages = [preprocess(p) for p in passages]
+
+app.layout = dbc.Container([
+    dbc.Row([
+        dbc.Col([
+            html.H3(f"Passage {i+1}"),
+            html.Div(id=f'passage-{i+1}', style={'white-space': 'pre-wrap', 'border': '1px solid #ddd', 'padding': '10px'})
+        ]) for i in range(3)
+    ]),
+    dbc.Row([
+        dbc.Col([
+            html.H5("Select Topic"),
+            dcc.Dropdown(
+                id='topic-dropdown',
+                options=[{'label': f'Topic {i}', 'value': i} for i in range(num_topics)],
+                value=0
+            )
+        ])
+    ])
+])
+
+# Callback to update the highlighted text
+@app.callback(
+    [Output(f'passage-{i+1}', 'children') for i in range(3)],
+    [Input('topic-dropdown', 'value')]
+)
+def update_passages(topic_id):
+    highlights = []
+    for passage, preprocessed_passage in zip(passages, preprocessed_passages):
+        highlighted_text = []
+        words = passage.split()
+        for word in words:
+            clean_word = re.sub(r'[^a-zA-Z\s]', '', word).lower()
+            prob = dict(optimal_model.get_topic_terms(topic_id, len(dictionary))).get(dictionary.token2id.get(clean_word, -1), 0)
+            if prob > 0.000001:
+                highlighted_text.append(html.Span(word, style={'background-color': f'rgba(255, 0, 0, {prob*10})'}))
+                highlighted_text.append(' ')
+            else:
+                highlighted_text.append(html.Span(word))
+                highlighted_text.append(' ')
+        highlights.append(highlighted_text)
+    return highlights
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8050))
+    app.run_server(debug=True, host='0.0.0.0', port=port)
