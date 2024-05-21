@@ -1,29 +1,26 @@
 import nltk
-
 import re
 import numpy as np
 import pandas as pd
-
 from nltk.sentiment import SentimentIntensityAnalyzer
-
 import gensim
 from gensim import corpora, models
 from gensim.models import Phrases
 from gensim.corpora import Dictionary
 from gensim.models.ldamodel import LdaModel
-
 import plotly.express as px
 import pyLDAvis
 import pyLDAvis.gensim_models as genvis
-
 from flask import Flask
-
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
+# Ensure NLTK data is available
+nltk.data.path.append('./nltk_data')
+
 # Define the preprocessing function
 def preprocess(text):
-    stop_words = set(stopwords.words("english"))
+    stop_words = set(nltk.corpus.stopwords.words("english"))
     custom_stopwords = {"mrs", "mr", "miss", "said", "sir", "one", "would", "could", "said", "-"}
     stop_words.update(custom_stopwords)
     
