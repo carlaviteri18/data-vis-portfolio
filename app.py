@@ -15,8 +15,10 @@ from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
-# Ensure NLTK data is available
-nltk.data.path.append('./nltk_data')
+# Download necessary NLTK data
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('vader_lexicon')
 
 # Define the preprocessing function
 def preprocess(text):
