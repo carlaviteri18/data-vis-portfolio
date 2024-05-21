@@ -9,3 +9,6 @@ pyLDAvis
 Flask
 scipy==1.9.3
 matplotlib
+numpy
+pandas
+re

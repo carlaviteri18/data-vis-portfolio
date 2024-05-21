@@ -28,6 +28,7 @@ import plotly.express as px
 import pyLDAvis
 import pyLDAvis.gensim_models as genvis
 import dash
+from pyngrok import ngrok
 from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
@@ -286,6 +287,9 @@ fig.show()
 # Save the interactive plot as an HTML file
 fig.write_html("topic_evolution.html")
 
+# Authenticate ngrok with your token
+ngrok.set_auth_token("2gcxnMRyBftqIaEzC7WAz8TcRFr_3Vpdtx98MgrYjNhAEGn2g")
+
 # Flask and Dash App
 server = Flask(__name__)
 app = dash.Dash(__name__, server=server, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -338,6 +342,10 @@ def update_passages(topic_id):
         highlights.append(highlighted_text)
     return highlights
 
+# Start ngrok with a reserved domain
+public_url = ngrok.connect(addr="8050", proto="http", bind_tls=True, subdomain="datavis")
+print('Public URL:', public_url)
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8050))
-    app.run_server(debug=True, host='0.0.0.0', port=port)
+    app.run_server(debug=True, host='0.0.0.0', port=8050)
