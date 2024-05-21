@@ -17,15 +17,9 @@ from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
-# Ensure the nltk_data directory exists and set the path
+# Set the nltk_data directory path
 nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
-os.makedirs(nltk_data_path, exist_ok=True)
 nltk.data.path.append(nltk_data_path)
-
-# Download NLTK data programmatically
-nltk.download('stopwords', download_dir=nltk_data_path)
-nltk.download('punkt', download_dir=nltk_data_path)
-nltk.download('vader_lexicon', download_dir=nltk_data_path)
 
 # Define the preprocessing function
 def preprocess(text):
@@ -170,7 +164,7 @@ for topic in top_negative_topics['Topic']:
                   xref='x', yref='y',
                   x0=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Average Sentiment Score'].values[0] - 0.05,
                   y0=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Log Proportion of Tokens'].values[0] - 0.05,
-                  x1=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Average Sentiment Score'].values[0] + 0.05,
+                  x1=top negative topics.loc[top_negative_topics['Topic'] == topic, 'Average Sentiment Score'].values[0] + 0.05,
                   y1=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Log Proportion of Tokens'].values[0] + 0.05,
                   line=dict(color='red', width=2))
 
