@@ -2,8 +2,9 @@ dash
 dash-bootstrap-components
 pyngrok
 gitpython
-gensim
+gensim==4.3.2
 nltk
 plotly
 pyLDAvis
-flask
+Flask
+scipy==1.9.3
