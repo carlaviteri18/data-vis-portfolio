@@ -6,3 +6,4 @@ gensim
 nltk
 plotly
 pyLDAvis
+flask
