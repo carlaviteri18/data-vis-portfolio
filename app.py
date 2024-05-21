@@ -2,6 +2,7 @@ import nltk
 import re
 import numpy as np
 import pandas as pd
+from nltk.corpus import stopwords
 from nltk.sentiment import SentimentIntensityAnalyzer
 import gensim
 from gensim import corpora, models
