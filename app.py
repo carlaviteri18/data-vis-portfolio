@@ -1,17 +1,28 @@
+import nltk
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('vader_lexicon')
+
 import re
 import numpy as np
 import pandas as pd
+
 from nltk.corpus import stopwords
 from nltk.sentiment import SentimentIntensityAnalyzer
+
 import gensim
 from gensim import corpora, models
 from gensim.models import Phrases
 from gensim.corpora import Dictionary
 from gensim.models.ldamodel import LdaModel
+
 import plotly.express as px
 import pyLDAvis
 import pyLDAvis.gensim_models as genvis
+
 from flask import Flask
+
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
