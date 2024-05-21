@@ -1,3 +1,4 @@
+import os
 import nltk
 import re
 import numpy as np
@@ -16,13 +17,15 @@ from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
-# Specify NLTK data path
-nltk.data.path.append('/app/nltk_data')
+# Ensure the nltk_data directory exists and set the path
+nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
+os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
 
-# Download necessary NLTK data
-nltk.download('stopwords', download_dir='/app/nltk_data')
-nltk.download('punkt', download_dir='/app/nltk_data')
-nltk.download('vader_lexicon', download_dir='/app/nltk_data')
+# Download NLTK data programmatically
+nltk.download('stopwords', download_dir=nltk_data_path)
+nltk.download('punkt', download_dir=nltk_data_path)
+nltk.download('vader_lexicon', download_dir=nltk_data_path)
 
 # Define the preprocessing function
 def preprocess(text):
