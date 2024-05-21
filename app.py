@@ -3,7 +3,7 @@ import nltk
 from nltk.corpus import stopwords
 
 # Set the nltk_data directory path
-nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
+nltk_data_path = os.path.join(os.getcwd(), 'carlaviteri18/data-vis-portfolio/nltk_data')
 nltk.data.path.append(nltk_data_path)
 
 # Ensure the necessary NLTK data is available
@@ -46,7 +46,7 @@ def preprocess(text):
     return tokens
 
 # Read the file
-filename = 'jane_eyre.txt'  # Ensure this file is in the same directory as app.py
+filename = 'carlaviteri18/data-vis-portfolio/jane_eyre.txt'  # Ensure this file is in the same directory as app.py
 try:
     with open(filename, 'r', encoding='utf8') as f:
         text = f.read()
