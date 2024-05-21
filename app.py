@@ -32,7 +32,7 @@ from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
 # Read the file
-filename = 'carlaviteri18/data-vis-portfolio/jane_eyre.txt'
+filename = 'jane_eyre.txt'
 try:
     with open(filename, 'r', encoding='utf8') as f:
         text = f.read()
