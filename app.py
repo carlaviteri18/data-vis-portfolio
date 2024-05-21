@@ -1,15 +1,22 @@
 import os
-
 import nltk
+from nltk.corpus import stopwords
 
-nltk.download('stopwords', download_dir='./nltk_data')
-nltk.download('punkt', download_dir='./nltk_data')
-nltk.download('vader_lexicon', , download_dir='./nltk_data')
+# Set the nltk_data directory path
+nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
+nltk.data.path.append(nltk_data_path)
+
+# Ensure the necessary NLTK data is available
+try:
+    stopwords.words('english')
+except LookupError:
+    nltk.download('stopwords', download_dir=nltk_data_path)
+    nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.download('vader_lexicon', download_dir=nltk_data_path)
 
 import re
 import numpy as np
 import pandas as pd
-from nltk.corpus import stopwords
 from nltk.sentiment import SentimentIntensityAnalyzer
 import gensim
 from gensim import corpora, models
@@ -22,10 +29,6 @@ import pyLDAvis.gensim_models as genvis
 from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
-
-# Set the nltk_data directory path
-nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
-nltk.data.path.append(nltk_data_path)
 
 # Define the preprocessing function
 def preprocess(text):
@@ -170,7 +173,7 @@ for topic in top_negative_topics['Topic']:
                   xref='x', yref='y',
                   x0=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Average Sentiment Score'].values[0] - 0.05,
                   y0=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Log Proportion of Tokens'].values[0] - 0.05,
-                  x1=top negative topics.loc[top_negative_topics['Topic'] == topic, 'Average Sentiment Score'].values[0] + 0.05,
+                  x1=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Average Sentiment Score'].values[0] + 0.05,
                   y1=top_negative_topics.loc[top_negative_topics['Topic'] == topic, 'Log Proportion of Tokens'].values[0] + 0.05,
                   line=dict(color='red', width=2))
 
