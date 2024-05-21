@@ -16,14 +16,14 @@ from flask import Flask
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
-# Download necessary NLTK data
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('vader_lexicon')
+# Download necessary NLTK data without user interaction
+nltk.download('stopwords', quiet=True)
+nltk.download('punkt', quiet=True)
+nltk.download('vader_lexicon', quiet=True)
 
 # Define the preprocessing function
 def preprocess(text):
-    stop_words = set(nltk.corpus.stopwords.words("english"))
+    stop_words = set(stopwords.words("english"))
     custom_stopwords = {"mrs", "mr", "miss", "said", "sir", "one", "would", "could", "said", "-"}
     stop_words.update(custom_stopwords)
     
