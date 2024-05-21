@@ -1,7 +1,3 @@
-import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('vader_lexicon')
 import re
 import numpy as np
 import pandas as pd
@@ -39,7 +35,7 @@ try:
     with open(filename, 'r', encoding='utf8') as f:
         text = f.read()
 except:
-    with open(filename, 'r', encoding='ISO-8859-1') as f):
+    with open(filename, 'r', encoding='ISO-8859-1') as f:
         text = f.read()
 
 # Split the text into chapters
