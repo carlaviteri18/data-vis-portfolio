@@ -155,36 +155,8 @@
             {
               src: "images/a2_visualization_bad.html",
               title: "Before Makeover💅",
-              description: `
-              The original visualization of the adolescent birth rate dataset had several significant issues:
-                <ul>
-                    <li>
-                      <p style="font-weight:bold;">Cluttered Design:</p> 
-                      The layout was overly complicated, with elements overlapping or being too close to each other, making it difficult to distinguish between different parts of the chart.
-                    </li>
-
-                    <li>
-                      <p style="font-weight:bold;">Unreadable Labels:</p>
-                      The text labels were hard to read due to small font sizes and insufficient spacing, especially in the legend and axis labels. 
-                    </li>
-
-                    <li>
-                      <p style="font-weight:bold;">Poor Color Choices:</p>
-                      The colors used for different periods and regions were not distinct enough, leading to confusion and difficulty in distinguishing between data points.
-                    </li>
-
-                    <li>
-                      <p style="font-weight:bold;">Lack of Context:</p>
-                      The visualization lacked contextual information, such as clear titles or subtitles that explain the data and its significance, which made it hard for viewers to understand the purpose and findings at a glance. 
-                    </li>
-
-                    <li>
-                      <p style="font-weight:bold;">Ineffective Use of Space:</p>
-                      There was inefficient use of space, with large areas of the visualization being underutilized, while critical information was cramped into small spaces.
-                    </li>
-                </ul>
-                These issues collectively made the original visualization confusing and challenging to interpret, undermining its effectiveness in communicating the data's insights.
-              `,
+              description:
+                "The original visualization was problematic for several reasons. Firstly, it used a line chart to display data that might be better suited for bar charts or a different format to emphasize changes over time within regions. The colors chosen were not distinct enough, making it difficult to differentiate between the periods represented. Additionally, the legend was not clearly integrated with the chart, causing confusion about which colors corresponded to which time periods. The overall layout was cluttered and lacked focus, making it hard to quickly grasp the key insights. These issues combined to create a visualization that was neither user-friendly nor effective in conveying the important trends in the dataset.",
             },
             {
               src: "images/a2_visualization_makeover.html",
@@ -258,7 +230,7 @@
                         <div class="image style1">
                             <h3>${img.title}</h3>
                             <div class="iframe-container">
-                                <iframe src="${img.src}" title="${img.title}"></iframe>
+                                <iframe src="${img.src}" title="${img.title}" onload="this.style.height=this.contentWindow.document.body.scrollHeight + 'px';"></iframe>
                             </div>
                             <p>${img.description}</p>
                         </div>`;
