@@ -149,17 +149,48 @@
         {
           id: 2,
           title: "Assignment 2",
-          description: "Description for Assignment 2",
+          description:
+            "This assignment is all about creating a clear, visually appealing, and informative visualization using Vega-Lite. I've chosen to work with a dataset from the United Nations that tracks adolescent birth rates across different regions of the world over several time periods. This data is particularly interesting because it highlights significant changes in birth rates among young women aged 15-19 from 1950 to 2055. For this assignment, my goal was to redesign a problematic visualization, making it easier to read and more engaging. I focused on enhancing readability, improving color schemes, and ensuring that the data is presented in a way that highlights trends and differences across regions and time periods. This process involved adjusting the layout, adding informative tooltips, and making the legend more accessible.",
           images: [
             {
-              src: "",
-              title: "Visualization 2A",
-              description: "Detailed description of Visualization 2A.",
+              src: "images/a2_visualization_bad.html",
+              title: "Before Makeover💅",
+              description: `
+              The original visualization of the adolescent birth rate dataset had several significant issues:
+                <ul>
+                    <li>
+                      <p style="font-weight:bold;">Cluttered Design:</p> 
+                      The layout was overly complicated, with elements overlapping or being too close to each other, making it difficult to distinguish between different parts of the chart.
+                    </li>
+
+                    <li>
+                      <p style="font-weight:bold;">Unreadable Labels:</p>
+                      The text labels were hard to read due to small font sizes and insufficient spacing, especially in the legend and axis labels. 
+                    </li>
+
+                    <li>
+                      <p style="font-weight:bold;">Poor Color Choices:</p>
+                      The colors used for different periods and regions were not distinct enough, leading to confusion and difficulty in distinguishing between data points.
+                    </li>
+
+                    <li>
+                      <p style="font-weight:bold;">Lack of Context:</p>
+                      The visualization lacked contextual information, such as clear titles or subtitles that explain the data and its significance, which made it hard for viewers to understand the purpose and findings at a glance. 
+                    </li>
+
+                    <li>
+                      <p style="font-weight:bold;">Ineffective Use of Space:</p>
+                      There was inefficient use of space, with large areas of the visualization being underutilized, while critical information was cramped into small spaces.
+                    </li>
+                </ul>
+                These issues collectively made the original visualization confusing and challenging to interpret, undermining its effectiveness in communicating the data's insights.
+              `,
             },
             {
-              src: "",
-              title: "Visualization 2B",
-              description: "Detailed description of Visualization 2B.",
+              src: "images/a2_visualization_makeover.html",
+              title: "After Makeover💅",
+              description:
+                "In redesigning the visualization, I focused on enhancing clarity, readability, and overall aesthetics. I opted for a cleaner layout by organizing the data into a single cohesive chart, avoiding the clutter of multiple layers. I selected a color palette with distinct, contrasting colors to differentiate between periods and regions effectively. I increased the font sizes for labels and titles to improve readability and added sufficient spacing between elements to prevent overlap. Additionally, I included informative titles and subtitles to provide context and make the purpose of the visualization immediately clear. By streamlining the design and improving the visual hierarchy, I aimed to create a more intuitive and engaging presentation of the data.",
             },
           ],
         },
@@ -221,10 +252,25 @@
         if (assignment) {
           const contentDiv = document.getElementById("content");
           let imagesHtml = assignment.images
-            .map(
-              (img) =>
-                `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
-            )
+            .map((img) => {
+              if (img.src.endsWith(".html")) {
+                return `
+                        <div class="image style1">
+                            <h3>${img.title}</h3>
+                            <div class="iframe-container">
+                                <iframe src="${img.src}" title="${img.title}"></iframe>
+                            </div>
+                            <p>${img.description}</p>
+                        </div>`;
+              } else {
+                return `
+                        <div class="image style1">
+                            <h3>${img.title}</h3>
+                            <img src="${img.src}" alt="${img.title}" class="assignment-image"/>
+                            <p>${img.description}</p>
+                        </div>`;
+              }
+            })
             .join("");
           contentDiv.innerHTML = `
                 <header>
