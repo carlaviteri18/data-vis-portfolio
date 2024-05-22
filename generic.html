@@ -262,6 +262,13 @@
           iframe.style.height =
             iframe.contentWindow.document.body.scrollHeight + "px";
         }
+        function sendHeightToParent() {
+          const height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ height: height }, "*");
+        }
+
+        window.addEventListener("load", sendHeightToParent);
+        window.addEventListener("resize", sendHeightToParent);
       }
 
       // Optionally load an assignment if a specific query is passed
