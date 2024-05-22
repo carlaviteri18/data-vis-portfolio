@@ -230,7 +230,7 @@
                         <div class="image style1">
                             <h3>${img.title}</h3>
                             <div class="iframe-container">
-                                <iframe src="${img.src}" title="${img.title}" onload="this.style.height=this.contentWindow.document.body.scrollHeight + 'px';"></iframe>
+                                <iframe src="${img.src}" title="${img.title}" onload="resizeIframe(this)"></iframe>
                             </div>
                             <p>${img.description}</p>
                         </div>`;
@@ -257,6 +257,10 @@
             `${assignment.title}`,
             `?assignment=${assignmentId}`
           );
+        }
+        function resizeIframe(iframe) {
+          iframe.style.height =
+            iframe.contentWindow.document.documentElement.scrollHeight + "px";
         }
       }
 
