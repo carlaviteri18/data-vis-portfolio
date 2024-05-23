@@ -278,23 +278,22 @@
             if (img.src.endsWith(".html")) {
               const iframe = document.getElementById(`iframe-${index}`);
               iframe.onload = function () {
-                if (this.contentDocument) {
-                  this.style.height =
-                    this.contentDocument.body.scrollHeight + "px";
-                  this.style.visibility = "visible";
-                }
+                adjustIframeHeight(this);
               };
               // Set an interval to check for the document height if onload doesn't fire
               const intervalId = setInterval(function () {
-                if (iframe.contentDocument) {
-                  iframe.style.height =
-                    iframe.contentDocument.body.scrollHeight + "px";
-                  iframe.style.visibility = "visible";
-                  clearInterval(intervalId);
-                }
+                adjustIframeHeight(iframe);
+                clearInterval(intervalId);
               }, 500);
             }
           });
+        }
+      }
+
+      function adjustIframeHeight(iframe) {
+        if (iframe.contentDocument) {
+          iframe.style.height = iframe.contentDocument.body.scrollHeight + "px";
+          iframe.style.visibility = "visible";
         }
       }
 
