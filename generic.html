@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Phantom by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
     <title>Portfolio by Carla Viteri</title>
@@ -277,23 +272,15 @@
             if (img.src.endsWith(".html")) {
               const iframe = document.getElementById(`iframe-${index}`);
               iframe.onload = function () {
-                adjustIframeHeight(this);
+                this.contentWindow.postMessage({ action: "resize" }, "*");
               };
-              // Set an interval to check for the document height if onload doesn't fire
-              const intervalId = setInterval(function () {
-                adjustIframeHeight(iframe);
-                clearInterval(intervalId);
-              }, 500);
+              window.addEventListener("message", (event) => {
+                if (event.data.action === "resize" && event.data.height) {
+                  iframe.style.height = event.data.height + "px";
+                }
+              });
             }
           });
-        }
-      }
-
-      function adjustIframeHeight(iframe) {
-        if (iframe.contentDocument) {
-          const iframeContent = iframe.contentDocument.documentElement;
-          iframe.style.height = iframeContent.scrollHeight + "px";
-          iframe.style.visibility = "visible";
         }
       }
 

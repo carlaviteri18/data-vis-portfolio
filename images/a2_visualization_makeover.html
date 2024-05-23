@@ -1,122 +1,134 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.29.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.18.1"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
-</head>
-<body>
-  <div id="vis"/>
-  <script>
-    const spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {
-    "url": "https://raw.githubusercontent.com/shadfrigui/vega-lite/main/adolescent-birth-rate/adolescent-birth-rate-data.json",
-    "format": {"type": "json"}
-  },
-  "vconcat": [
-    {
-      "width": 800,
-      "height": 50,
-      "layer": [
-        {
-          "mark": {
-            "type": "text",
-            "align": "center",
-            "fontSize": 25,
-            "dy": -20
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.29.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.18.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+  </head>
+  <body>
+    <div id="vis" />
+    <script>
+      const spec = {
+        $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+        data: {
+          url: "https://raw.githubusercontent.com/shadfrigui/vega-lite/main/adolescent-birth-rate/adolescent-birth-rate-data.json",
+          format: { type: "json" },
+        },
+        vconcat: [
+          {
+            width: 800,
+            height: 50,
+            layer: [
+              {
+                mark: {
+                  type: "text",
+                  align: "center",
+                  fontSize: 25,
+                  dy: -20,
+                },
+                encoding: {
+                  text: { value: "Adolescent Birth Rate Over Time" },
+                },
+              },
+              {
+                mark: { type: "text", align: "center", fontSize: 18, dy: 10 },
+                encoding: {
+                  text: { value: "Births per 1000 women aged 15-19" },
+                },
+              },
+            ],
           },
-          "encoding": {"text": {"value": "Adolescent Birth Rate Over Time"}}
+          {
+            width: 800,
+            height: 500,
+            encoding: {
+              x: {
+                field: "Period",
+                type: "ordinal",
+                title: "Period",
+                axis: { labelAngle: 0 },
+              },
+              y: {
+                field: "Birth Rate",
+                type: "quantitative",
+                title: "Birth Rate (per 1000 women)",
+              },
+              color: {
+                field: "Location",
+                type: "nominal",
+                title: "Location",
+                legend: { orient: "top" },
+              },
+              tooltip: [
+                { field: "Location", type: "nominal" },
+                { field: "Period", type: "ordinal" },
+                { field: "Birth Rate", type: "quantitative" },
+              ],
+            },
+            layer: [{ mark: { type: "line", point: true, tooltip: true } }],
+          },
+          {
+            mark: {
+              type: "text",
+              align: "center",
+              fontSize: 12,
+              color: "#62605F",
+              dx: -130,
+            },
+            encoding: {
+              text: { value: "Source: United Nations • Graphic: @shadfrigui" },
+            },
+          },
+        ],
+        config: {
+          background: "#F7F7F7",
+          padding: { top: 20, bottom: 20, left: 30, right: 40 },
+          view: { stroke: null },
+          font: "Outfit",
+          axis: {
+            ticks: false,
+            labelFontSize: 13,
+            labelColor: "#433828",
+            title: null,
+          },
+          axisX: {
+            domain: false,
+            gridOpacity: 0.5,
+            tickCount: 8,
+            labelPadding: 5,
+            labelFlush: false,
+          },
+          axisY: {
+            domainColor: "#433828",
+            domainOpacity: 0.3,
+            labelPadding: 15,
+          },
+          legend: {
+            orient: "top",
+            symbolSize: 100,
+            symbolStrokeColor: "transparent",
+            labelFontSize: 12,
+            labelColor: "#433828",
+            titleFontSize: 13,
+            titleFontWeight: "normal",
+            titleColor: "#433828",
+            padding: 10,
+          },
+          line: { size: 3 },
+          point: { size: 80 },
+          title: { anchor: "start" },
+          concat: { spacing: 40 },
         },
-        {
-          "mark": {"type": "text", "align": "center", "fontSize": 18, "dy": 10},
-          "encoding": {"text": {"value": "Births per 1000 women aged 15-19"}}
-        }
-      ]
-    },
-    {
-      "width": 800,
-      "height": 500,
-      "encoding": {
-        "x": {
-          "field": "Period",
-          "type": "ordinal",
-          "title": "Period",
-          "axis": {"labelAngle": 0}
-        },
-        "y": {
-          "field": "Birth Rate",
-          "type": "quantitative",
-          "title": "Birth Rate (per 1000 women)"
-        },
-        "color": {
-          "field": "Location",
-          "type": "nominal",
-          "title": "Location",
-          "legend": {"orient": "top"}
-        },
-        "tooltip": [
-          {"field": "Location", "type": "nominal"},
-          {"field": "Period", "type": "ordinal"},
-          {"field": "Birth Rate", "type": "quantitative"}
-        ]
-      },
-      "layer": [{"mark": {"type": "line", "point": true, "tooltip": true}}]
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "fontSize": 12,
-        "color": "#62605F",
-        "dx": -130
-      },
-      "encoding": {
-        "text": {"value": "Source: United Nations • Graphic: @shadfrigui"}
+      };
+      vegaEmbed("#vis", spec, { mode: "vega-lite" })
+        .then(console.log)
+        .catch(console.warn);
+      function sendHeight() {
+        var height = document.documentElement.scrollHeight;
+        parent.postMessage({ action: "resize", height: height }, "*");
       }
-    }
-  ],
-  "config": {
-    "background": "#F7F7F7",
-    "padding": {"top": 20, "bottom": 20, "left": 30, "right": 40},
-    "view": {"stroke": null},
-    "font": "Outfit",
-    "axis": {
-      "ticks": false,
-      "labelFontSize": 13,
-      "labelColor": "#433828",
-      "title": null
-    },
-    "axisX": {
-      "domain": false,
-      "gridOpacity": 0.5,
-      "tickCount": 8,
-      "labelPadding": 5,
-      "labelFlush": false
-    },
-    "axisY": {
-      "domainColor": "#433828",
-      "domainOpacity": 0.3,
-      "labelPadding": 15
-    },
-    "legend": {
-      "orient": "top",
-      "symbolSize": 100,
-      "symbolStrokeColor": "transparent",
-      "labelFontSize": 12,
-      "labelColor": "#433828",
-      "titleFontSize": 13,
-      "titleFontWeight": "normal",
-      "titleColor": "#433828",
-      "padding": 10
-    },
-    "line": {"size": 3},
-    "point": {"size": 80},
-    "title": {"anchor": "start"},
-    "concat": {"spacing": 40}
-  }
-};
-    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-  </script>
-</body>
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+    </script>
+  </body>
 </html>
