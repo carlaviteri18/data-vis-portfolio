@@ -17,17 +17,29 @@
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
     <style>
+      .assignment-image {
+        max-width: 600px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      .html {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
       .iframe-container {
-        -moz-transform: scale(0.25, 0.25);
-        -webkit-transform: scale(0.25, 0.25);
-        -o-transform: scale(0.25, 0.25);
-        -ms-transform: scale(0.25, 0.25);
-        transform: scale(0.25, 0.25);
-        -moz-transform-origin: top left;
-        -webkit-transform-origin: top left;
-        -o-transform-origin: top left;
-        -ms-transform-origin: top left;
-        transform-origin: top left;
+        width: 960px;
+        height: 100%;
+        overflow: hidden;
+        border: none;
       }
     </style>
   </head>
@@ -240,7 +252,7 @@
           let imagesHtml = assignment.images
             .map((img) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" class="assignment-image"></iframe><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" class="assignment-image"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
