@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-    Phantom by HTML5 UP
-    html5up.net | @ajlkn
-    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
   <head>
@@ -27,6 +27,7 @@
 
       .visualization-container {
         margin: 2em 0;
+        text-align: center;
       }
 
       .visualization-container h3,
@@ -249,12 +250,12 @@
             )
             .join("");
           contentDiv.innerHTML = `
-                    <header>
-                        <h1>${assignment.title}</h1>
-                    </header>
-                    <p>${assignment.description}</p>
-                    ${imagesHtml}
-                `;
+              <header>
+                  <h1>${assignment.title}</h1>
+              </header>
+              <p>${assignment.description}</p>
+              ${imagesHtml}
+            `;
 
           // Load the HTML content for visualizations
           assignment.images
