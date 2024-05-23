@@ -33,8 +33,17 @@
         margin: 0.5em 0;
       }
 
-      .iframe-wrapper {
+      .iframe-wrapper-1 {
         width: 80%;
+        height: 600px;
+        margin: 0 auto;
+        border: none;
+        display: block;
+      }
+
+      .iframe-wrapper-2 {
+        width: 80%;
+        height: 1000px;
         margin: 0 auto;
         border: none;
         display: block;
@@ -42,6 +51,7 @@
 
       .iframe-container iframe {
         width: 100%;
+        height: 100%;
         border: none;
         display: block;
       }
@@ -255,7 +265,15 @@
           let imagesHtml = assignment.images
             .map((img, index) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><div class="iframe-wrapper"><iframe id="iframe-${index}" src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe></div><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${
+                    img.title
+                  }</h3><div class="iframe-wrapper-${
+                    index + 1
+                  }"><iframe id="iframe-${index}" src="${
+                    img.src
+                  }" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe></div><p>${
+                    img.description
+                  }</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
