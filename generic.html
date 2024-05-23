@@ -27,21 +27,20 @@
 
       .iframe-container {
         margin: 2em 0;
-        text-align: justify;
+        text-align: center;
       }
 
       .iframe-container h3,
       .iframe-container p {
-        text-align: justify;
-        margin: 1em 0;
+        text-align: center;
+        margin: 0.5em 0;
       }
 
       .iframe-container iframe {
         width: 80%;
-        height: 500px;
         border: none;
-        margin: 0 auto;
         display: block;
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -272,6 +271,7 @@
           );
         }
       }
+
       // Optionally load an assignment if a specific query is passed
       window.addEventListener("DOMContentLoaded", (event) => {
         const urlParams = new URLSearchParams(window.location.search);
