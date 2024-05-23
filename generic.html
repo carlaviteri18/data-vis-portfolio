@@ -272,23 +272,23 @@
             if (img.src.endsWith(".html")) {
               const iframe = document.getElementById(`iframe-${index}`);
               iframe.onload = function () {
-                adjustIframeHeight(iframe);
+                observeIframeHeight(iframe);
               };
             }
           });
         }
       }
 
-      function adjustIframeHeight(iframe) {
-        if (iframe.contentDocument) {
-          const iframeContent = iframe.contentDocument.documentElement;
-          const height = Math.max(
-            iframeContent.scrollHeight,
-            iframeContent.offsetHeight,
-            iframeContent.clientHeight
-          );
-          iframe.style.height = height + "px";
-        }
+      function observeIframeHeight(iframe) {
+        const observer = new MutationObserver(() => {
+          iframe.style.height = iframe.contentDocument.body.scrollHeight + "px";
+        });
+        observer.observe(iframe.contentDocument.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+        });
+        iframe.style.height = iframe.contentDocument.body.scrollHeight + "px";
       }
 
       // Optionally load an assignment if a specific query is passed
