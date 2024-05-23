@@ -283,6 +283,15 @@
                   this.style.visibility = "visible";
                 }
               };
+              // Set an interval to check for the document height if onload doesn't fire
+              const intervalId = setInterval(function () {
+                if (iframe.contentDocument) {
+                  iframe.style.height =
+                    iframe.contentDocument.body.scrollHeight + "px";
+                  iframe.style.visibility = "visible";
+                  clearInterval(intervalId);
+                }
+              }, 500);
             }
           });
         }
