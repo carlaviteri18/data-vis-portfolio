@@ -36,10 +36,9 @@
       .iframe-container iframe {
         position: absolute;
         width: 80%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        border: none;
+        display: block;
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -274,23 +273,23 @@
             if (img.src.endsWith(".html")) {
               const iframe = document.getElementById(`iframe-${index}`);
               iframe.onload = function () {
-                observeIframeHeight(iframe);
+                adjustIframeHeight(iframe);
               };
             }
           });
         }
       }
 
-      function observeIframeHeight(iframe) {
-        const observer = new MutationObserver(() => {
-          iframe.style.height = iframe.contentDocument.body.scrollHeight + "px";
-        });
-        observer.observe(iframe.contentDocument.body, {
-          childList: true,
-          subtree: true,
-          attributes: true,
-        });
-        iframe.style.height = iframe.contentDocument.body.scrollHeight + "px";
+      function adjustIframeHeight(iframe) {
+        if (iframe.contentDocument) {
+          const iframeContent = iframe.contentDocument.documentElement;
+          const height = Math.max(
+            iframeContent.scrollHeight,
+            iframeContent.offsetHeight,
+            iframeContent.clientHeight
+          );
+          iframe.style.height = height + "px";
+        }
       }
 
       // Optionally load an assignment if a specific query is passed
