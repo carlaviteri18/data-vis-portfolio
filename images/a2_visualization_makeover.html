@@ -123,12 +123,6 @@
       vegaEmbed("#vis", spec, { mode: "vega-lite" })
         .then(console.log)
         .catch(console.warn);
-      function sendHeight() {
-        var height = document.documentElement.scrollHeight;
-        parent.postMessage({ action: "resize", height: height }, "*");
-      }
-      window.addEventListener("load", sendHeight);
-      window.addEventListener("resize", sendHeight);
     </script>
   </body>
 </html>

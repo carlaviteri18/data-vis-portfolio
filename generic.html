@@ -272,15 +272,22 @@
             if (img.src.endsWith(".html")) {
               const iframe = document.getElementById(`iframe-${index}`);
               iframe.onload = function () {
-                this.contentWindow.postMessage({ action: "resize" }, "*");
+                adjustIframeHeight(iframe);
               };
-              window.addEventListener("message", (event) => {
-                if (event.data.action === "resize" && event.data.height) {
-                  iframe.style.height = event.data.height + "px";
-                }
-              });
             }
           });
+        }
+      }
+
+      function adjustIframeHeight(iframe) {
+        if (iframe.contentDocument) {
+          const iframeContent = iframe.contentDocument.documentElement;
+          const height = Math.max(
+            iframeContent.scrollHeight,
+            iframeContent.offsetHeight,
+            iframeContent.clientHeight
+          );
+          iframe.style.height = height + "px";
         }
       }
 
