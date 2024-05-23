@@ -30,6 +30,11 @@
         width: 100%;
         padding-bottom: 56.25%; /* 16:9 aspect ratio */
         margin: 2em 0; /* Adjust margin to control spacing */
+        overflow: hidden; /* Ensure no overflow */
+        background: #f4f4f4; /* Add a background color for visibility */
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .iframe-container iframe {
@@ -39,6 +44,7 @@
         width: 100%;
         height: 100%;
         border: none;
+        margin: 0; /* Ensure no margin */
       }
 
       .iframe-container h3,
@@ -147,7 +153,8 @@
         {
           id: 1,
           title: "Assignment 1",
-          description: `This assignment is centered on crafting various visual representations to effectively demonstrate differences in key data attributes. By adjusting plot types, scales, and colors, the goal is to transform complex data into clear, practical insights that are straightforward to interpret and use. For this analysis, I have selected a <a href="https://www.kaggle.com/datasets/ghassenkhaled/wine-quality-data" target="_blank">dataset</a> that examines the detailed characteristics of wines, focusing on alcohol content and color. I’m specifically analyzing two columns: 'M', which categorizes the wine by color (red or white), and 'K', which quantifies alcohol content by percentage. This targeted approach lets me visualize and compare how alcohol levels vary between red and white wines, enhancing my ability to interpret and communicate these variations through graphical means.`,
+          description:
+            "This assignment is centered on crafting various visual representations to effectively demonstrate differences in key data attributes. By adjusting plot types, scales, and colors, the goal is to transform complex data into clear, practical insights that are straightforward to interpret and use. For this analysis, I have selected a <a href='https://www.kaggle.com/datasets/ghassenkhaled/wine-quality-data' target='_blank'>dataset</a> that examines the detailed characteristics of wines, focusing on alcohol content and color. I’m specifically analyzing two columns: 'M', which categorizes the wine by color (red or white), and 'K', which quantifies alcohol content by percentage. This targeted approach lets me visualize and compare how alcohol levels vary between red and white wines, enhancing my ability to interpret and communicate these variations through graphical means.",
           images: [
             {
               src: "images/a1_basicplot.JPG",
@@ -184,12 +191,14 @@
             {
               src: "images/a2_visualization_bad.html",
               title: "Before Makeover💅",
-              description: `The original visualization was problematic for several reasons. Firstly, it used a line chart to display data that might be better suited for bar charts or a different format to emphasize changes over time within regions. The colors chosen were not distinct enough, making it difficult to differentiate between the periods represented. Additionally, the legend was not clearly integrated with the chart, causing confusion about which colors corresponded to which time periods. The overall layout was cluttered and lacked focus, making it hard to quickly grasp the key insights. These issues combined to create a visualization that was neither user-friendly nor effective in conveying the important trends in the dataset.`,
+              description:
+                "The original visualization was problematic for several reasons. Firstly, it used a line chart to display data that might be better suited for bar charts or a different format to emphasize changes over time within regions. The colors chosen were not distinct enough, making it difficult to differentiate between the periods represented. Additionally, the legend was not clearly integrated with the chart, causing confusion about which colors corresponded to which time periods. The overall layout was cluttered and lacked focus, making it hard to quickly grasp the key insights. These issues combined to create a visualization that was neither user-friendly nor effective in conveying the important trends in the dataset.",
             },
             {
               src: "images/a2_visualization_makeover.html",
               title: "After Makeover💅",
-              description: `In redesigning the visualization, I focused on enhancing clarity, readability, and overall aesthetics. I opted for a cleaner layout by organizing the data into a single cohesive chart, avoiding the clutter of multiple layers. I selected a color palette with distinct, contrasting colors to differentiate between periods and regions effectively. I increased the font sizes for labels and titles to improve readability and added sufficient spacing between elements to prevent overlap. Additionally, I included informative titles and subtitles to provide context and make the purpose of the visualization immediately clear. By streamlining the design and improving the visual hierarchy, I aimed to create a more intuitive and engaging presentation of the data.`,
+              description:
+                "In redesigning the visualization, I focused on enhancing clarity, readability, and overall aesthetics. I opted for a cleaner layout by organizing the data into a single cohesive chart, avoiding the clutter of multiple layers. I selected a color palette with distinct, contrasting colors to differentiate between periods and regions effectively. I increased the font sizes for labels and titles to improve readability and added sufficient spacing between elements to prevent overlap. Additionally, I included informative titles and subtitles to provide context and make the purpose of the visualization immediately clear. By streamlining the design and improving the visual hierarchy, I aimed to create a more intuitive and engaging presentation of the data.",
             },
           ],
         },
@@ -253,7 +262,7 @@
           let imagesHtml = assignment.images
             .map((img) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true"></iframe><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" onload="window.parent.scrollTo(0,0)" allowtransparency=true allowfullscreen="true" frameborder="0" style="width: 100%; height: 1300px;"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
@@ -272,7 +281,6 @@
           );
         }
       }
-
       // Optionally load an assignment if a specific query is passed
       window.addEventListener("DOMContentLoaded", (event) => {
         const urlParams = new URLSearchParams(window.location.search);
