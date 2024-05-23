@@ -252,7 +252,7 @@
           let imagesHtml = assignment.images
             .map((img) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" onload="this.style.height=this.contentDocument.body.scrollHeight + 'px';" allowtransparency=true allowfullscreen="true" frameborder="0"></iframe><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
@@ -271,13 +271,17 @@
           );
 
           // Ensure all iframes resize correctly
-          const iframes = contentDiv.querySelectorAll("iframe");
-          iframes.forEach((iframe) => {
-            iframe.onload = function () {
-              this.style.height = this.contentDocument.body.scrollHeight + "px";
-            };
-          });
+          adjustIframes(contentDiv);
         }
+      }
+
+      function adjustIframes(container) {
+        const iframes = container.querySelectorAll("iframe");
+        iframes.forEach((iframe) => {
+          iframe.onload = function () {
+            this.style.height = this.contentDocument.body.scrollHeight + "px";
+          };
+        });
       }
 
       // Optionally load an assignment if a specific query is passed
