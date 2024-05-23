@@ -43,7 +43,6 @@
         border: none;
         display: block;
         margin: 0 auto;
-        visibility: hidden;
       }
     </style>
   </head>
@@ -255,7 +254,7 @@
           let imagesHtml = assignment.images
             .map((img, index) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe id="iframe-${index}" src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0" style="visibility:hidden;"></iframe><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe id="iframe-${index}" src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
@@ -292,7 +291,8 @@
 
       function adjustIframeHeight(iframe) {
         if (iframe.contentDocument) {
-          iframe.style.height = iframe.contentDocument.body.scrollHeight + "px";
+          const iframeContent = iframe.contentDocument.documentElement;
+          iframe.style.height = iframeContent.scrollHeight + "px";
           iframe.style.visibility = "visible";
         }
       }
