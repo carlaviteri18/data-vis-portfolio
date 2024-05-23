@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-	Phantom by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Phantom by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
   <head>
@@ -25,15 +25,23 @@
         margin: 0 auto;
       }
 
-      .visualization-container {
+      .iframe-container {
         margin: 2em 0;
         text-align: center;
       }
 
-      .visualization-container h3,
-      .visualization-container p {
+      .iframe-container h3,
+      .iframe-container p {
         text-align: center;
         margin: 0.5em 0;
+      }
+
+      .iframe-container iframe {
+        width: 80%;
+        height: 500px;
+        border: none;
+        margin: 0 auto;
+        display: block;
       }
     </style>
   </head>
@@ -245,7 +253,7 @@
           let imagesHtml = assignment.images
             .map((img) =>
               img.src.endsWith(".html")
-                ? `<div class="visualization-container"><h3>${img.title}</h3><div id="${img.src}" class="assignment-visualization"></div><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" onload="this.style.height=this.contentDocument.body.scrollHeight + 'px';" allowtransparency=true allowfullscreen="true" frameborder="0"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
@@ -256,24 +264,6 @@
               <p>${assignment.description}</p>
               ${imagesHtml}
             `;
-
-          // Load the HTML content for visualizations
-          assignment.images
-            .filter((img) => img.src.endsWith(".html"))
-            .forEach((img) => {
-              console.log(`Fetching HTML for: ${img.src}`); // Add logging
-              fetch(img.src)
-                .then((response) => {
-                  console.log(`Fetched response for: ${img.src}`, response); // Add logging
-                  return response.text();
-                })
-                .then((html) => {
-                  console.log(`Inserting HTML for: ${img.src}`); // Add logging
-                  document.getElementById(img.src).innerHTML = html;
-                })
-                .catch((error) => console.error("Error loading HTML:", error));
-            });
-
           // Update URL without reloading the page
           history.pushState(
             { id: assignmentId },
@@ -282,7 +272,6 @@
           );
         }
       }
-
       // Optionally load an assignment if a specific query is passed
       window.addEventListener("DOMContentLoaded", (event) => {
         const urlParams = new URLSearchParams(window.location.search);
