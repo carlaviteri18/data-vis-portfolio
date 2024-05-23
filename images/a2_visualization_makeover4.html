@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.29.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.18.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/shadfrigui/vega-lite/main/adolescent-birth-rate/adolescent-birth-rate-data.json",
+    "format": {"type": "json"}
+  },
+  "vconcat": [
+    {
+      "height": 100,
+      "layer": [
+        {"mark": {"type": "rect", "xOffset": -150}},
+        {
+          "title": {
+            "text": "Adolescent birth rate",
+            "fontSize": 25,
+            "subtitle": "Births per 1000 women aged 15-19",
+            "subtitlePadding": 10,
+            "subtitleFontSize": 18,
+            "dy": 70
+          },
+          "mark": "text"
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 500,
+      "mark": {"type": "bar", "tooltip": true},
+      "encoding": {
+        "x": {
+          "field": "Period",
+          "type": "ordinal",
+          "title": "Period",
+          "axis": {"labelAngle": 0}
+        },
+        "y": {
+          "field": "Birth Rate",
+          "type": "quantitative",
+          "title": "Birth Rate (per 1000 women)"
+        },
+        "color": {
+          "field": "Location",
+          "type": "nominal",
+          "title": "Location",
+          "scale": {
+            "range": [
+              "#2B2D42",
+              "#92DCE5",
+              "#8F7F9F",
+              "#F7EC59",
+              "#A3007A",
+              "#F49FBC"
+            ]
+          },
+          "legend": {
+            "orient": "none",
+            "direction": "vertical",
+            "titleFontWeight": "bold",
+            "padding": 10
+          }
+        },
+        "tooltip": [
+          {"field": "Location", "type": "nominal"},
+          {"field": "Period", "type": "ordinal"},
+          {"field": "Birth Rate", "type": "quantitative"}
+        ],
+        "xOffset": {"field": "Location", "type": "nominal", "sort": "-y"}
+      }
+    },
+    {
+      "title": {
+        "text": "Source: United Nations • Graphic: @shadfrigui",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "color": "#62605F",
+        "dx": -130
+      },
+      "mark": "text"
+    }
+  ],
+  "config": {
+    "background": "#F7F7F7",
+    "padding": {"top": 20, "bottom": -10, "left": 10, "right": 10},
+    "view": {"stroke": null},
+    "font": "Outfit",
+    "axis": {
+      "ticks": false,
+      "labelFontSize": 13,
+      "labelColor": "#433828",
+      "title": null
+    },
+    "axisX": {
+      "domain": false,
+      "gridOpacity": 0.5,
+      "tickCount": 8,
+      "labelPadding": 5,
+      "labelFlush": false
+    },
+    "axisY": {
+      "domainColor": "#433828",
+      "domainOpacity": 0.3,
+      "labelPadding": 15
+    },
+    "legend": {
+      "orient": "none",
+      "direction": "vertical",
+      "symbolSize": 100,
+      "symbolStrokeColor": "transparent",
+      "labelFontSize": 12,
+      "labelColor": "#433828",
+      "titleFontSize": 13,
+      "titleFontWeight": "bold",
+      "titleColor": "#433828",
+      "legendX": 680,
+      "legendY": 150,
+      "padding": 10
+    },
+    "rect": {"align": "left", "width": 52, "height": 4, "color": "black"},
+    "title": {"anchor": "start"},
+    "concat": {"spacing": 40}
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
