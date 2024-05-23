@@ -42,17 +42,7 @@
         border: none;
         display: block;
         margin: 0 auto;
-        z-index: 1;
-        position: relative;
-      }
-
-      .hidden-iframe {
         visibility: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
       }
     </style>
   </head>
@@ -262,9 +252,9 @@
         if (assignment) {
           const contentDiv = document.getElementById("content");
           let imagesHtml = assignment.images
-            .map((img) =>
+            .map((img, index) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" class="hidden-iframe" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe id="iframe-${index}" src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
@@ -283,18 +273,17 @@
           );
 
           // Ensure all iframes resize correctly
-          adjustIframes(contentDiv);
+          assignment.images.forEach((img, index) => {
+            if (img.src.endsWith(".html")) {
+              const iframe = document.getElementById(`iframe-${index}`);
+              iframe.onload = function () {
+                this.style.height =
+                  this.contentDocument.body.scrollHeight + "px";
+                this.style.visibility = "visible";
+              };
+            }
+          });
         }
-      }
-
-      function adjustIframes(container) {
-        const iframes = container.querySelectorAll("iframe");
-        iframes.forEach((iframe) => {
-          iframe.onload = function () {
-            this.style.height = this.contentDocument.body.scrollHeight + "px";
-            this.classList.remove("hidden-iframe");
-          };
-        });
       }
 
       // Optionally load an assignment if a specific query is passed
