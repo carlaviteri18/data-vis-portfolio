@@ -17,26 +17,38 @@
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
     <style>
+      .assignment-image {
+        max-width: 600px;
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
       .iframe-container {
         width: 100%;
-        margin-bottom: 2em; /* Add margin for spacing */
-      }
-      .iframe-container {
-        margin-bottom: 2em; /* Add margin for spacing */
-        position: relative;
-        padding-bottom: 75%; /* Aspect ratio 4:3 */
-        height: 0;
+        margin-bottom: 2em;
         overflow: hidden;
+        position: relative;
       }
       .iframe-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        transform: scale(0.8);
+        transform-origin: 0 0;
+        margin-bottom: 2em; /* Add some spacing */
+      }
+      .iframe-container.responsive-iframe {
+        padding-bottom: 75%; /* Aspect ratio 4:3 */
+        height: 0;
+      }
+      .iframe-container.responsive-iframe iframe {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         border: none;
-        transform: scale(0.8);
-        transform-origin: 0 0;
       }
     </style>
   </head>
@@ -253,7 +265,7 @@
                         <div class="image style1">
                             <h3>${img.title}</h3>
                             <div class="iframe-container">
-                                <iframe src="${img.src}" title="${img.title}"></iframe>
+                                <iframe src="${img.src}" title="${img.title} class="assignment-image""></iframe>
                             </div>
                             <p>${img.description}</p>
                         </div>`;
