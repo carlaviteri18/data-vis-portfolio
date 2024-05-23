@@ -269,6 +269,14 @@
             `${assignment.title}`,
             `?assignment=${assignmentId}`
           );
+
+          // Ensure all iframes resize correctly
+          const iframes = contentDiv.querySelectorAll("iframe");
+          iframes.forEach((iframe) => {
+            iframe.onload = function () {
+              this.style.height = this.contentDocument.body.scrollHeight + "px";
+            };
+          });
         }
       }
 
