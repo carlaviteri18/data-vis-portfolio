@@ -23,12 +23,11 @@
       }
       .iframe-container iframe {
         width: 100%;
-        max-height: 800px; /* Set a maximum height for the iframe */
+        height: 150vh; /* Set an appropriate height for the iframe */
         border: none;
         display: block;
-      }
-      .iframe-container iframe:fullscreen {
-        max-height: none; /* Remove the max-height in fullscreen mode */
+        transform: scale(0.8); /* Scale down the content */
+        transform-origin: 0 0; /* Set the origin to the top left */
       }
     </style>
   </head>
