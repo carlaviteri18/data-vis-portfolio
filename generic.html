@@ -24,23 +24,6 @@
         display: block;
         margin: 0 auto;
       }
-      body,
-      html {
-        width: 100%;
-        height: 100%;
-      }
-
-      * {
-        padding: 0;
-        margin: 0;
-      }
-
-      iframe {
-        width: 960px;
-        height: 100%;
-        overflow: hidden;
-        border: none;
-      }
     </style>
   </head>
   <body class="is-preload">
@@ -252,7 +235,7 @@
           let imagesHtml = assignment.images
             .map((img) =>
               img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" class="assignment-image"></iframe><p>${img.description}</p></div>`
+                ? `<div class="iframe-container"><h3>${img.title}</h3><iframe src="${img.src}" scrolling="no" onload="window.parent.scrollTo(0,0)" allowtransparency=true allowfullscreen="true" frameborder="0" style="min-width: 100%; height: 1290px; border: none;"></iframe><p>${img.description}</p></div>`
                 : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
             )
             .join("");
