@@ -277,9 +277,11 @@
             if (img.src.endsWith(".html")) {
               const iframe = document.getElementById(`iframe-${index}`);
               iframe.onload = function () {
-                this.style.height =
-                  this.contentDocument.body.scrollHeight + "px";
-                this.style.visibility = "visible";
+                if (this.contentDocument) {
+                  this.style.height =
+                    this.contentDocument.body.scrollHeight + "px";
+                  this.style.visibility = "visible";
+                }
               };
             }
           });
