@@ -1,38 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSI: Jane Eyre Topic Modeling</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
     />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        padding: 20px;
-      }
       .section {
-        padding: 20px;
-        margin-bottom: 20px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 2em;
+        margin: 2em 0;
       }
-      .section h2 {
-        color: #007bff;
+      .section header {
+        margin-bottom: 1em;
       }
-      .section h5 {
-        color: #0056b3;
-      }
-      .navbar {
-        margin-bottom: 20px;
-      }
-      .visualization {
-        margin-top: 20px;
-        margin-bottom: 20px;
+      iframe {
+        width: 100%;
+        height: 500px;
+        border: none;
       }
       .highlight-container {
         display: flex;
@@ -52,92 +42,94 @@
       .highlight-box h5 {
         color: #007bff;
       }
-      .logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: #007bff;
-      }
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand logo" href="#">CSI: Jane Eyre Topic Modeling</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#introduction">Introduction</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#preprocessing-the-text">Preprocessing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#building-the-lda-model">LDA Model</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#visualizing-the-topics"
-              >Visualizing Topics</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#top-positive-and-negative-topics"
-              >Top Topics</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#topic-evolution-over-chapters"
-              >Topic Evolution</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#chapter-contributions-to-topics"
-              >Chapter Contributions</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#highlighted-text-passages"
-              >Highlighted Passages</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#conclusion">Conclusion</a>
-          </li>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <div class="inner">
+          <!-- Logo -->
+          <a href="index.html" class="logo">
+            <span class="symbol"><img src="images/logo02.svg" alt="" /></span>
+            <span class="title">CSI 5900: Data Visualization</span>
+          </a>
+
+          <!-- Nav -->
+          <nav>
+            <ul>
+              <li><a href="#menu">Menu</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Menu -->
+      <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="generic.html?assignment=1">Assignment 1</a></li>
+          <li><a href="generic.html?assignment=2">Assignment 2</a></li>
+          <li><a href="generic.html?assignment=3">Assignment 3</a></li>
+          <li><a href="generic.html?assignment=4">Assignment 4</a></li>
+          <li><a href="generic.html?assignment=5">Assignment 5</a></li>
+          <li><a href="project.html">Project</a></li>
         </ul>
-      </div>
-    </nav>
+      </nav>
 
-    <div id="introduction" class="section">
-      <h2>Introduction</h2>
-      <p>
-        Welcome to our interactive exploration of <em>Jane Eyre</em> using topic
-        modeling! This page is designed to help you understand how topic models
-        can be used to uncover themes and topics in literature. We'll walk you
-        through the steps of our analysis, showcasing our findings along the
-        way.
-      </p>
-    </div>
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <header>
+            <h1>Project</h1>
+            <h3>
+              Exploring Jane Eyre: An Interactive Visualization of Themes and
+              Topics
+            </h3>
+            <h4>By Carla Viteri</h4>
+          </header>
 
-    <div id="preprocessing-the-text" class="section">
-      <h2>Preprocessing the Text</h2>
-      <p>
-        Before we dive into topic modeling, we need to preprocess the text to
-        clean and prepare it for analysis. This involves removing stopwords,
-        punctuation, and other non-essential elements, and then tokenizing the
-        text into words.
-      </p>
-      <h5>Steps in Preprocessing:</h5>
-      <ul>
-        <li>
-          <strong>Removing Punctuation and Stopwords:</strong> Cleaning the text
-          by removing punctuation marks, common stopwords (like "the", "is",
-          "in"), and custom stopwords specific to <em>Jane Eyre</em> (like
-          "mrs", "mr", "miss").
-        </li>
-        <li>
-          <strong>Tokenizing the Text:</strong> Breaking down the cleaned text
-          into individual words or tokens.
-        </li>
-      </ul>
-      <pre><code>
+          <!-- Introduction Section -->
+          <section class="section" id="introduction">
+            <header>
+              <h2>Introduction</h2>
+            </header>
+            <p>
+              Welcome to our interactive exploration of <em>Jane Eyre</em> using
+              topic modeling! This page is designed to help you understand how
+              topic models can be used to uncover themes and topics in
+              literature. We'll walk you through the steps of our analysis,
+              showcasing our findings along the way.
+            </p>
+          </section>
+
+          <!-- Preprocessing Section -->
+          <section class="section" id="preprocessing-the-text">
+            <header>
+              <h2>Preprocessing the Text</h2>
+            </header>
+            <p>
+              Before we dive into topic modeling, we need to preprocess the text
+              to clean and prepare it for analysis. This involves removing
+              stopwords, punctuation, and other non-essential elements, and then
+              tokenizing the text into words.
+            </p>
+            <h5>Steps in Preprocessing:</h5>
+            <ul>
+              <li>
+                <strong>Removing Punctuation and Stopwords:</strong> Cleaning
+                the text by removing punctuation marks, common stopwords (like
+                "the", "is", "in"), and custom stopwords specific to
+                <em>Jane Eyre</em> (like "mrs", "mr", "miss").
+              </li>
+              <li>
+                <strong>Tokenizing the Text:</strong> Breaking down the cleaned
+                text into individual words or tokens.
+              </li>
+            </ul>
+            <pre><code>
 // Define the preprocessing function
 function preprocess(text) {
     // ... (code here)
@@ -148,29 +140,32 @@ let chapters = text.split('CHAPTER ').slice(1);
 
 // Tokenize chapters
 let tokenized_chapters = chapters.map(preprocess);
-        </code></pre>
-    </div>
+            </code></pre>
+          </section>
 
-    <div id="building-the-lda-model" class="section">
-      <h2>Building the LDA Model</h2>
-      <p>
-        Once the text is preprocessed, we build the LDA model. This model will
-        help us uncover the hidden topics within <em>Jane Eyre</em>.
-      </p>
-      <h5>Steps in Building the LDA Model:</h5>
-      <ul>
-        <li>
-          <strong>Creating a Dictionary and Corpus:</strong> The dictionary maps
-          each word to a unique ID, and the corpus represents each chapter as a
-          bag-of-words.
-        </li>
-        <li>
-          <strong>Training the LDA Model:</strong> We train the LDA model using
-          the dictionary and corpus, specifying the number of topics, passes,
-          and iterations to optimize the model.
-        </li>
-      </ul>
-      <pre><code>
+          <!-- LDA Model Section -->
+          <section class="section" id="building-the-lda-model">
+            <header>
+              <h2>Building the LDA Model</h2>
+            </header>
+            <p>
+              Once the text is preprocessed, we build the LDA model. This model
+              will help us uncover the hidden topics within <em>Jane Eyre</em>.
+            </p>
+            <h5>Steps in Building the LDA Model:</h5>
+            <ul>
+              <li>
+                <strong>Creating a Dictionary and Corpus:</strong> The
+                dictionary maps each word to a unique ID, and the corpus
+                represents each chapter as a bag-of-words.
+              </li>
+              <li>
+                <strong>Training the LDA Model:</strong> We train the LDA model
+                using the dictionary and corpus, specifying the number of
+                topics, passes, and iterations to optimize the model.
+              </li>
+            </ul>
+            <pre><code>
 // Create dictionary and corpus
 let dictionary = new Dictionary(tokenized_chapters);
 dictionary.filter_extremes({ no_below: 15, no_above: 0.5 });
@@ -185,195 +180,274 @@ let optimal_model = new LdaModel({
     iterations: 100,
     random_state: 43
 });
-        </code></pre>
-    </div>
+            </code></pre>
+          </section>
 
-    <div id="visualizing-the-topics" class="section">
-      <h2>Visualizing the Topics</h2>
-      <p>
-        We use interactive visualizations to explore the topics identified by
-        the LDA model. These visualizations help us understand the distribution
-        and prominence of each topic across the chapters.
-      </p>
-      <div class="visualization">
-        <iframe
-          src="lda_visualization.html"
-          width="100%"
-          height="500px"
-        ></iframe>
+          <!-- Visualizing Topics Section -->
+          <section class="section" id="visualizing-the-topics">
+            <header>
+              <h2>Visualizing the Topics</h2>
+            </header>
+            <p>
+              We use interactive visualizations to explore the topics identified
+              by the LDA model. These visualizations help us understand the
+              distribution and prominence of each topic across the chapters.
+            </p>
+            <div class="visualization">
+              <iframe
+                src="lda_visualization.html"
+                width="100%"
+                height="500px"
+              ></iframe>
+            </div>
+          </section>
+
+          <!-- Top Positive and Negative Topics Section -->
+          <section class="section" id="top-positive-and-negative-topics">
+            <header>
+              <h2>Top Positive and Negative Topics</h2>
+            </header>
+            <p>
+              We analyze the sentiment scores associated with each topic to
+              identify the top positive and negative topics. This helps us
+              understand the emotional tone of the themes discovered by the LDA
+              model.
+            </p>
+            <div class="visualization">
+              <iframe
+                src="sentiment_distribution.html"
+                width="100%"
+                height="500px"
+              ></iframe>
+            </div>
+            <h5>Top Positive Topics</h5>
+            <ul>
+              <li>
+                <strong>Topic 4:</strong> Adèle, Mrs. Fairfax, beauty, position
+              </li>
+              <li>
+                <strong>Topic 6:</strong> Thornfield, moon, sir, rain, road
+              </li>
+              <li>
+                <strong>Topic 10:</strong> Ladies, servants, gentleman, mrs.
+                fairfax, adèle
+              </li>
+              <li>
+                <strong>Topic 15:</strong> Fairfax, thornfield, road, mrs.
+                fairfax, calm
+              </li>
+              <li>
+                <strong>Topic 12:</strong> Lowood, thornfield, ladies, french,
+                liberty
+              </li>
+            </ul>
+            <h5>Top Negative Topics</h5>
+            <ul>
+              <li><strong>Topic 1:</strong> Die, aid, rain, servant, human</li>
+              <li>
+                <strong>Topic 11:</strong> Wife, human, calm, heaven, suddenly
+              </li>
+              <li>
+                <strong>Topic 17:</strong> Mrs. Fairfax, thornfield, front,
+                adèle, chamber
+              </li>
+              <li>
+                <strong>Topic 8:</strong> Children, french, broken, sad, frame
+              </li>
+              <li>
+                <strong>Topic 0:</strong> Sisters, dead, mere, blood, demanded
+              </li>
+            </ul>
+          </section>
+
+          <!-- Topic Evolution Section -->
+          <section class="section" id="topic-evolution-over-chapters">
+            <header>
+              <h2>Topic Evolution Over Chapters</h2>
+            </header>
+            <p>
+              We also explore how topics evolve over the course of the novel.
+              This visualization helps us see which themes are prominent at
+              different points in the story.
+            </p>
+            <div class="visualization">
+              <iframe
+                src="topic_evolution.html"
+                width="100%"
+                height="500px"
+              ></iframe>
+            </div>
+          </section>
+
+          <!-- Chapter Contributions Section -->
+          <section class="section" id="chapter-contributions-to-topics">
+            <header>
+              <h2>Chapter Contributions to Topics</h2>
+            </header>
+            <p>
+              For each topic, we provide an overview of the significant chapters
+              contributing to each topic, along with their corresponding content
+              from the novel.
+            </p>
+            <div class="highlight-container">
+              <div class="highlight-box">
+                <h5>Topic 0:</h5>
+                <ul>
+                  <li>
+                    <strong>Chapter 2:</strong> Jane's mistreatment by the Reeds
+                  </li>
+                  <li>
+                    <strong>Chapter 18:</strong> Jane's encounters with Mr.
+                    Rochester's guests
+                  </li>
+                  <li>
+                    <strong>Chapter 20:</strong> The mysterious events in
+                    Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 27:</strong> The aftermath of the failed
+                    wedding
+                  </li>
+                  <li>
+                    <strong>Chapter 28:</strong> Jane's struggle for survival
+                    after leaving Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 29:</strong> Jane's rescue by the Rivers
+                    family
+                  </li>
+                  <li>
+                    <strong>Chapter 30:</strong> Jane's recovery and new life
+                    with the Rivers
+                  </li>
+                  <li>
+                    <strong>Chapter 33:</strong> St. John Rivers' revelation of
+                    Jane's inheritance
+                  </li>
+                  <li>
+                    <strong>Chapter 34:</strong> St. John's proposal to Jane
+                  </li>
+                  <li>
+                    <strong>Chapter 35:</strong> St. John's persistence in his
+                    proposal
+                  </li>
+                  <li>
+                    <strong>Chapter 36:</strong> Jane's decision to return to
+                    Thornfield
+                  </li>
+                </ul>
+              </div>
+              <!-- Add more highlight boxes for each topic here -->
+            </div>
+          </section>
+
+          <!-- Highlighted Text Passages -->
+          <section class="section" id="highlighted-text-passages">
+            <header>
+              <h2>Highlighted Text Passages</h2>
+            </header>
+            <p>
+              One of the interactive features we have included is the ability to
+              highlight text passages based on topic probabilities. This feature
+              allows users to see which words contribute to each topic within
+              selected passages.
+            </p>
+            <div class="highlight-container">
+              <div class="highlight-box">
+                <h5>Passage 1</h5>
+                <iframe
+                  src="highlighted_passage_1.html"
+                  width="100%"
+                  height="300px"
+                ></iframe>
+              </div>
+              <div class="highlight-box">
+                <h5>Passage 2</h5>
+                <iframe
+                  src="highlighted_passage_2.html"
+                  width="100%"
+                  height="300px"
+                ></iframe>
+              </div>
+              <div class="highlight-box">
+                <h5>Passage 3</h5>
+                <iframe
+                  src="highlighted_passage_3.html"
+                  width="100%"
+                  height="300px"
+                ></iframe>
+              </div>
+            </div>
+          </section>
+
+          <!-- Conclusion Section -->
+          <section class="section" id="conclusion">
+            <header>
+              <h2>Conclusion</h2>
+            </header>
+            <p>
+              Through this interactive exploration, we've demonstrated how topic
+              modeling can uncover the thematic structure of <em>Jane Eyre</em>.
+              The LDA model has generated topics that align well with the
+              narrative content, providing insights into the emotional and
+              thematic shifts throughout the novel.
+            </p>
+            <p>
+              By examining the chapters that contribute to each topic, we can
+              see how accurately the model reflects the novel's themes. This
+              analysis highlights the power of topic modeling as a tool for
+              literary analysis and offers a new way to explore and understand
+              classic literature.
+            </p>
+            <p>
+              We hope this explorable explanation has been informative and
+              engaging, giving you a deeper appreciation of both topic modeling
+              and <em>Jane Eyre</em>. Feel free to delve into the visualizations
+              and explore the themes on your own!
+            </p>
+          </section>
+        </div>
       </div>
-    </div>
 
-    <div id="top-positive-and-negative-topics" class="section">
-      <h2>Top Positive and Negative Topics</h2>
-      <p>
-        We analyze the sentiment scores associated with each topic to identify
-        the top positive and negative topics. This helps us understand the
-        emotional tone of the themes discovered by the LDA model.
-      </p>
-      <div class="visualization">
-        <iframe
-          src="sentiment_distribution.html"
-          width="100%"
-          height="500px"
-        ></iframe>
-      </div>
-      <h5>Top Positive Topics</h5>
-      <ul>
-        <li><strong>Topic 4:</strong> Adèle, Mrs. Fairfax, beauty, position</li>
-        <li><strong>Topic 6:</strong> Thornfield, moon, sir, rain, road</li>
-        <li>
-          <strong>Topic 10:</strong> Ladies, servants, gentleman, mrs. fairfax,
-          adèle
-        </li>
-        <li>
-          <strong>Topic 15:</strong> Fairfax, thornfield, road, mrs. fairfax,
-          calm
-        </li>
-        <li>
-          <strong>Topic 12:</strong> Lowood, thornfield, ladies, french, liberty
-        </li>
-      </ul>
-      <h5>Top Negative Topics</h5>
-      <ul>
-        <li><strong>Topic 1:</strong> Die, aid, rain, servant, human</li>
-        <li><strong>Topic 11:</strong> Wife, human, calm, heaven, suddenly</li>
-        <li>
-          <strong>Topic 17:</strong> Mrs. Fairfax, thornfield, front, adèle,
-          chamber
-        </li>
-        <li><strong>Topic 8:</strong> Children, french, broken, sad, frame</li>
-        <li><strong>Topic 0:</strong> Sisters, dead, mere, blood, demanded</li>
-      </ul>
-    </div>
-
-    <div id="topic-evolution-over-chapters" class="section">
-      <h2>Topic Evolution Over Chapters</h2>
-      <p>
-        We also explore how topics evolve over the course of the novel. This
-        visualization helps us see which themes are prominent at different
-        points in the story.
-      </p>
-      <div class="visualization">
-        <iframe src="topic_evolution.html" width="100%" height="500px"></iframe>
-      </div>
-    </div>
-
-    <div id="chapter-contributions-to-topics" class="section">
-      <h2>Chapter Contributions to Topics</h2>
-      <p>
-        By examining the chapters that contribute to each topic, we provide an
-        overview of the significant chapters contributing to each topic, along
-        with their corresponding content from the novel.
-      </p>
-      <div class="highlight-container">
-        <div class="highlight-box">
-          <h5>Topic 0:</h5>
-          <ul>
-            <li>
-              <strong>Chapter 2:</strong> Jane's mistreatment by the Reeds
-            </li>
-            <li>
-              <strong>Chapter 18:</strong> Jane's encounters with Mr.
-              Rochester's guests
-            </li>
-            <li>
-              <strong>Chapter 20:</strong> The mysterious events in Thornfield
-            </li>
-            <li>
-              <strong>Chapter 27:</strong> The aftermath of the failed wedding
-            </li>
-            <li>
-              <strong>Chapter 28:</strong> Jane's struggle for survival after
-              leaving Thornfield
-            </li>
-            <li>
-              <strong>Chapter 29:</strong> Jane's rescue by the Rivers family
-            </li>
-            <li>
-              <strong>Chapter 30:</strong> Jane's recovery and new life with the
-              Rivers
-            </li>
-            <li>
-              <strong>Chapter 33:</strong> St. John Rivers' revelation of Jane's
-              inheritance
-            </li>
-            <li><strong>Chapter 34:</strong> St. John's proposal to Jane</li>
-            <li>
-              <strong>Chapter 35:</strong> St. John's persistence in his
-              proposal
-            </li>
-            <li>
-              <strong>Chapter 36:</strong> Jane's decision to return to
-              Thornfield
-            </li>
+      <!-- Footer -->
+      <footer id="footer">
+        <div class="inner">
+          <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+              <li>
+                <a
+                  href="https://github.com/carlaviteri18/data-vis-portfolio"
+                  class="icon brands style2 fa-github"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+            </ul>
+          </section>
+          <ul class="copyright">
+            <li>&copy; Carla Viteri. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
           </ul>
         </div>
-        <!-- Add more highlight boxes for each topic here -->
-      </div>
+      </footer>
     </div>
 
-    <div id="highlighted-text-passages" class="section">
-      <h2>Highlighted Text Passages</h2>
-      <p>
-        One of the interactive features we have included is the ability to
-        highlight text passages based on topic probabilities. This feature
-        allows users to see which words contribute to each topic within selected
-        passages.
-      </p>
-      <div class="highlight-container">
-        <div class="highlight-box">
-          <h5>Passage 1</h5>
-          <iframe
-            src="highlighted_passage_1.html"
-            width="100%"
-            height="300px"
-          ></iframe>
-        </div>
-        <div class="highlight-box">
-          <h5>Passage 2</h5>
-          <iframe
-            src="highlighted_passage_2.html"
-            width="100%"
-            height="300px"
-          ></iframe>
-        </div>
-        <div class="highlight-box">
-          <h5>Passage 3</h5>
-          <iframe
-            src="highlighted_passage_3.html"
-            width="100%"
-            height="300px"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-
-    <div id="conclusion" class="section">
-      <h2>Conclusion</h2>
-      <p>
-        Through this interactive exploration, we've demonstrated how topic
-        modeling can uncover the thematic structure of <em>Jane Eyre</em>. The
-        LDA model has generated topics that align well with the narrative
-        content, providing insights into the emotional and thematic shifts
-        throughout the novel.
-      </p>
-      <p>
-        By examining the chapters that contribute to each topic, we can see how
-        accurately the model reflects the novel's themes. This analysis
-        highlights the power of topic modeling as a tool for literary analysis
-        and offers a new way to explore and understand classic literature.
-      </p>
-      <p>
-        We hope this explorable explanation has been informative and engaging,
-        giving you a deeper appreciation of both topic modeling and
-        <em>Jane Eyre</em>. Feel free to delve into the visualizations and
-        explore the themes on your own!
-      </p>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      // Ensure the menu links are properly initialized after the page has loaded
+      $(document).ready(function () {
+        $('a[href^="generic.html"]').on("click", function (e) {
+          // Prevent default action if necessary or handle navigation dynamically
+          var url = $(this).attr("href");
+          window.location.href = url; // Ensure navigation happens correctly
+          return false; // Prevent default link behavior
+        });
+      });
+    </script>
   </body>
 </html>
