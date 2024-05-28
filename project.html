@@ -37,7 +37,7 @@
         border-radius: 8px;
         background-color: #fff;
         overflow-y: auto;
-        height: 300px;
+        height: 400px;
       }
       .highlight-box h5 {
         color: #007bff;
@@ -194,11 +194,7 @@ let optimal_model = new LdaModel({
               distribution and prominence of each topic across the chapters.
             </p>
             <div class="visualization">
-              <iframe
-                src="lda_visualization.html"
-                width="100%"
-                height="500px"
-              ></iframe>
+              <iframe src="lda_visualization.html"></iframe>
             </div>
           </section>
 
@@ -214,11 +210,7 @@ let optimal_model = new LdaModel({
               model.
             </p>
             <div class="visualization">
-              <iframe
-                src="sentiment_distribution.html"
-                width="100%"
-                height="500px"
-              ></iframe>
+              <iframe src="sentiment_distribution.html"></iframe>
             </div>
             <h5>Top Positive Topics</h5>
             <ul>
@@ -271,11 +263,7 @@ let optimal_model = new LdaModel({
               different points in the story.
             </p>
             <div class="visualization">
-              <iframe
-                src="topic_evolution.html"
-                width="100%"
-                height="500px"
-              ></iframe>
+              <iframe src="topic_evolution.html"></iframe>
             </div>
           </section>
 
@@ -341,7 +329,7 @@ let optimal_model = new LdaModel({
             </div>
           </section>
 
-          <!-- Highlighted Text Passages -->
+          <!-- Highlighted Text Passages Section -->
           <section class="section" id="highlighted-text-passages">
             <header>
               <h2>Highlighted Text Passages</h2>
@@ -354,28 +342,8 @@ let optimal_model = new LdaModel({
             </p>
             <div class="highlight-container">
               <div class="highlight-box">
-                <h5>Passage 1</h5>
-                <iframe
-                  src="highlighted_passage_1.html"
-                  width="100%"
-                  height="300px"
-                ></iframe>
-              </div>
-              <div class="highlight-box">
-                <h5>Passage 2</h5>
-                <iframe
-                  src="highlighted_passage_2.html"
-                  width="100%"
-                  height="300px"
-                ></iframe>
-              </div>
-              <div class="highlight-box">
-                <h5>Passage 3</h5>
-                <iframe
-                  src="highlighted_passage_3.html"
-                  width="100%"
-                  height="300px"
-                ></iframe>
+                <h5>Highlighted Passages</h5>
+                <iframe src="highlighted_passages.html"></iframe>
               </div>
             </div>
           </section>
