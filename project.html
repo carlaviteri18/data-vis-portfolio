@@ -128,6 +128,15 @@
               each topic and correlate them with the content of the chapters in
               which they appear.
             </p>
+            <pre>
+<code># Tokenize chapters
+tokenized_chapters = [preprocess(chapter) for chapter in chapters]
+
+# Build bigrams and trigrams
+bigram = Phrases(tokenized_chapters, min_count=5, threshold=100)
+trigram = Phrases(bigram[tokenized_chapters], threshold=100)
+
+tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters]</code></pre>
           </section>
 
           <!-- Intertopic Distance Map & Top-30 Most Relevant Terms for Topic -->
@@ -144,6 +153,12 @@
               overall prevalence of the topic in the novel. The proximity of the
               circles reflects the similarity between the topics.
             </p>
+            <pre>
+<code># Prepare data for pyLDAvis
+vis = genvis.prepare(optimal_model, corpus, dictionary)
+
+# Save the visualization as an HTML file
+pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <iframe src="path/to/intertopic_distance_map.html"></iframe>
           </section>
 
@@ -159,6 +174,22 @@
               bubble reflects the average sentiment score, helping us understand
               the emotional tone associated with each topic.
             </p>
+            <pre>
+<code># Calculate average sentiment scores for each topic
+topic_sentiments = np.zeros(num_topics)
+topic_token_counts = np.zeros(num_topics)
+topic_chapter_counts = np.zeros(num_topics)
+
+for i, (chapter, label) in enumerate(chapters_with_labels):
+    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
+    for topic_id, probability in topic_distribution:
+        sentiment = sia.polarity_scores(' '.join(chapter))['compound']
+        topic_sentiments[topic_id] += sentiment * probability
+        topic_token_counts[topic_id] += len(chapter) * probability
+        topic_chapter_counts[topic_id] += probability
+
+# Normalize the sentiment scores
+average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
             <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
           </section>
 
@@ -178,6 +209,21 @@
               development of themes throughout the narrative, providing insights
               into how the story's focus shifts over time.
             </p>
+            <pre>
+<code># Prepare data for topic distribution over chapters
+topic_distributions = []
+
+for i, (chapter, label) in enumerate(chapters_with_labels):
+    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
+    chapter_distribution = {'Chapter': i+1}
+    for topic_id, probability in topic_distribution:
+        chapter_distribution[f'Topic {topic_id}'] = probability
+    topic_distributions.append(chapter_distribution)
+
+df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
+
+# Melt the DataFrame for better plotting with Plotly
+df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
             <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
           </section>
 
