@@ -227,6 +227,60 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
             <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
           </section>
 
+          <!-- Top Positive and Negative Topics Section -->
+          <section class="section" id="top-positive-and-negative-topics">
+            <header>
+              <h2>Top Positive and Negative Topics</h2>
+            </header>
+            <p>
+              We analyze the sentiment scores associated with each topic to
+              identify the top positive and negative topics. This helps us
+              understand the emotional tone of the themes discovered by the LDA
+              model.
+            </p>
+            <div class="visualization">
+              <iframe src="sentiment_distribution.html"></iframe>
+            </div>
+            <h5>Top Positive Topics</h5>
+            <ul>
+              <li>
+                <strong>Topic 4:</strong> Adèle, Mrs. Fairfax, beauty, position
+              </li>
+              <li>
+                <strong>Topic 6:</strong> Thornfield, moon, sir, rain, road
+              </li>
+              <li>
+                <strong>Topic 10:</strong> Ladies, servants, gentleman, mrs.
+                fairfax, adèle
+              </li>
+              <li>
+                <strong>Topic 15:</strong> Fairfax, thornfield, road, mrs.
+                fairfax, calm
+              </li>
+              <li>
+                <strong>Topic 12:</strong> Lowood, thornfield, ladies, french,
+                liberty
+              </li>
+            </ul>
+            <h5>Top Negative Topics</h5>
+            <ul>
+              <li><strong>Topic 1:</strong> Die, aid, rain, servant, human</li>
+              <li>
+                <strong>Topic 11:</strong> Wife, human, calm, heaven, suddenly
+              </li>
+              <li>
+                <strong>Topic 17:</strong> Mrs. Fairfax, thornfield, front,
+                adèle, chamber
+              </li>
+              <li>
+                <strong>Topic 8:</strong> Children, french, broken, sad, frame
+              </li>
+              <li>
+                <strong>Topic 0:</strong> Sisters, dead, mere, blood, demanded
+              </li>
+            </ul>
+          </section>
+
           <!-- Chapter Contributions Section -->
           <section class="section" id="chapter-contributions">
             <header>
@@ -246,16 +300,43 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                     <strong>Chapter 2:</strong> Jane's mistreatment by the Reeds
                   </li>
                   <li>
-                    <strong>Chapter 4:</strong> Jane's departure to Lowood
-                    School
+                    <strong>Chapter 18:</strong> Jane's encounters with Mr.
+                    Rochester's guests
                   </li>
                   <li>
-                    <strong>Chapter 20:</strong> The revelation about Bertha
-                    Mason
+                    <strong>Chapter 20:</strong> The mysterious events in
+                    Thornfield
                   </li>
                   <li>
                     <strong>Chapter 27:</strong> The aftermath of the failed
                     wedding
+                  </li>
+                  <li>
+                    <strong>Chapter 28:</strong> Jane's struggle for survival
+                    after leaving Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 29:</strong> Jane's rescue by the Rivers
+                    family
+                  </li>
+                  <li>
+                    <strong>Chapter 30:</strong> Jane's recovery and new life
+                    with the Rivers
+                  </li>
+                  <li>
+                    <strong>Chapter 33:</strong> St. John Rivers' revelation of
+                    Jane's inheritance
+                  </li>
+                  <li>
+                    <strong>Chapter 34:</strong> St. John's proposal to Jane
+                  </li>
+                  <li>
+                    <strong>Chapter 35:</strong> St. John's persistence in his
+                    proposal
+                  </li>
+                  <li>
+                    <strong>Chapter 36:</strong> Jane's decision to return to
+                    Thornfield
                   </li>
                 </ul>
               </div>
@@ -266,14 +347,18 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                     <strong>Chapter 1:</strong> Jane's early life with the Reeds
                   </li>
                   <li>
-                    <strong>Chapter 28:</strong> Jane's time with the Rivers
-                    family
+                    <strong>Chapter 28:</strong> Jane's struggle for survival
+                    after leaving Thornfield
                   </li>
                 </ul>
               </div>
               <div class="highlight-box">
                 <h5>Topic 2:</h5>
                 <ul>
+                  <li>
+                    <strong>Chapter 4:</strong> Jane's departure to Lowood
+                    School
+                  </li>
                   <li>
                     <strong>Chapter 7:</strong> Jane's experiences at Lowood
                     School
@@ -286,10 +371,13 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
               <div class="highlight-box">
                 <h5>Topic 3:</h5>
                 <ul>
-                  <li><strong>Chapter 9:</strong> The death of Helen Burns</li>
                   <li>
-                    <strong>Chapter 35:</strong> Jane's struggle with St. John
-                    Rivers' marriage proposal
+                    <strong>Chapter 9:</strong> Jane's experiences at Lowood
+                    School
+                  </li>
+                  <li>
+                    <strong>Chapter 35:</strong> St. John's persistence in his
+                    proposal
                   </li>
                 </ul>
               </div>
@@ -297,21 +385,26 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 4:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 13:</strong> Jane's life at Thornfield
+                    <strong>Chapter 13:</strong> Jane's interactions with Mr.
+                    Rochester
                   </li>
                   <li>
-                    <strong>Chapter 14:</strong> Jane's life at Thornfield
+                    <strong>Chapter 14:</strong> Jane's interactions with Mr.
+                    Rochester
                   </li>
                   <li>
                     <strong>Chapter 17:</strong> Jane's life at Thornfield
                   </li>
                   <li>
-                    <strong>Chapter 24:</strong> Jane's preparations for the
-                    wedding
+                    <strong>Chapter 24:</strong> Jane and Mr. Rochester's
+                    engagement
                   </li>
                   <li>
                     <strong>Chapter 27:</strong> The aftermath of the failed
                     wedding
+                  </li>
+                  <li>
+                    <strong>Chapter 34:</strong> St. John's proposal to Jane
                   </li>
                 </ul>
               </div>
@@ -319,13 +412,17 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 5:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 10:</strong> Jane's arrival at Lowood School
+                    <strong>Chapter 10:</strong> Jane's new life at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 19:</strong> The mysterious events in
+                    Thornfield
                   </li>
                   <li>
                     <strong>Chapter 21:</strong> Jane's return to Gateshead
                   </li>
                   <li>
-                    <strong>Chapter 29:</strong> Jane's rescue by the Rivers
+                    <strong>Chapter 29:</strong> Jane's recovery with the Rivers
                     family
                   </li>
                 </ul>
@@ -334,22 +431,24 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 6:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 23:</strong> Jane's time at Thornfield
+                    <strong>Chapter 23:</strong> Jane and Mr. Rochester's
+                    engagement
                   </li>
                   <li>
-                    <strong>Chapter 24:</strong> Jane's preparations for the
+                    <strong>Chapter 24:</strong> Jane and Mr. Rochester's
+                    engagement
+                  </li>
+                  <li>
+                    <strong>Chapter 25:</strong> Jane's preparations for the
                     wedding
-                  </li>
-                  <li>
-                    <strong>Chapter 25:</strong> The mysterious events in
-                    Thornfield
                   </li>
                   <li>
                     <strong>Chapter 27:</strong> The aftermath of the failed
                     wedding
                   </li>
                   <li>
-                    <strong>Chapter 37:</strong> Jane's return to Thornfield
+                    <strong>Chapter 37:</strong> Jane's reunion with Mr.
+                    Rochester
                   </li>
                 </ul>
               </div>
@@ -357,12 +456,18 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 7:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 4:</strong> Jane's departure to Lowood
-                    School
+                    <strong>Chapter 11:</strong> Jane's arrival at Thornfield
                   </li>
                   <li>
-                    <strong>Chapter 8:</strong> Jane's experiences at Lowood
-                    School
+                    <strong>Chapter 15:</strong> Jane's life at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 25:</strong> Jane's preparations for the
+                    wedding
+                  </li>
+                  <li><strong>Chapter 26:</strong> The wedding ceremony</li>
+                  <li>
+                    <strong>Chapter 36:</strong> Jane's return to Thornfield
                   </li>
                 </ul>
               </div>
@@ -370,12 +475,14 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 8:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 3:</strong> Jane's early life with the Reeds
-                  </li>
-                  <li>
-                    <strong>Chapter 8:</strong> Jane's experiences at Lowood
+                    <strong>Chapter 3:</strong> Jane's experiences at Lowood
                     School
                   </li>
+                  <li>
+                    <strong>Chapter 8:</strong> Jane's friendship with Helen
+                    Burns
+                  </li>
+                  <li><strong>Chapter 26:</strong> The wedding ceremony</li>
                 </ul>
               </div>
               <div class="highlight-box">
@@ -390,8 +497,8 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                     School
                   </li>
                   <li>
-                    <strong>Chapter 19:</strong> Jane's encounters with Mr.
-                    Rochester's guests
+                    <strong>Chapter 19:</strong> The mysterious events in
+                    Thornfield
                   </li>
                 </ul>
               </div>
@@ -399,7 +506,7 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 10:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 16:</strong> Jane's life at Thornfield
+                    <strong>Chapter 16:</strong> Jane's feelings of jealousy
                   </li>
                   <li>
                     <strong>Chapter 17:</strong> Jane's life at Thornfield
@@ -408,21 +515,31 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                     <strong>Chapter 18:</strong> Jane's encounters with Mr.
                     Rochester's guests
                   </li>
-                  <li>
-                    <strong>Chapter 19:</strong> Jane's encounters with Mr.
-                    Rochester's guests
-                  </li>
                 </ul>
               </div>
               <div class="highlight-box">
                 <h5>Topic 11:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 2:</strong> Jane's mistreatment by the Reeds
+                    <strong>Chapter 11:</strong> Jane's arrival at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 15:</strong> Jane's life at Thornfield
                   </li>
                   <li><strong>Chapter 26:</strong> The wedding ceremony</li>
                   <li>
-                    <strong>Chapter 32:</strong> Jane's work as a schoolmistress
+                    <strong>Chapter 32:</strong> Jane's new life with the Rivers
+                  </li>
+                  <li>
+                    <strong>Chapter 34:</strong> St. John's proposal to Jane
+                  </li>
+                  <li>
+                    <strong>Chapter 35:</strong> St. John's persistence in his
+                    proposal
+                  </li>
+                  <li>
+                    <strong>Chapter 37:</strong> Jane's reunion with Mr.
+                    Rochester
                   </li>
                 </ul>
               </div>
@@ -430,10 +547,14 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 12:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 10:</strong> Jane's arrival at Lowood School
+                    <strong>Chapter 10:</strong> Jane's new life at Thornfield
                   </li>
                   <li>
-                    <strong>Chapter 22:</strong> Jane's return to Thornfield
+                    <strong>Chapter 17:</strong> Jane's life at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 18:</strong> Jane's encounters with Mr.
+                    Rochester's guests
                   </li>
                 </ul>
               </div>
@@ -441,7 +562,18 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 13:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 13:</strong> Jane's life at Thornfield
+                    <strong>Chapter 11:</strong> Jane's arrival at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 15:</strong> Jane's life at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 25:</strong> Jane's preparations for the
+                    wedding
+                  </li>
+                  <li><strong>Chapter 26:</strong> The wedding ceremony</li>
+                  <li>
+                    <strong>Chapter 36:</strong> Jane's return to Thornfield
                   </li>
                 </ul>
               </div>
@@ -449,11 +581,11 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 14:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 8:</strong> Jane's experiences at Lowood
-                    School
+                    <strong>Chapter 8:</strong> Jane's friendship with Helen
+                    Burns
                   </li>
                   <li>
-                    <strong>Chapter 31:</strong> Jane's work as a schoolmistress
+                    <strong>Chapter 31:</strong> Jane's new life with the Rivers
                   </li>
                 </ul>
               </div>
@@ -461,7 +593,8 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 15:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 12:</strong> Jane's life at Thornfield
+                    <strong>Chapter 12:</strong> Jane's first encounter with Mr.
+                    Rochester
                   </li>
                   <li>
                     <strong>Chapter 22:</strong> Jane's return to Thornfield
@@ -472,8 +605,7 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <h5>Topic 16:</h5>
                 <ul>
                   <li>
-                    <strong>Chapter 5:</strong> Jane's early experiences at
-                    Lowood
+                    <strong>Chapter 5:</strong> Jane's journey to Lowood School
                   </li>
                 </ul>
               </div>
@@ -484,8 +616,15 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                     <strong>Chapter 11:</strong> Jane's arrival at Thornfield
                   </li>
                   <li>
-                    <strong>Chapter 15:</strong> Jane's interaction with Mr.
-                    Rochester
+                    <strong>Chapter 15:</strong> Jane's life at Thornfield
+                  </li>
+                  <li>
+                    <strong>Chapter 25:</strong> Jane's preparations for the
+                    wedding
+                  </li>
+                  <li><strong>Chapter 26:</strong> The wedding ceremony</li>
+                  <li>
+                    <strong>Chapter 36:</strong> Jane's return to Thornfield
                   </li>
                 </ul>
               </div>
