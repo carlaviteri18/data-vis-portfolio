@@ -34,14 +34,22 @@
         line-height: 1.6;
         font-size: 1.1em;
       }
-      iframe {
+      .iframe-container {
+        position: relative;
         width: 100%;
-        height: 80vh;
-        border: none;
-        margin-bottom: 2em;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
+      }
+      .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
       }
       .highlight-container {
         display: flex;
@@ -217,7 +225,9 @@ vis = genvis.prepare(optimal_model, corpus, dictionary)
 
 # Save the visualization as an HTML file
 pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
-            <iframe src="images/lda_visualization.html"></iframe>
+            <div class="iframe-container">
+              <iframe src="images/lda_visualization.html"></iframe>
+            </div>
           </section>
 
           <!-- Sentiment Bubble Chart -->
@@ -248,7 +258,9 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
-            <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
+            <div class="iframe-container">
+              <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
+            </div>
           </section>
 
           <!-- Topic Evolution Line Chart -->
@@ -282,7 +294,9 @@ df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
 
 # Melt the DataFrame for better plotting with Plotly
 df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
-            <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
+            <div class="iframe-container">
+              <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
+            </div>
           </section>
 
           <!-- Top Positive and Negative Topics Section -->
@@ -700,7 +714,7 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
               allows for a more granular examination of how themes are
               distributed throughout the text.
             </p>
-            <div class="visualization">
+            <div class="iframe-container">
               <iframe src="highlighted_text_passages.html"></iframe>
             </div>
           </section>
