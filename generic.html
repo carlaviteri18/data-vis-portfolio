@@ -3,14 +3,9 @@
   <head>
     <title>Portfolio by Carla Viteri</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript
-      ><link rel="stylesheet" href="assets/css/noscript.css"
-    /></noscript>
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
       .assignment-image {
         max-width: 600px;
@@ -56,6 +51,17 @@
         border: none;
         display: block;
       }
+
+      .content-section {
+        padding: 20px;
+        background: #f4f4f4;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .content-section h3 {
+        margin-top: 0;
+      }
     </style>
   </head>
   <body class="is-preload">
@@ -84,31 +90,11 @@
         <h2>Menu</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="javascript:void(0);" onclick="loadContent(1);"
-              >Assignment 1</a
-            >
-          </li>
-          <li>
-            <a href="javascript:void(0);" onclick="loadContent(2);"
-              >Assignment 2</a
-            >
-          </li>
-          <li>
-            <a href="javascript:void(0);" onclick="loadContent(3);"
-              >Assignment 3</a
-            >
-          </li>
-          <li>
-            <a href="javascript:void(0);" onclick="loadContent(4);"
-              >Assignment 4</a
-            >
-          </li>
-          <li>
-            <a href="javascript:void(0);" onclick="loadContent(5);"
-              >Assignment 5</a
-            >
-          </li>
+          <li><a href="javascript:void(0);" onclick="loadContent(1);">Assignment 1</a></li>
+          <li><a href="javascript:void(0);" onclick="loadContent(2);">Assignment 2</a></li>
+          <li><a href="javascript:void(0);" onclick="loadContent(3);">Assignment 3</a></li>
+          <li><a href="javascript:void(0);" onclick="loadContent(4);">Assignment 4</a></li>
+          <li><a href="javascript:void(0);" onclick="loadContent(5);">Assignment 5</a></li>
           <li><a href="project.html">Project</a></li>
         </ul>
       </nav>
@@ -129,10 +115,7 @@
             <h2>Follow</h2>
             <ul class="icons">
               <li>
-                <a
-                  href="https://github.com/carlaviteri18/data-vis-portfolio"
-                  class="icon brands style2 fa-github"
-                >
+                <a href="https://github.com/carlaviteri18/data-vis-portfolio" class="icon brands style2 fa-github">
                   <span class="label">GitHub</span>
                 </a>
               </li>
@@ -209,19 +192,78 @@
         {
           id: 3,
           title: "Assignment 3",
-          description: "Description for Assignment 3",
-          images: [
-            {
-              src: "",
-              title: "Visualization 3A",
-              description: "Detailed description of Visualization 3A.",
-            },
-            {
-              src: "",
-              title: "Visualization 3B",
-              description: "Detailed description of Visualization 3B.",
-            },
-          ],
+          description: `
+            <div class="content-section">
+              <h3>Overview</h3>
+              <p>This assignment focuses on visualizing and analyzing abortion appointment wait times across different states in the United States using Tableau. The goal is to create an interactive dashboard that provides insights into the geographic distribution of wait times and the availability of abortion services.</p>
+            </div>
+            <div class="content-section">
+              <h3>Dataset</h3>
+              <p>The dataset used contains information on abortion appointment wait times and the number of abortion providers for each state. Key columns include:</p>
+              <ul>
+                <li>State</li>
+                <li>Median Wait Time (days)</li>
+                <li>Minimum and Maximum Wait Times (days)</li>
+                <li>Number of Abortion Providers</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3>Dashboard Overview</h3>
+              <p>The dashboard consists of two main visualizations:</p>
+              <ol>
+                <li>
+                  <strong>Map-Based Visualization</strong>
+                  <p><strong>Title</strong>: "Median Abortion Appointment Wait Times by State"</p>
+                  <p><strong>Description</strong>: This map shows the median wait times for abortion appointments across states, with color coding representing different wait times and circle sizes indicating the number of providers.</p>
+                  <p><strong>Interactive Features</strong>: Hover over states to see detailed information.</p>
+                </li>
+                <li>
+                  <strong>Bar Chart Visualization</strong>
+                  <p><strong>Title</strong>: "Abortion Appointment Wait Times and Providers by State"</p>
+                  <p><strong>Description</strong>: This bar chart compares median wait times across states, with bars color-coded by the number of abortion providers.</p>
+                  <p><strong>Interactive Features</strong>: Click on bars to highlight corresponding states on the map.</p>
+                </li>
+              </ol>
+            </div>
+            <div class="content-section">
+              <h3>User Instructions</h3>
+              <p><strong>Explore the Map</strong>: Hover over a state to see the median, minimum, and maximum wait times, as well as the number of abortion providers.</p>
+              <p><strong>Interact with the Bar Chart</strong>: Click on a bar to highlight the corresponding state on the map. This helps in understanding the geographic context of the wait times.</p>
+            </div>
+            <div class="content-section">
+              <p>This dashboard provides a clear and interactive way to understand abortion appointment wait times and service availability across the United States, facilitating data-driven insights and decisions.</p>
+            </div>`,
+          tableau: `
+            <div class='tableauPlaceholder' id='viz1717111014158' style='position: relative'>
+              <noscript>
+                <a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment3_17170944420130&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
+              </noscript>
+              <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='assignment3_17170944420130&#47;Dashboard1' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment3_17170944420130&#47;Dashboard1&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+              </object>
+            </div>                
+            <script type='text/javascript'>
+              var divElement = document.getElementById('viz1717111014158');
+              var vizElement = divElement.getElementsByTagName('object')[0];
+              if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+              else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
+              else { vizElement.style.width='100%';vizElement.style.height='827px';} 
+              var scriptElement = document.createElement('script');
+              scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+              vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>`,
         },
         {
           id: 4,
@@ -264,43 +306,42 @@
         if (assignment) {
           const contentDiv = document.getElementById("content");
           let imagesHtml = assignment.images
-            .map((img, index) =>
-              img.src.endsWith(".html")
-                ? `<div class="iframe-container"><h3>${
-                    img.title
-                  }</h3><div class="iframe-wrapper-${
-                    index + 1
-                  }"><iframe id="iframe-${index}" src="${
-                    img.src
-                  }" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe></div><p>${
-                    img.description
-                  }</p></div>`
-                : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
-            )
-            .join("");
+            ? assignment.images
+                .map((img, index) =>
+                  img.src.endsWith(".html")
+                    ? `<div class="iframe-container"><h3>${img.title}</h3><div class="iframe-wrapper-${
+                        index + 1
+                      }"><iframe id="iframe-${index}" src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe></div><p>${img.description}</p></div>`
+                    : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
+                )
+                .join("")
+            : "";
+          const tableauHtml = assignment.tableau
+            ? `<div class="iframe-container">${assignment.tableau}</div>`
+            : "";
+
           contentDiv.innerHTML = `
                     <header>
                         <h1>${assignment.title}</h1>
                     </header>
-                    <p>${assignment.description}</p>
+                    <div>${assignment.description}</div>
                     ${imagesHtml}
+                    ${tableauHtml}
                 `;
           // Update URL without reloading the page
-          history.pushState(
-            { id: assignmentId },
-            `${assignment.title}`,
-            `?assignment=${assignmentId}`
-          );
+          history.pushState({ id: assignmentId }, `${assignment.title}`, `?assignment=${assignmentId}`);
 
           // Ensure all iframes resize correctly
-          assignment.images.forEach((img, index) => {
-            if (img.src.endsWith(".html")) {
-              const iframe = document.getElementById(`iframe-${index}`);
-              iframe.onload = function () {
-                resizeIframe(iframe);
-              };
-            }
-          });
+          if (assignment.images) {
+            assignment.images.forEach((img, index) => {
+              if (img.src.endsWith(".html")) {
+                const iframe = document.getElementById(`iframe-${index}`);
+                iframe.onload = function () {
+                  resizeIframe(iframe);
+                };
+              }
+            });
+          }
         }
       }
 
