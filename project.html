@@ -18,7 +18,6 @@
     <noscript
       ><link rel="stylesheet" href="assets/css/noscript.css"
     /></noscript>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js" integrity="sha512-GA1Tjk6pQ9F3xk6OkTLtihy4i6JQMAIK+CgufZIt9RRx6DwOjSh5aVwFyBAlMLaPSGzMyOG71CBeBRI0q9m/AA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
       .section {
         padding: 2em;
@@ -44,6 +43,7 @@
       }
       .iframe-container iframe {
         width: 100%;
+        height: 100vh;
         border: none;
       }
       .highlight-container {
@@ -235,6 +235,7 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <div class="iframe-container">
               <iframe
                 src="images/lda_visualization.html"
+                onload="resizeIframe(this)"
               ></iframe>
             </div>
             <p>
@@ -1126,11 +1127,14 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
   }
 
-  iFrameResize({
-    log: false, // Enable if you need debugging
-    autoResize: true,
-    heightCalculationMethod: 'bodyScroll',
-  }, '.resizable-iframe');
+  window.addEventListener("load", function() {
+    var iframes = document.querySelectorAll("iframe");
+    iframes.forEach(function(iframe) {
+      iframe.onload = function() {
+        resizeIframe(iframe);
+      };
+    });
+  });
     </script>
   </body>
 </html>
