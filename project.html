@@ -1125,19 +1125,15 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
       });
       function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-  }
-
-  function adjustIframeHeight() {
-    var iframes = document.querySelectorAll("iframe");
-    iframes.forEach(function(iframe) {
-      iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
-    });
+    obj.style.width = obj.contentWindow.document.documentElement.scrollWidth + 'px';
   }
 
   window.addEventListener("load", function() {
     var iframes = document.querySelectorAll("iframe");
     iframes.forEach(function(iframe) {
-      iframe.onload = adjustIframeHeight;
+      iframe.onload = function() {
+        resizeIframe(iframe);
+      };
     });
   });
     </script>
