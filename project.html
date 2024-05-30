@@ -46,6 +46,9 @@
         height: 900px;
         border: none;
       }
+      .iframe-container.sentiment-iframe iframe {
+  height: 600px; /* Specific height for the sentiment chart iframe */
+}
       .highlight-container {
         display: flex;
         flex-wrap: wrap;
@@ -276,7 +279,7 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
             <p><strong>Comment:</strong> This code snippet demonstrates how to calculate the average sentiment scores for each topic using the Vader Sentiment Analysis tool. The sentiment scores are then normalized based on the topic distribution.</p>
-            <div class="iframe-container">
+            <div class="iframe-container sentiment-iframe">
               <iframe 
               src="images/sentiment_distribution.html"
               onload="adjustIframeHeight(this)"
