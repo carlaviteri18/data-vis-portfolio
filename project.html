@@ -235,7 +235,7 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <div class="iframe-container">
               <iframe
                 src="images/lda_visualization.html"
-                onload="resizeIframe(this)"
+                onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
             <p>
@@ -1123,11 +1123,7 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
           return false; // Prevent default link behavior
         });
       });
-      function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-  }
-
-  function adjustIframeHeight() {
+      function adjustIframeHeight() {
     var iframes = document.querySelectorAll("iframe");
     iframes.forEach(function(iframe) {
       iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
