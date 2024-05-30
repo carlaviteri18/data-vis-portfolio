@@ -3,9 +3,14 @@
   <head>
     <title>Portfolio by Carla Viteri</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
     <style>
       .assignment-image {
         max-width: 600px;
@@ -90,11 +95,31 @@
         <h2>Menu</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="javascript:void(0);" onclick="loadContent(1);">Assignment 1</a></li>
-          <li><a href="javascript:void(0);" onclick="loadContent(2);">Assignment 2</a></li>
-          <li><a href="javascript:void(0);" onclick="loadContent(3);">Assignment 3</a></li>
-          <li><a href="javascript:void(0);" onclick="loadContent(4);">Assignment 4</a></li>
-          <li><a href="javascript:void(0);" onclick="loadContent(5);">Assignment 5</a></li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(1);"
+              >Assignment 1</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(2);"
+              >Assignment 2</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(3);"
+              >Assignment 3</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(4);"
+              >Assignment 4</a
+            >
+          </li>
+          <li>
+            <a href="javascript:void(0);" onclick="loadContent(5);"
+              >Assignment 5</a
+            >
+          </li>
           <li><a href="project.html">Project</a></li>
         </ul>
       </nav>
@@ -115,7 +140,10 @@
             <h2>Follow</h2>
             <ul class="icons">
               <li>
-                <a href="https://github.com/carlaviteri18/data-vis-portfolio" class="icon brands style2 fa-github">
+                <a
+                  href="https://github.com/carlaviteri18/data-vis-portfolio"
+                  class="icon brands style2 fa-github"
+                >
                   <span class="label">GitHub</span>
                 </a>
               </li>
@@ -253,17 +281,7 @@
                 <param name='display_count' value='yes' />
                 <param name='language' value='en-US' />
               </object>
-            </div>                
-            <script type='text/javascript'>
-              var divElement = document.getElementById('viz1717111014158');
-              var vizElement = divElement.getElementsByTagName('object')[0];
-              if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
-              else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} 
-              else { vizElement.style.width='100%';vizElement.style.height='827px';} 
-              var scriptElement = document.createElement('script');
-              scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
-              vizElement.parentNode.insertBefore(scriptElement, vizElement);
-            </script>`,
+            </div>`,
         },
         {
           id: 4,
@@ -309,9 +327,15 @@
             ? assignment.images
                 .map((img, index) =>
                   img.src.endsWith(".html")
-                    ? `<div class="iframe-container"><h3>${img.title}</h3><div class="iframe-wrapper-${
+                    ? `<div class="iframe-container"><h3>${
+                        img.title
+                      }</h3><div class="iframe-wrapper-${
                         index + 1
-                      }"><iframe id="iframe-${index}" src="${img.src}" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe></div><p>${img.description}</p></div>`
+                      }"><iframe id="iframe-${index}" src="${
+                        img.src
+                      }" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe></div><p>${
+                        img.description
+                      }</p></div>`
                     : `<div class="image style1"><h3>${img.title}</h3><img src="${img.src}" alt="${img.title}" class="assignment-image"/><p>${img.description}</p></div>`
                 )
                 .join("")
@@ -329,7 +353,11 @@
                     ${tableauHtml}
                 `;
           // Update URL without reloading the page
-          history.pushState({ id: assignmentId }, `${assignment.title}`, `?assignment=${assignmentId}`);
+          history.pushState(
+            { id: assignmentId },
+            `${assignment.title}`,
+            `?assignment=${assignmentId}`
+          );
 
           // Ensure all iframes resize correctly
           if (assignment.images) {
@@ -363,6 +391,24 @@
           loadContent(parseInt(assignmentId));
         }
       });
+    </script>
+    <script type="text/javascript">
+      var divElement = document.getElementById("viz1717111014158");
+      var vizElement = divElement.getElementsByTagName("object")[0];
+      if (divElement.offsetWidth > 800) {
+        vizElement.style.width = "1000px";
+        vizElement.style.height = "827px";
+      } else if (divElement.offsetWidth > 500) {
+        vizElement.style.width = "1000px";
+        vizElement.style.height = "827px";
+      } else {
+        vizElement.style.width = "100%";
+        vizElement.style.height = "827px";
+      }
+      var scriptElement = document.createElement("script");
+      scriptElement.src =
+        "https://public.tableau.com/javascripts/api/viz_v1.js";
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
     </script>
   </body>
 </html>
