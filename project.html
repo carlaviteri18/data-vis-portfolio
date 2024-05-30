@@ -277,7 +277,10 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
             <p><strong>Comment:</strong> This code snippet demonstrates how to calculate the average sentiment scores for each topic using the Vader Sentiment Analysis tool. The sentiment scores are then normalized based on the topic distribution.</p>
             <div class="iframe-container">
-              <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
+              <iframe 
+              src="images/sentiment_distribution.html"
+              onload="adjustIframeHeight(this)"
+              ></iframe>
             </div>
             <p>
               <strong>User Instructions:</strong> Hover over each bubble to see the topic number, average sentiment score, token proportion, and number of chapters. The color gradient from blue (negative) to red (positive) represents the sentiment polarity of the topics.
