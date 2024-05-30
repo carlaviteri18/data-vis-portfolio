@@ -229,6 +229,12 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
               sliding to the right emphasizes terms that are more frequent in
               the overall text.
             </p>
+            <pre>
+<code># Prepare data for pyLDAvis
+vis = genvis.prepare(optimal_model, corpus, dictionary)
+
+# Save the visualization as an HTML file
+pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <p>
               <strong>User Instructions:</strong> To explore the Intertopic
               Distance Map, hover over the circles to see the topic number and
@@ -237,12 +243,6 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
               relevance metric slider to adjust the weight of term relevance.
               Hover over terms to see their contribution to the topic.
             </p>
-            <pre>
-<code># Prepare data for pyLDAvis
-vis = genvis.prepare(optimal_model, corpus, dictionary)
-
-# Save the visualization as an HTML file
-pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <div class="iframe-container">
               <iframe
                 src="images/lda_visualization.html"
@@ -265,12 +265,6 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
               bubble reflects the average sentiment score, helping us understand
               the emotional tone associated with each topic.
             </p>
-            <p>
-              <strong>User Instructions:</strong> Hover over each bubble to see
-              the topic number, average sentiment score, token proportion, and
-              number of chapters. The color gradient from blue (negative) to red
-              (positive) represents the sentiment polarity of the topics.
-            </p>
             <pre>
 <code># Calculate average sentiment scores for each topic
 topic_sentiments = np.zeros(num_topics)
@@ -287,6 +281,12 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
+            <p>
+              <strong>User Instructions:</strong> Hover over each bubble to see
+              the topic number, average sentiment score, token proportion, and
+              number of chapters. The color gradient from blue (negative) to red
+              (positive) represents the sentiment polarity of the topics.
+            </p>
             <div class="iframe-container">
               <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
             </div>
@@ -308,13 +308,6 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               development of themes throughout the narrative, providing insights
               into how the story's focus shifts over time.
             </p>
-            <p>
-              <strong>User Instructions:</strong> Use the interactive line chart
-              to track how the prevalence of each topic changes across the
-              chapters. Hover over the lines to see the topic proportions for
-              specific chapters. You can also toggle the visibility of topics by
-              clicking on their labels in the legend.
-            </p>
             <pre>
 <code># Prepare data for topic distribution over chapters
 topic_distributions = []
@@ -330,6 +323,13 @@ df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
 
 # Melt the DataFrame for better plotting with Plotly
 df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
+            <p>
+              <strong>User Instructions:</strong> Use the interactive line chart
+              to track how the prevalence of each topic changes across the
+              chapters. Hover over the lines to see the topic proportions for
+              specific chapters. You can also toggle the visibility of topics by
+              clicking on their labels in the legend.
+            </p>
             <div class="iframe-container">
               <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
             </div>
