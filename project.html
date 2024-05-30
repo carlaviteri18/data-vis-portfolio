@@ -315,6 +315,28 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
               understand the emotional tone of the themes discovered by the LDA
               model.
             </p>
+            <p>
+              The following code snippet demonstrates how we calculated the
+              average sentiment scores for each topic. We utilized the Vader
+              Sentiment Analysis tool to score the sentiment of the chapters and
+              then aggregated these scores based on the topic distribution:
+            </p>
+            <pre>
+<code># Calculate average sentiment scores for each topic
+topic_sentiments = np.zeros(num_topics)
+topic_token_counts = np.zeros(num_topics)
+topic_chapter_counts = np.zeros(num_topics)
+
+for i, (chapter, label) in enumerate(chapters_with_labels):
+    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
+    for topic_id, probability in topic_distribution:
+        sentiment = sia.polarity_scores(' '.join(chapter))['compound']
+        topic_sentiments[topic_id] += sentiment * probability
+        topic_token_counts[topic_id] += len(chapter) * probability
+        topic_chapter_counts[topic_id] += probability
+
+# Normalize the sentiment scores
+average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
 
             <h5>Top Positive Topics</h5>
             <ul>
