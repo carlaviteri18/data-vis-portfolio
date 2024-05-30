@@ -219,6 +219,24 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
               overall prevalence of the topic in the novel. The proximity of the
               circles reflects the similarity between the topics.
             </p>
+            <p>
+              The "Top-30 Most Relevant Terms for Topic" visualization presents
+              the top 30 terms for each topic, providing insight into the key
+              words that define each topic. The relevance metric slider allows
+              you to adjust the weight given to the frequency of the term within
+              the topic versus its frequency in the overall corpus. Sliding to
+              the left emphasizes terms that are more unique to the topic, while
+              sliding to the right emphasizes terms that are more frequent in
+              the overall text.
+            </p>
+            <p>
+              <strong>User Instructions:</strong> To explore the Intertopic
+              Distance Map, hover over the circles to see the topic number and
+              its prevalence. Click on a circle to focus on that topic. For the
+              Top-30 Most Relevant Terms for Topic visualization, use the
+              relevance metric slider to adjust the weight of term relevance.
+              Hover over terms to see their contribution to the topic.
+            </p>
             <pre>
 <code># Prepare data for pyLDAvis
 vis = genvis.prepare(optimal_model, corpus, dictionary)
@@ -246,6 +264,12 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
               the number of chapters contributing to the topic. The color of the
               bubble reflects the average sentiment score, helping us understand
               the emotional tone associated with each topic.
+            </p>
+            <p>
+              <strong>User Instructions:</strong> Hover over each bubble to see
+              the topic number, average sentiment score, token proportion, and
+              number of chapters. The color gradient from blue (negative) to red
+              (positive) represents the sentiment polarity of the topics.
             </p>
             <pre>
 <code># Calculate average sentiment scores for each topic
@@ -283,6 +307,13 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               chapters of the novel. This visualization helps us track the
               development of themes throughout the narrative, providing insights
               into how the story's focus shifts over time.
+            </p>
+            <p>
+              <strong>User Instructions:</strong> Use the interactive line chart
+              to track how the prevalence of each topic changes across the
+              chapters. Hover over the lines to see the topic proportions for
+              specific chapters. You can also toggle the visibility of topics by
+              clicking on their labels in the legend.
             </p>
             <pre>
 <code># Prepare data for topic distribution over chapters
@@ -1028,6 +1059,12 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               passages highlighted based on the topic's word probabilities. This
               allows for a more granular examination of how themes are
               distributed throughout the text.
+            </p>
+            <p>
+              <strong>User Instructions:</strong> Select a topic from the
+              dropdown menu to see text passages from the novel highlighted
+              based on the topic's words. Hover over the highlighted words to
+              see their contribution to the topic.
             </p>
             <div class="iframe-container">
               <iframe src="highlighted_text_passages.html"></iframe>
