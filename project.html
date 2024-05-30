@@ -203,6 +203,7 @@ bigram = Phrases(tokenized_chapters, min_count=5, threshold=100)
 trigram = Phrases(bigram[tokenized_chapters], threshold=100)
 
 tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters]</code></pre>
+            <p><strong>Comment:</strong> This code snippet demonstrates how the chapters are tokenized and preprocessed to create bigrams and trigrams, which are then used for the topic modeling process.</p>
           </section>
 
           <!-- Intertopic Distance Map & Top-30 Most Relevant Terms for Topic -->
@@ -220,7 +221,7 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
               circles reflects the similarity between the topics.
             </p>
             <p>
-              The "Top-30 Most Relevant Terms for Topic" visualization presents
+              The Top-30 Most Relevant Terms for Topic visualization presents
               the top 30 terms for each topic, providing insight into the key
               words that define each topic. The relevance metric slider allows
               you to adjust the weight given to the frequency of the term within
@@ -235,14 +236,7 @@ vis = genvis.prepare(optimal_model, corpus, dictionary)
 
 # Save the visualization as an HTML file
 pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
-            <p>
-              <strong>User Instructions:</strong> To explore the Intertopic
-              Distance Map, hover over the circles to see the topic number and
-              its prevalence. Click on a circle to focus on that topic. For the
-              Top-30 Most Relevant Terms for Topic visualization, use the
-              relevance metric slider to adjust the weight of term relevance.
-              Hover over terms to see their contribution to the topic.
-            </p>
+            <p><strong>Comment:</strong> This code snippet demonstrates how to prepare the data for visualization using pyLDAvis and save it as an HTML file. This visualization helps in understanding the inter-topic distances and the relevance of terms within topics.</p>
             <div class="iframe-container">
               <iframe
                 src="images/lda_visualization.html"
@@ -251,6 +245,13 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
                 frameboder="0"
               ></iframe>
             </div>
+            <p>
+              <strong>User Instructions:</strong>
+              <ul>
+                <li>For the Intertopic Distance Map, hover over the circles to see the topic number and its prevalence. Click on a circle to focus on that topic and see detailed information.</li>
+                <li>For the Top-30 Most Relevant Terms for Topic, use the relevance metric slider to adjust the weight of term relevance. Hover over terms to see their contribution to the topic, and click on terms to see their usage in the context of the novel.</li>
+              </ul>
+            </p>
           </section>
 
           <!-- Sentiment Bubble Chart -->
@@ -281,15 +282,13 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
-            <p>
-              <strong>User Instructions:</strong> Hover over each bubble to see
-              the topic number, average sentiment score, token proportion, and
-              number of chapters. The color gradient from blue (negative) to red
-              (positive) represents the sentiment polarity of the topics.
-            </p>
+            <p><strong>Comment:</strong> This code snippet demonstrates how to calculate the average sentiment scores for each topic using the Vader Sentiment Analysis tool. The sentiment scores are then normalized based on the topic distribution.</p>
             <div class="iframe-container">
               <iframe src="path/to/sentiment_bubble_chart.html"></iframe>
             </div>
+            <p>
+              <strong>User Instructions:</strong> Hover over each bubble to see the topic number, average sentiment score, token proportion, and number of chapters. The color gradient from blue (negative) to red (positive) represents the sentiment polarity of the topics.
+            </p>
           </section>
 
           <!-- Topic Evolution Line Chart -->
@@ -323,16 +322,13 @@ df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
 
 # Melt the DataFrame for better plotting with Plotly
 df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
-            <p>
-              <strong>User Instructions:</strong> Use the interactive line chart
-              to track how the prevalence of each topic changes across the
-              chapters. Hover over the lines to see the topic proportions for
-              specific chapters. You can also toggle the visibility of topics by
-              clicking on their labels in the legend.
-            </p>
+            <p><strong>Comment:</strong> This code snippet demonstrates how to prepare the data for visualizing the topic distribution over chapters. The data is then melted for better plotting with Plotly.</p>
             <div class="iframe-container">
               <iframe src="path/to/topic_evolution_line_chart.html"></iframe>
             </div>
+            <p>
+              <strong>User Instructions:</strong> Use the interactive line chart to track how the prevalence of each topic changes across the chapters. Hover over the lines to see the topic proportions for specific chapters. Toggle the visibility of topics by clicking on their labels in the legend.
+            </p>
           </section>
 
           <!-- Top Positive and Negative Topics Section -->
@@ -368,6 +364,7 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
+            <p><strong>Comment:</strong> This code snippet demonstrates how we calculated the average sentiment scores for each topic using the Vader Sentiment Analysis tool and normalized these scores based on the topic distribution.</p>
 
             <h5>Top Positive Topics</h5>
             <ul>
@@ -1060,15 +1057,12 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               allows for a more granular examination of how themes are
               distributed throughout the text.
             </p>
-            <p>
-              <strong>User Instructions:</strong> Select a topic from the
-              dropdown menu to see text passages from the novel highlighted
-              based on the topic's words. Hover over the highlighted words to
-              see their contribution to the topic.
-            </p>
             <div class="iframe-container">
               <iframe src="highlighted_text_passages.html"></iframe>
             </div>
+            <p>
+              <strong>User Instructions:</strong> Select a topic from the dropdown menu to see the text passages where the words contributing to that topic are highlighted. This interactive feature helps you understand how the identified themes are distributed throughout the novel's text.
+            </p>
           </section>
 
           <!-- Conclusion Section -->
