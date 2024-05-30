@@ -37,8 +37,6 @@
       .iframe-container {
         position: relative;
         width: 100%;
-        height: auto;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
         overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1128,6 +1126,7 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
       function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
   }
+
   window.addEventListener("load", function() {
     var iframes = document.querySelectorAll("iframe");
     iframes.forEach(function(iframe) {
