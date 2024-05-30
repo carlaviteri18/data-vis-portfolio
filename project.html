@@ -322,7 +322,7 @@ df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
 # Melt the DataFrame for better plotting with Plotly
 df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
             <p><strong>Comment:</strong> This code snippet demonstrates how to prepare the data for visualizing the topic distribution over chapters. The data is then melted for better plotting with Plotly.</p>
-            <div class="iframe-container">
+            <div class="iframe-container sentiment-iframe">
               <iframe 
               src="images/topic_evolution.html"
               onload="adjustIframeHeight(this)"
