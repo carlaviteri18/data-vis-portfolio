@@ -37,7 +37,8 @@
       .iframe-container {
         position: relative;
         width: 100%;
-        height: 500px;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
         overflow: hidden;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -353,6 +354,294 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 <strong>Topic 0:</strong> Sisters, dead, mere, blood, demanded
               </li>
             </ul>
+
+            <p>
+              Here are the top words contributing to each topic along with the
+              themes inferred from these topics:
+            </p>
+
+            <div class="highlight-box">
+              <h5>Topic 0:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Sisters, dead, mere, blood, demanded,
+                  hours, england, offer, help, opinion
+                </li>
+                <li><strong>Theme:</strong> Death and Relationships</li>
+                <li>
+                  <strong>Reasoning:</strong> The frequent mention of "dead,"
+                  "blood," and "sisters" suggests a focus on death and familial
+                  relationships.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 1:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Die, aid, rain, servant, human, stand,
+                  broken, try, sank, road
+                </li>
+                <li><strong>Theme:</strong> Struggle and Survival</li>
+                <li>
+                  <strong>Reasoning:</strong> The emphasis on "die," "aid," and
+                  "broken" points to themes of struggle and survival.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 2:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Girls, use, state, information,
+                  children, church, marked, thin, except, ladies
+                </li>
+                <li><strong>Theme:</strong> Education and Society</li>
+                <li>
+                  <strong>Reasoning:</strong> The references to "girls,"
+                  "children," and "church" suggest a focus on education and
+                  societal norms.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 3:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Die, lowood, ill, moon, pleasant,
+                  flowers, lived, hours, me., filled
+                </li>
+                <li><strong>Theme:</strong> Illness and Reflection</li>
+                <li>
+                  <strong>Reasoning:</strong> The presence of "ill," "lowood,"
+                  and "die" indicates themes of illness and reflection on life.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 4:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Adèle, Mrs. Fairfax, sir., fairfax,
+                  please, beauty, position, green, lowood, men
+                </li>
+                <li><strong>Theme:</strong> Social Interactions and Beauty</li>
+                <li>
+                  <strong>Reasoning:</strong> The frequent mentions of
+                  characters and "beauty" highlight themes of social
+                  interactions and aesthetics.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 5:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Seek, lived, money, dead, family,
+                  ought, died, sir., promise, bonnet
+                </li>
+                <li><strong>Theme:</strong> Family and Wealth</li>
+                <li>
+                  <strong>Reasoning:</strong> The focus on "family," "money,"
+                  and "promise" suggests themes related to familial ties and
+                  wealth.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 6:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Thornfield, moon, sir., you., rain,
+                  road, me., trees, adèle, loved
+                </li>
+                <li><strong>Theme:</strong> Nature and Romance</li>
+                <li>
+                  <strong>Reasoning:</strong> The frequent mentions of
+                  "thornfield," "moon," and "loved" indicate themes of nature
+                  and romance.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 7:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Died, forget, dead, sir., money, seek,
+                  week, send, family, forehead
+                </li>
+                <li><strong>Theme:</strong> Loss and Remembrance</li>
+                <li>
+                  <strong>Reasoning:</strong> The repetition of "died" and
+                  "forget" points to themes of loss and remembrance.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 8:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Children, french, broken, sad, frame,
+                  red, fall, servants, ought, cheek
+                </li>
+                <li><strong>Theme:</strong> Childhood and Sadness</li>
+                <li>
+                  <strong>Reasoning:</strong> The references to "children" and
+                  "sad" suggest themes of childhood and melancholy.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 9:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Lowood, dare, me., sir., you., dont,
+                  talking, liberty, says, finished
+                </li>
+                <li><strong>Theme:</strong> Education and Freedom</li>
+                <li>
+                  <strong>Reasoning:</strong> The focus on "lowood," "liberty,"
+                  and "education" points to themes of education and personal
+                  freedom.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 10:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Ladies, servants, gentleman, mrs.
+                  fairfax, adèle, beautiful, grace, says, scene, looks
+                </li>
+                <li><strong>Theme:</strong> Social Hierarchy and Beauty</li>
+                <li>
+                  <strong>Reasoning:</strong> The frequent mentions of "ladies,"
+                  "gentleman," and "beautiful" highlight themes of social
+                  hierarchy and beauty.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 11:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Wife, human, calm, heaven, suddenly,
+                  ought, state, pity, really, showed
+                </li>
+                <li><strong>Theme:</strong> Marriage and Human Nature</li>
+                <li>
+                  <strong>Reasoning:</strong> The focus on "wife," "human," and
+                  "calm" suggests themes related to marriage and human nature.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 12:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Lowood, thornfield, ladies, french,
+                  liberty, —, nearly, miles, country, send
+                </li>
+                <li><strong>Theme:</strong> Places and Freedom</li>
+                <li>
+                  <strong>Reasoning:</strong> The repetition of "lowood,"
+                  "thornfield," and "liberty" points to themes of places and
+                  freedom.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 13:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Ere, desire, front, forward,
+                  expressed, experience, except, grace, dress, clean
+                </li>
+                <li><strong>Theme:</strong> Emotions and Experience</li>
+                <li>
+                  <strong>Reasoning:</strong> The emphasis on "desire,"
+                  "experience," and "grace" suggests themes of emotions and
+                  personal experiences.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 14:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Friends, beauty, lonely, weeks, pure,
+                  distant, seem, surely, fortune, lifted
+                </li>
+                <li><strong>Theme:</strong> Friendship and Beauty</li>
+                <li>
+                  <strong>Reasoning:</strong> The frequent mentions of
+                  "friends," "beauty," and "lonely" highlight themes of
+                  friendship and aesthetics.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 15:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Fairfax, thornfield, road, mrs.
+                  fairfax, calm, walked, help, adèle, moon, trees
+                </li>
+                <li><strong>Theme:</strong> Home and Calmness</li>
+                <li>
+                  <strong>Reasoning:</strong> The repetition of "fairfax,"
+                  "thornfield," and "calm" points to themes of home and
+                  tranquility.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 16:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Girls, breakfast, afterwards, four,
+                  filled, wall, lowood, taste, somewhat, immediately
+                </li>
+                <li><strong>Theme:</strong> Daily Life and Education</li>
+                <li>
+                  <strong>Reasoning:</strong> The frequent mentions of "girls,"
+                  "breakfast," and "lowood" highlight themes of daily life and
+                  education.
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight-box">
+              <h5>Topic 17:</h5>
+              <ul>
+                <li>
+                  <strong>Words:</strong> Mrs. Fairfax, thornfield, front,
+                  adèle, chamber, fairfax, sleep, candle, church, french
+                </li>
+                <li><strong>Theme:</strong> Home and Relationships</li>
+                <li>
+                  <strong>Reasoning:</strong> The emphasis on "thornfield,"
+                  "fairfax," and "chamber" suggests themes related to home and
+                  relationships.
+                </li>
+              </ul>
+            </div>
           </section>
 
           <!-- Chapter Contributions Section -->
