@@ -14,7 +14,7 @@
       }
       h1 {
         text-align: center;
-        color: #d63384;
+        color: #ff5f7b;
       }
       .highlight {
         background-color: yellow;
@@ -24,7 +24,7 @@
         border: 1px solid #ddd;
         padding: 10px;
         margin-bottom: 20px;
-        height: 200px;
+        height: 400px;
         overflow-y: scroll;
         background-color: #ffffff;
         border-radius: 10px;
@@ -3185,8 +3185,8 @@
             if (prob > 0.000001) {
               const scaledProb = prob / maxProb; // Scale the probability
               const span = document.createElement("span");
-              span.style.backgroundColor = `rgba(255, 0, 0, ${
-                prob * intensity
+              span.style.backgroundColor = `rgba(255,145,164, ${
+                scaledProb * intensity
               })`;
               span.textContent = word + " ";
               passage.appendChild(span);
