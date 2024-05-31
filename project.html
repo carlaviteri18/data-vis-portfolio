@@ -1098,8 +1098,11 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               allows for a more granular examination of how themes are
               distributed throughout the text.
             </p>
-            <div class="iframe-container">
-              <iframe src="images/highlighted_passages.html"></iframe>
+            <div class="iframe-container sentiment-iframe">
+              <iframe
+                src="images/highlighted_passages.html"
+                onload="adjustIframeHeight(this)"
+              ></iframe>
             </div>
             <p>
               <strong>User Instructions:</strong> Select a topic from the
