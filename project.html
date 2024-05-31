@@ -47,8 +47,8 @@
         border: none;
       }
       .iframe-container.sentiment-iframe iframe {
-  height: 600px; /* Specific height for the sentiment chart iframe */
-}
+        height: 600px; /* Specific height for the sentiment chart iframe */
+      }
       .highlight-container {
         display: flex;
         flex-wrap: wrap;
@@ -201,7 +201,11 @@ bigram = Phrases(tokenized_chapters, min_count=5, threshold=100)
 trigram = Phrases(bigram[tokenized_chapters], threshold=100)
 
 tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters]</code></pre>
-            <p><strong>Comment:</strong> This code snippet demonstrates how the chapters are tokenized and preprocessed to create bigrams and trigrams, which are then used for the topic modeling process.</p>
+            <p>
+              <strong>Comment:</strong> This code snippet demonstrates how the
+              chapters are tokenized and preprocessed to create bigrams and
+              trigrams, which are then used for the topic modeling process.
+            </p>
           </section>
 
           <!-- Intertopic Distance Map & Top-30 Most Relevant Terms for Topic -->
@@ -234,7 +238,12 @@ vis = genvis.prepare(optimal_model, corpus, dictionary)
 
 # Save the visualization as an HTML file
 pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
-            <p><strong>Comment:</strong> This code snippet demonstrates how to prepare the data for visualization using pyLDAvis and save it as an HTML file. This visualization helps in understanding the inter-topic distances and the relevance of terms within topics.</p>
+            <p>
+              <strong>Comment:</strong> This code snippet demonstrates how to
+              prepare the data for visualization using pyLDAvis and save it as
+              an HTML file. This visualization helps in understanding the
+              inter-topic distances and the relevance of terms within topics.
+            </p>
             <div class="iframe-container">
               <iframe
                 src="images/lda_visualization.html"
@@ -243,11 +252,20 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             </div>
             <p>
               <strong>User Instructions:</strong>
-              <ul>
-                <li>For the Intertopic Distance Map, hover over the circles to see the topic number and its prevalence. Click on a circle to focus on that topic and see detailed information.</li>
-                <li>For the Top-30 Most Relevant Terms for Topic, use the relevance metric slider to adjust the weight of term relevance. Hover over terms to see their contribution to the topic, and click on terms to see their usage in the context of the novel.</li>
-              </ul>
             </p>
+            <ul>
+              <li>
+                For the Intertopic Distance Map, hover over the circles to see
+                the topic number and its prevalence. Click on a circle to focus
+                on that topic and see detailed information.
+              </li>
+              <li>
+                For the Top-30 Most Relevant Terms for Topic, use the relevance
+                metric slider to adjust the weight of term relevance. Hover over
+                terms to see their contribution to the topic, and click on terms
+                to see their usage in the context of the novel.
+              </li>
+            </ul>
           </section>
 
           <!-- Sentiment Bubble Chart -->
@@ -278,15 +296,23 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
-            <p><strong>Comment:</strong> This code snippet demonstrates how to calculate the average sentiment scores for each topic using the Vader Sentiment Analysis tool. The sentiment scores are then normalized based on the topic distribution.</p>
+            <p>
+              <strong>Comment:</strong> This code snippet demonstrates how to
+              calculate the average sentiment scores for each topic using the
+              Vader Sentiment Analysis tool. The sentiment scores are then
+              normalized based on the topic distribution.
+            </p>
             <div class="iframe-container sentiment-iframe">
-              <iframe 
-              src="images/sentiment_distribution.html"
-              onload="adjustIframeHeight(this)"
+              <iframe
+                src="images/sentiment_distribution.html"
+                onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
             <p>
-              <strong>User Instructions:</strong> Hover over each bubble to see the topic number, average sentiment score, token proportion, and number of chapters. The color gradient from blue (negative) to red (positive) represents the sentiment polarity of the topics.
+              <strong>User Instructions:</strong> Hover over each bubble to see
+              the topic number, average sentiment score, token proportion, and
+              number of chapters. The color gradient from blue (negative) to red
+              (positive) represents the sentiment polarity of the topics.
             </p>
           </section>
 
@@ -321,15 +347,23 @@ df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
 
 # Melt the DataFrame for better plotting with Plotly
 df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
-            <p><strong>Comment:</strong> This code snippet demonstrates how to prepare the data for visualizing the topic distribution over chapters. The data is then melted for better plotting with Plotly.</p>
+            <p>
+              <strong>Comment:</strong> This code snippet demonstrates how to
+              prepare the data for visualizing the topic distribution over
+              chapters. The data is then melted for better plotting with Plotly.
+            </p>
             <div class="iframe-container sentiment-iframe">
-              <iframe 
-              src="images/topic_evolution.html"
-              onload="adjustIframeHeight(this)"
+              <iframe
+                src="images/topic_evolution.html"
+                onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
             <p>
-              <strong>User Instructions:</strong> Use the interactive line chart to track how the prevalence of each topic changes across the chapters. Hover over the lines to see the topic proportions for specific chapters. Toggle the visibility of topics by clicking on their labels in the legend.
+              <strong>User Instructions:</strong> Use the interactive line chart
+              to track how the prevalence of each topic changes across the
+              chapters. Hover over the lines to see the topic proportions for
+              specific chapters. Toggle the visibility of topics by clicking on
+              their labels in the legend.
             </p>
           </section>
 
@@ -366,7 +400,12 @@ for i, (chapter, label) in enumerate(chapters_with_labels):
 
 # Normalize the sentiment scores
 average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
-            <p><strong>Comment:</strong> This code snippet demonstrates how we calculated the average sentiment scores for each topic using the Vader Sentiment Analysis tool and normalized these scores based on the topic distribution.</p>
+            <p>
+              <strong>Comment:</strong> This code snippet demonstrates how we
+              calculated the average sentiment scores for each topic using the
+              Vader Sentiment Analysis tool and normalized these scores based on
+              the topic distribution.
+            </p>
 
             <h5>Top Positive Topics</h5>
             <ul>
@@ -1063,7 +1102,11 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               <iframe src="highlighted_text_passages.html"></iframe>
             </div>
             <p>
-              <strong>User Instructions:</strong> Select a topic from the dropdown menu to see the text passages where the words contributing to that topic are highlighted. This interactive feature helps you understand how the identified themes are distributed throughout the novel's text.
+              <strong>User Instructions:</strong> Select a topic from the
+              dropdown menu to see the text passages where the words
+              contributing to that topic are highlighted. This interactive
+              feature helps you understand how the identified themes are
+              distributed throughout the novel's text.
             </p>
           </section>
 
@@ -1133,18 +1176,19 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
         });
       });
       function adjustIframeHeight() {
-    var iframes = document.querySelectorAll("iframe");
-    iframes.forEach(function(iframe) {
-      iframe.style.height = iframe.contentWindow.document.documentElement.scrollHeight + 'px';
-    });
-  }
+        var iframes = document.querySelectorAll("iframe");
+        iframes.forEach(function (iframe) {
+          iframe.style.height =
+            iframe.contentWindow.document.documentElement.scrollHeight + "px";
+        });
+      }
 
-  window.addEventListener("load", function() {
-    var iframes = document.querySelectorAll("iframe");
-    iframes.forEach(function(iframe) {
-      iframe.onload = adjustIframeHeight;
-    });
-  });
+      window.addEventListener("load", function () {
+        var iframes = document.querySelectorAll("iframe");
+        iframes.forEach(function (iframe) {
+          iframe.onload = adjustIframeHeight;
+        });
+      });
     </script>
   </body>
 </html>
