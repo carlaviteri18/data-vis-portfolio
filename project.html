@@ -265,16 +265,27 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <p>
               Sentiment analysis assesses the emotional tone of the text. We
               applied sentiment analysis to each topic to understand the
-              emotional tone associated with each theme.
+              emotional tone associated with each theme. The Sentiment
+              Distribution Bar Chart visualizes the sentiment scores of the
+              topics, showing the count of positive, neutral, and negative
+              sentiments associated with each topic.
             </p>
             <p>
-              The Sentiment Bubble Chart visualizes the sentiment scores of the
-              topics. Each bubble represents a topic, with the size indicating
-              the number of chapters contributing to the topic. The color of the
-              bubble reflects the average sentiment score, helping us understand
-              the emotional tone associated with each topic. The x-axis
-              represents the average sentiment score, while the y-axis
-              represents the topic number.
+              The x-axis represents the topics, while the y-axis represents the
+              count of chapters associated with each sentiment. The bars are
+              color-coded: blue for positive, grey for neutral, and red for
+              negative sentiments.
+            </p>
+            <p>
+              The neutral sentiment count is zero due to the chosen sentiment
+              threshold values. By setting the thresholds for positive sentiment
+              to scores above 0.5 and negative sentiment to scores below -0.5,
+              we aimed to clearly differentiate between strongly positive and
+              strongly negative sentiments. This approach helps in highlighting
+              the extremes and reduces the ambiguity that often accompanies
+              neutral sentiment. This choice was intentional to focus on the
+              distinct emotional tones and their impacts on the themes within
+              the novel.
             </p>
             <pre><code># Calculate average sentiment scores for each topic
 topic_sentiments = np.zeros(num_topics)
@@ -297,17 +308,60 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
               tool. The sentiment scores are then normalized based on the topic
               distribution.
             </p>
+            <pre><code># Create a DataFrame for sentiment distribution
+sentiment_counts = []
+for topic in range(num_topics):
+    positive_count = len([sent for sent in chapter_sentiments if sent > 0.5])
+    neutral_count = len([sent for sent in chapter_sentiments if -0.5 <= sent <= 0.5])
+    negative_count = len([sent for sent in chapter_sentiments if sent < -0.5])
+    sentiment_counts.append((topic, 'Positive', positive_count))
+    sentiment_counts.append((topic, 'Neutral', neutral_count))
+    sentiment_counts.append((topic, 'Negative', negative_count))
+
+df_sentiments = pd.DataFrame(sentiment_counts, columns=['Topic', 'Sentiment', 'Count'])
+
+# Create the bar chart with Plotly
+fig = px.bar(
+    df_sentiments,
+    x='Topic',
+    y='Count',
+    color='Sentiment',
+    barmode='group',
+    title='Sentiment Distribution Across Topics in Jane Eyre',
+    color_discrete_map={'Positive': 'blue', 'Neutral': 'grey', 'Negative': 'red'}
+)
+
+# Customize the layout
+fig.update_layout(
+    xaxis_title='Topic',
+    yaxis_title='Count of Sentiments',
+    legend_title='Sentiments'
+)
+
+# Show the plot
+fig.show()
+
+# Save the plot as an HTML file
+fig.write_html("sentiment_distribution.html")</code></pre>
+            <p>
+              <strong>Explanation:</strong> This code creates a grouped bar
+              chart to visualize the sentiment distribution across topics. It
+              shows the count of positive, neutral, and negative sentiments for
+              each topic, making it easier to understand the emotional tone
+              associated with each theme.
+            </p>
             <div class="iframe-container sentiment-iframe">
               <iframe
-                src="images/sentiment_distribution (2).html"
+                src="images/sentimentdistribution.html"
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
             <p>
-              <strong>User Instructions:</strong> Hover over each bubble to see
-              the topic number, average sentiment score, token proportion, and
-              number of chapters. The color gradient from blue (negative) to red
-              (positive) represents the sentiment polarity of the topics.
+              <strong>User Instructions:</strong> Use the interactive bar chart
+              to explore the sentiment distribution across topics. Hover over
+              the bars to see the count of sentiments for each topic. The
+              color-coded bars help in distinguishing between positive, neutral,
+              and negative sentiments.
             </p>
           </section>
 
