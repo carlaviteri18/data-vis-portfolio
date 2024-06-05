@@ -371,15 +371,23 @@ fig.write_html("sentiment_distribution.html")</code></pre>
               <h2>Topic Evolution Over Chapters</h2>
             </header>
             <p>
-              The Topic Evolution Line Chart shows how the prevalence of each
-              topic changes over the chapters of Jane Eyre. This visualization
-              helps us track the development of themes throughout the narrative.
+              The Topic Evolution Line Chart provides a dynamic visualization of
+              how the prevalence of each topic changes over the chapters of Jane
+              Eyre. By observing these trends, we can gain insights into the
+              development and transformation of themes throughout the narrative.
             </p>
             <p>
-              The x-axis represents the chapter numbers, while the y-axis
-              represents the probability of each topic in the corresponding
-              chapter. This allows us to see how certain themes emerge, evolve,
-              and dissipate as the story progresses.
+              The x-axis represents the chapter numbers, allowing you to track
+              the progression of the story, while the y-axis represents the
+              probability of each topic being prominent in the corresponding
+              chapter. This setup enables us to see how certain themes emerge,
+              peak, and fade as the story unfolds.
+            </p>
+            <p>
+              The chart includes a dropdown menu for selecting specific topics.
+              By choosing a topic from the dropdown, you can isolate its trend
+              across the chapters, making it easier to focus on individual
+              thematic developments.
             </p>
             <pre><code># Prepare data for topic distribution over chapters
 topic_distributions = []
@@ -402,16 +410,39 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
             </p>
             <div class="iframe-container sentiment-iframe">
               <iframe
-                src="images/topic_evolution.html"
+                src="images/topicevolution.html"
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
             <p>
-              <strong>User Instructions:</strong> Use the interactive line chart
-              to track how the prevalence of each topic changes across the
-              chapters. Hover over the lines to see the topic proportions for
-              specific chapters. Toggle the visibility of topics by clicking on
-              their labels in the legend.
+              <strong>User Instructions:</strong>
+            </p>
+            <ul>
+              <li>
+                Use the dropdown menu located to the right of the chart to
+                select a specific topic. The chart will update to show the trend
+                of the chosen topic across the chapters.
+              </li>
+              <li>
+                Hover over the lines in the chart to see detailed information
+                about the topic probabilities for each chapter.
+              </li>
+              <li>
+                Pay attention to the x-axis (Chapter In The Novel) and y-axis
+                (Topic Probability) to understand how the prominence of each
+                topic evolves throughout the story.
+              </li>
+              <li>
+                The line colors and the dropdown menu are designed to provide a
+                clear and interactive way to explore the themes in Jane Eyre.
+              </li>
+            </ul>
+            <p>
+              This visualization aims to convey how different themes are
+              distributed and how they change as the narrative progresses. By
+              isolating individual topics, you can gain deeper insights into the
+              thematic structure of Jane Eyre and how specific themes contribute
+              to the overall story.
             </p>
           </section>
 
