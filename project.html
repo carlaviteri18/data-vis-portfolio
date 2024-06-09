@@ -205,7 +205,8 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
             <p>
               Latent Dirichlet Allocation (LDA) is a topic modeling technique
               that identifies groups of words (topics) that frequently occur
-              together. We use LDA to discover themes in the text of Jane Eyre.
+              together. I am using LDA to discover themes in the text of Jane
+              Eyre.
             </p>
             <p>
               The Intertopic Distance Map shows the relationships between the
@@ -270,10 +271,10 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
               meaningful topics.
             </p>
             <p>
-              In this project, we used the Coherence Model from Gensim to
-              compute the coherence score for our LDA model. The coherence score
-              helps us assess the quality of the topics and decide on the
-              optimal number of topics for our analysis.
+              In this project, I used the Coherence Model from Gensim to compute
+              the coherence score for our LDA model. The coherence score helps
+              us assess the quality of the topics and decide on the optimal
+              number of topics for our analysis.
             </p>
             <pre><code># Calculate coherence score for LDA model
 from gensim.models import CoherenceModel
@@ -386,8 +387,8 @@ fig.show()</code></pre>
             <p>
               The neutral sentiment count is zero due to the chosen sentiment
               threshold values. By setting the thresholds for positive sentiment
-              to scores above 0.5 and negative sentiment to scores below -0.5,
-              we aimed to clearly differentiate between strongly positive and
+              to scores above 0.5 and negative sentiment to scores below -0.5, I
+              aimed to clearly differentiate between strongly positive and
               strongly negative sentiments. This approach helps in highlighting
               the extremes and reduces the ambiguity that often accompanies
               neutral sentiment. This choice was intentional to focus on the
@@ -898,7 +899,7 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
               <h2>Chapter Contributions to Topics</h2>
             </header>
             <p>
-              For each topic, we provide an overview of the significant chapters
+              For each topic, I provide an overview of the significant chapters
               contributing to each topic, along with their corresponding content
               from the novel. This section helps us evaluate how accurately the
               model has captured the themes within the text.
@@ -1278,7 +1279,7 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
             <p>
               This project demonstrates the power of topic modeling in
               uncovering the thematic structure of a literary work. By applying
-              LDA to Jane Eyre, we have identified key themes and tracked their
+              LDA to Jane Eyre, I have identified key themes and tracked their
               evolution throughout the novel. The interactive visualizations
               provide a dynamic way to explore these themes and gain deeper
               insights into Charlotte Brontë's masterpiece.
