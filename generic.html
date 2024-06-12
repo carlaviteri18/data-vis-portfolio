@@ -351,19 +351,315 @@
         {
           id: 5,
           title: "Assignment 5",
-          description: "Description for Assignment 5",
-          images: [
-            {
-              src: "",
-              title: "Visualization 5A",
-              description: "Detailed description of Visualization 5A.",
-            },
-            {
-              src: "",
-              title: "Visualization 5B",
-              description: "Detailed description of Visualization 5B.",
-            },
-          ],
+          description: `
+            <div class="content-section">
+              <h3>Overview</h3>
+              <p>This assignment focuses on visualizing and analyzing abortion appointment wait times across different states in the United States using Tableau. The goal is to create an interactive dashboard that provides insights into the geographic distribution of wait times and the availability of abortion services.</p>
+            </div>
+            <div class="content-section">
+              <h3>Dataset</h3>
+              <p>The dataset used contains information on abortion appointment wait times and the number of abortion providers for each state. Key columns include:</p>
+              <ul>
+                <li>State</li>
+                <li>Median Wait Time (days)</li>
+                <li>Minimum and Maximum Wait Times (days)</li>
+                <li>Number of Abortion Providers</li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <h3>Dashboard Overview</h3>
+              <p>The dashboard consists of two main visualizations:</p>
+              <ol>
+                <li>
+                  <strong>Map-Based Visualization</strong>
+                  <p><strong>Title</strong>: "Median Abortion Appointment Wait Times by State"</p>
+                  <p><strong>Description</strong>: This map shows the median wait times for abortion appointments across states, with color coding representing different wait times and circle sizes indicating the number of providers.</p>
+                  <p><strong>Interactive Features</strong>: Hover over states to see detailed information.</p>
+                </li>
+                <li>
+                  <strong>Bar Chart Visualization</strong>
+                  <p><strong>Title</strong>: "Abortion Appointment Wait Times and Providers by State"</p>
+                  <p><strong>Description</strong>: This bar chart compares median wait times across states, with bars color-coded by the number of abortion providers.</p>
+                  <p><strong>Interactive Features</strong>: Click on bars to highlight corresponding states on the map.</p>
+                </li>
+              </ol>
+            </div>
+            <div class="content-section">
+              <h3>User Instructions</h3>
+              <p><strong>Explore the Map</strong>: Hover over a state to see the median, minimum, and maximum wait times, as well as the number of abortion providers.</p>
+              <p><strong>Interact with the Bar Chart</strong>: Click on a bar to highlight the corresponding state on the map. This helps in understanding the geographic context of the wait times.</p>
+            </div>
+            <div class="content-section">
+              <p>This dashboard provides a clear and interactive way to understand abortion appointment wait times and service availability across the United States, facilitating data-driven insights and decisions.</p>
+            </div>`,
+          tableau: `
+            <div class='tableauPlaceholder' id='viz1717111014158' style='position: relative'>
+              <noscript>
+                <a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment3_17170944420130&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
+              </noscript>
+              <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='assignment3_17170944420130&#47;Dashboard1' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment3_17170944420130&#47;Dashboard1&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+              </object>
+            </div>`,
+        },
+        {
+          id: 4,
+          title: "Assignment 4",
+          description: `
+            <div class="content-section">
+              <h3>Description of the Final Dashboard</h3>
+              <h4>Visualization 1: Accurate Average Ratings by Cuisine</h4>
+              <p><strong>Description:</strong><br>
+              This bar chart presents the average ratings for the traditional cuisines of Italy, Mexico, and Japan. Each bar represents the mean rating given by respondents for each cuisine, providing a clear and straightforward comparison. The y-axis starts at 0, ensuring an accurate depiction of the differences in ratings.</p>
+              <p><strong>Approach:</strong><br>
+              1. <strong>Data Preparation:</strong> Calculated the average ratings for Italy, Mexico, and Japan using the respective survey responses.<br>
+              2. <strong>Visualization Creation:</strong> Created a bar chart with "Cuisine" on the x-axis and "Average Rating" on the y-axis.<br>
+              3. <strong>Customization:</strong> Assigned distinct colors to each bar and added labels to display the average rating values. Ensured the y-axis starts at 0 to maintain an accurate visual comparison.<br>
+              4. <strong>Title and Legends:</strong> Named the visualization "Accurate Average Ratings by Cuisine" and updated the legend to "Cuisine Types".</p>
+              <h4>Visualization 2: Misleading Average Ratings by Cuisine</h4>
+              <p><strong>Description:</strong><br>
+              This bar chart also shows the average ratings for the traditional cuisines of Italy, Mexico, and Japan, but with a manipulated y-axis. The y-axis starts at 3.5 instead of 0, exaggerating the differences between the cuisines and potentially misleading the viewer into thinking the differences are more significant than they are.</p>
+              <p><strong>Approach:</strong><br>
+              1. <strong>Data Preparation:</strong> Used the same average ratings calculated for Italy, Mexico, and Japan.<br>
+              2. <strong>Visualization Creation:</strong> Created a bar chart similar to the first visualization.<br>
+              3. <strong>Manipulation:</strong> Adjusted the y-axis to start at 3.5 and go up to 5.0, exaggerating the differences between the ratings.<br>
+              4. <strong>Customization:</strong> Maintained the same colors and labels for consistency but manipulated the scale to emphasize the visual impact.<br>
+              5. <strong>Title and Legends:</strong> Named the visualization "Misleading Average Ratings by Cuisine" and updated the legend to "Cuisine Types (Scaled)".</p>
+              <h4>Final Paragraph: The Ease of Misleading with Data Visualizations</h4>
+              <p>Creating misleading visualizations is alarmingly easy. By simply manipulating visual elements such as the axis scale, colors, or even the context provided in titles and legends, one can significantly alter the perception of the data. The second visualization in this dashboard demonstrates how an adjusted y-axis can exaggerate minor differences, making them appear more substantial than they are. This example underscores the importance of ethical data visualization practices and critical viewing. Viewers should always consider the scales and context of visualizations to avoid being misled by manipulated presentations of data. Ethical visualization ensures transparency and accuracy, fostering trust and informed decision-making.</p>
+            </div>`,
+          tableau: `
+            <div class='tableauPlaceholder' id='viz1717649544639' style='position: relative'>
+              <noscript>
+                <a href='#'><img alt='Visualizing Cuisine Preferences ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment4_17176455841450&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
+              </noscript>
+              <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='assignment4_17176455841450&#47;Dashboard1' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment4_17176455841450&#47;Dashboard1&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+              </object>
+            </div>`,
+        },
+        {
+          id: 5,
+          title: "Assignment 5",
+          description: `
+            <div class="content-section">
+              <h3>Comprehensive Guide to Creating Custom Interactive Plots with Bokeh</h3>
+              <p>In this guide, we will walk through the steps of creating interactive plots using Bokeh. We will start with a simple example and then move on to a more complex example using real data from the Stardew Valley dataset.</p>
+              <h4>Step 1: Install Bokeh</h4>
+              <p>Ensure you have Bokeh installed. You can install it using pip:</p>
+              <pre><code>pip install bokeh</code></pre>
+              <h4>Step 2: Import Required Libraries</h4>
+              <p>First, import the necessary libraries:</p>
+              <pre><code>from bokeh.plotting import figure, output_file, show, save
+from bokeh.models import ColumnDataSource, HoverTool, Slider
+from bokeh.layouts import column
+import pandas as pd</code></pre>
+            </div>
+            
+            <div class="content-section">
+              <h4>Simple Plot Tutorial</h4>
+              <h5>Step 3: Prepare Data</h5>
+              <p>We start with a simple dataset:</p>
+              <pre><code>data = {
+    'x': [1, 2, 3, 4, 5],
+    'y_line': [6, 7, 2, 4, 5],
+    'y_bar': [1, 4, 3, 2, 6],
+    'label': ['A', 'B', 'C', 'D', 'E']
+}</code></pre>
+              <h5>Step 4: Create and Customize Line Plot</h5>
+              <pre><code>source_line = ColumnDataSource(data=data)
+p_line = figure(title="Line Plot", x_axis_label='X-Axis', y_axis_label='Y-Axis', tooltips=[("Label", "@label"), ("(x,y)", "($x, $y)")])
+p_line.line('x', 'y_line', line_width=2, source=source_line, legend_label="Line", color="#CBBAED")
+p_line.circle('x', 'y_line', size=10, source=source_line, color="#01FDF6", alpha=0.5, legend_label="Line")
+p_line.title.text_font_size = '20pt'
+p_line.title.align = 'center'
+p_line.xaxis.axis_label_text_font_size = "14pt"
+p_line.yaxis.axis_label_text_font_size = "14pt"
+p_line.xgrid.grid_line_color = None
+p_line.ygrid.grid_line_color = None
+p_line.legend.title = 'Legend'
+p_line.legend.title_text_font_style = "bold"
+p_line.legend.label_text_font_size = "10pt"
+p_line.legend.location = "top_left"
+p_line.legend.background_fill_alpha = 0.4
+p_line.legend.label_standoff = 5
+
+output_file("line_plot.html")
+save(p_line)
+show(p_line)</code></pre>
+              <div class="iframe-container">
+                <h3>Line Plot</h3>
+                <div class="iframe-wrapper-1">
+                  <iframe src="images/line_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="content-section">
+              <h5>Step 5: Create and Customize Bar Chart</h5>
+              <pre><code>source_bar = ColumnDataSource(data=data)
+p_bar = figure(title="Bar Chart", x_axis_label='X-Axis', y_axis_label='Y-Axis', tooltips=[("Label", "@label"), ("(x,y)", "($x, $y)")])
+p_bar.vbar(x='x', top='y_bar', width=0.5, source=source_bar, legend_label="Bar", color="#EC9A29", alpha=0.6)
+p_bar.title.text_font_size = '20pt'
+p_bar.title.align = 'center'
+p_bar.xaxis.axis_label_text_font_size = "14pt"
+p_bar.yaxis.axis_label_text_font_size = "14pt"
+p_bar.xgrid.grid_line_color = None
+p_bar.ygrid.grid_line_color = None
+p_bar.legend.title = 'Legend'
+p_bar.legend.title_text_font_style = "bold"
+p_bar.legend.label_text_font_size = "10pt"
+p_bar.legend.location = "top_left"
+p_bar.legend.background_fill_alpha = 0.4
+p_bar.legend.label_standoff = 5
+
+output_file("bar_chart.html")
+save(p_bar)
+show(p_bar)</code></pre>
+              <div class="iframe-container">
+                <h3>Bar Chart</h3>
+                <div class="iframe-wrapper-1">
+                  <iframe src="images/bar_chart.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="content-section">
+              <h5>Step 6: Create and Customize Combined Plot</h5>
+              <pre><code>source_combined = ColumnDataSource(data=data)
+p_combined = figure(title="Combined Plot", x_axis_label='X-Axis', y_axis_label='Y-Axis', tooltips=[("Label", "@label"), ("(x,y)", "($x, $y)")])
+p_combined.line('x', 'y_line', line_width=2, source=source_combined, legend_label="Line", color="#CBBAED")
+p_combined.circle('x', 'y_line', size=10, source=source_combined, color="#01FDF6", alpha=0.5, legend_label="Line")
+p_combined.vbar(x='x', top='y_bar', width=0.5, source=source_combined, legend_label="Bar", color="#EC9A29", alpha=0.6)
+p_combined.title.text_font_size = '20pt'
+p_combined.title.align = 'center'
+p_combined.xaxis.axis_label_text_font_size = "14pt"
+p_combined.yaxis.axis_label_text_font_size = "14pt"
+p_combined.xgrid.grid_line_color = None
+p_combined.ygrid.grid_line_color = None
+p_combined.legend.title = 'Legend'
+p_combined.legend.title_text_font_style = "bold"
+p_combined.legend.label_text_font_size = "10pt"
+p_combined.legend.location = "top_left"
+p_combined.legend.background_fill_alpha = 0.4
+p_combined.legend.label_standoff = 5
+
+# Create slider widget
+slider = Slider(start=0, end=10, value=5, step=1, title="Slider")
+
+# Create layout with widget
+layout = column(p_combined, slider)
+
+# Save and show combined plot
+output_file("bokeh_custom_plot.html")
+save(layout)
+show(layout)</code></pre>
+              <div class="iframe-container">
+                <h3>Combined Plot</h3>
+                <div class="iframe-wrapper-1">
+                  <iframe src="images/bokeh_custom_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="content-section">
+              <h4>Stardew Valley Plot Tutorial</h4>
+              <h5>Step 7: Load and Prepare Your Data</h5>
+              <p>We'll load the data from the provided spreadsheet, manually assign column names, filter to include only "Fruit" in the "Plant" column, sort by 'Sell Price 1' in descending order, and create a combined plot with horizontal bars and a line plot.</p>
+              <pre><code># Load the data
+file_path = '/mnt/data/Stardew Valley - The Spreadsheet_update4.xlsx'
+sheet_name = 'Summer Crop Sales'
+df = pd.read_excel(file_path, sheet_name=sheet_name, header=None)
+
+# Manually assign column names
+df.columns = [
+    'Category', 'Plant', 'Seed Price', 'Sell Price 1', 'Sell Price 2', 'Sell Price 3', 
+    'Preserve', 'Keg', 'Days', 'Yield', 'Profit', 'Profit/d', 'Reharvest', 
+    'Profit/Season', 'Harvests', 'Profit/Season/d', 'Place', 'Continuous', 'Notes'
+]
+
+# Filter the relevant columns, rows with complete data, and only 'Fruit' category
+df = df[df['Category'] == 'Fruit'][['Plant', 'Sell Price 1', 'Profit', 'Days']].dropna()
+
+# Sort by 'Sell Price 1' in descending order
+df = df.sort_values(by='Sell Price 1', ascending=False)
+
+# Convert 'Plant' to a categorical type for plotting
+df['Plant'] = df['Plant'].astype('category')
+
+# Create a ColumnDataSource from the DataFrame
+source = ColumnDataSource(df)</code></pre>
+              <h5>Step 8: Create and Customize Combined Plot</h5>
+              <pre><code>p_combined = figure(
+    title="Stardew Valley Summer Fruit Crop Sales",
+    y_axis_label='Plant',
+    x_axis_label='Amount',
+    tooltips=[("Plant", "@Plant"), ("(x,y)", "($x, $y)")],
+    y_range=df['Plant'].cat.categories.tolist(),
+    width=800
+)
+p_combined.hbar(y='Plant', right='Profit', height=0.5, source=source, legend_label="Profit", color="#EC9A29", alpha=0.6)
+p_combined.line('Sell Price 1', 'Plant', line_width=2, source=source, legend_label="Sell Price", color="#CBBAED")
+p_combined.circle('Sell Price 1', 'Plant', size=10, source=source, color="#01FDF6", alpha=0.5, legend_label="Sell Price")
+p_combined.title.text_font_size = '16pt'
+p_combined.title.align = 'center'
+p_combined.xaxis.axis_label_text_font_size = "14pt"
+p_combined.yaxis.axis_label_text_font_size = "14pt"
+p_combined.xgrid.grid_line_color = None
+p_combined.ygrid.grid_line_color = None
+p_combined.legend.title = 'Legend'
+p_combined.legend.title_text_font_style = "bold"
+p_combined.legend.label_text_font_size = "10pt"
+p_combined.legend.location = "top_right"
+p_combined.legend.background_fill_alpha = 0.4
+p_combined.legend.label_standoff = 5
+
+# Create slider widget
+slider = Slider(start=0, end=10, value=5, step=1, title="Slider")
+
+# Create layout with widget
+layout = column(p_combined, slider)
+
+# Save and show combined plot
+output_file("bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html")
+save(layout)
+show(layout)</code></pre>
+              <div class="iframe-container">
+                <h3>Stardew Valley Combined Plot</h3>
+                <div class="iframe-wrapper-2">
+                  <iframe src="images/bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                </div>
+              </div>
+            </div>
+            
+            <div class="content-section">
+              <h4>Conclusion</h4>
+              <p>This comprehensive guide has walked through creating interactive plots using Bokeh. Starting with simple examples, we progressed to using real data from the Stardew Valley dataset, demonstrating how to filter, sort, and visualize data effectively. By following these steps, you can create informative and visually appealing visualizations tailored to your data and requirements.</p>
+            </div>`,
         },
       ];
 
