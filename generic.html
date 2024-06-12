@@ -536,7 +536,28 @@ p_combined.legend.background_fill_alpha = 0.4
 p_combined.legend.label_standoff = 5
 
 # Create slider widget
-slider = Slider(start=0, end=10, value=5, step=1, title="Slider")
+slider = Slider(start=0, end=1000, value=0, step=10, title="Minimum Sell Price 1")
+
+# Add a JavaScript callback to filter the data based on the slider value
+callback = CustomJS(args=dict(source=source, original_source=source.data), code="""
+    var data = source.data;
+    var original_data = original_source;
+    var value = cb_obj.value;
+    data['Plant'] = [];
+    data['Sell Price 1'] = [];
+    data['Profit'] = [];
+    data['Days'] = [];
+    for (var i = 0; i < original_data['Plant'].length; i++) {
+        if (original_data['Sell Price 1'][i] >= value) {
+            data['Plant'].push(original_data['Plant'][i]);
+            data['Sell Price 1'].push(original_data['Sell Price 1'][i]);
+            data['Profit'].push(original_data['Profit'][i]);
+            data['Days'].push(original_data['Days'][i]);
+        }
+    }
+    source.change.emit();
+""")
+slider.js_on_change('value', callback)
 
 # Create layout with widget
 layout = column(p_combined, slider)
@@ -544,7 +565,8 @@ layout = column(p_combined, slider)
 # Save and show combined plot
 output_file("bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html")
 save(layout)
-show(layout)</code></pre>
+show(layout)
+</code></pre>
               <div class="iframe-container">
                 <h3>Stardew Valley Combined Plot</h3>
                 <div class="iframe-wrapper-3">
