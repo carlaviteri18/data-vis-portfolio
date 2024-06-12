@@ -353,120 +353,6 @@
           title: "Assignment 5",
           description: `
             <div class="content-section">
-              <h3>Overview</h3>
-              <p>This assignment focuses on visualizing and analyzing abortion appointment wait times across different states in the United States using Tableau. The goal is to create an interactive dashboard that provides insights into the geographic distribution of wait times and the availability of abortion services.</p>
-            </div>
-            <div class="content-section">
-              <h3>Dataset</h3>
-              <p>The dataset used contains information on abortion appointment wait times and the number of abortion providers for each state. Key columns include:</p>
-              <ul>
-                <li>State</li>
-                <li>Median Wait Time (days)</li>
-                <li>Minimum and Maximum Wait Times (days)</li>
-                <li>Number of Abortion Providers</li>
-              </ul>
-            </div>
-            <div class="content-section">
-              <h3>Dashboard Overview</h3>
-              <p>The dashboard consists of two main visualizations:</p>
-              <ol>
-                <li>
-                  <strong>Map-Based Visualization</strong>
-                  <p><strong>Title</strong>: "Median Abortion Appointment Wait Times by State"</p>
-                  <p><strong>Description</strong>: This map shows the median wait times for abortion appointments across states, with color coding representing different wait times and circle sizes indicating the number of providers.</p>
-                  <p><strong>Interactive Features</strong>: Hover over states to see detailed information.</p>
-                </li>
-                <li>
-                  <strong>Bar Chart Visualization</strong>
-                  <p><strong>Title</strong>: "Abortion Appointment Wait Times and Providers by State"</p>
-                  <p><strong>Description</strong>: This bar chart compares median wait times across states, with bars color-coded by the number of abortion providers.</p>
-                  <p><strong>Interactive Features</strong>: Click on bars to highlight corresponding states on the map.</p>
-                </li>
-              </ol>
-            </div>
-            <div class="content-section">
-              <h3>User Instructions</h3>
-              <p><strong>Explore the Map</strong>: Hover over a state to see the median, minimum, and maximum wait times, as well as the number of abortion providers.</p>
-              <p><strong>Interact with the Bar Chart</strong>: Click on a bar to highlight the corresponding state on the map. This helps in understanding the geographic context of the wait times.</p>
-            </div>
-            <div class="content-section">
-              <p>This dashboard provides a clear and interactive way to understand abortion appointment wait times and service availability across the United States, facilitating data-driven insights and decisions.</p>
-            </div>`,
-          tableau: `
-            <div class='tableauPlaceholder' id='viz1717111014158' style='position: relative'>
-              <noscript>
-                <a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment3_17170944420130&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
-              </noscript>
-              <object class='tableauViz'  style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                <param name='embed_code_version' value='3' /> 
-                <param name='site_root' value='' />
-                <param name='name' value='assignment3_17170944420130&#47;Dashboard1' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment3_17170944420130&#47;Dashboard1&#47;1.png' /> 
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en-US' />
-              </object>
-            </div>`,
-        },
-        {
-          id: 4,
-          title: "Assignment 4",
-          description: `
-            <div class="content-section">
-              <h3>Description of the Final Dashboard</h3>
-              <h4>Visualization 1: Accurate Average Ratings by Cuisine</h4>
-              <p><strong>Description:</strong><br>
-              This bar chart presents the average ratings for the traditional cuisines of Italy, Mexico, and Japan. Each bar represents the mean rating given by respondents for each cuisine, providing a clear and straightforward comparison. The y-axis starts at 0, ensuring an accurate depiction of the differences in ratings.</p>
-              <p><strong>Approach:</strong><br>
-              1. <strong>Data Preparation:</strong> Calculated the average ratings for Italy, Mexico, and Japan using the respective survey responses.<br>
-              2. <strong>Visualization Creation:</strong> Created a bar chart with "Cuisine" on the x-axis and "Average Rating" on the y-axis.<br>
-              3. <strong>Customization:</strong> Assigned distinct colors to each bar and added labels to display the average rating values. Ensured the y-axis starts at 0 to maintain an accurate visual comparison.<br>
-              4. <strong>Title and Legends:</strong> Named the visualization "Accurate Average Ratings by Cuisine" and updated the legend to "Cuisine Types".</p>
-              <h4>Visualization 2: Misleading Average Ratings by Cuisine</h4>
-              <p><strong>Description:</strong><br>
-              This bar chart also shows the average ratings for the traditional cuisines of Italy, Mexico, and Japan, but with a manipulated y-axis. The y-axis starts at 3.5 instead of 0, exaggerating the differences between the cuisines and potentially misleading the viewer into thinking the differences are more significant than they are.</p>
-              <p><strong>Approach:</strong><br>
-              1. <strong>Data Preparation:</strong> Used the same average ratings calculated for Italy, Mexico, and Japan.<br>
-              2. <strong>Visualization Creation:</strong> Created a bar chart similar to the first visualization.<br>
-              3. <strong>Manipulation:</strong> Adjusted the y-axis to start at 3.5 and go up to 5.0, exaggerating the differences between the ratings.<br>
-              4. <strong>Customization:</strong> Maintained the same colors and labels for consistency but manipulated the scale to emphasize the visual impact.<br>
-              5. <strong>Title and Legends:</strong> Named the visualization "Misleading Average Ratings by Cuisine" and updated the legend to "Cuisine Types (Scaled)".</p>
-              <h4>Final Paragraph: The Ease of Misleading with Data Visualizations</h4>
-              <p>Creating misleading visualizations is alarmingly easy. By simply manipulating visual elements such as the axis scale, colors, or even the context provided in titles and legends, one can significantly alter the perception of the data. The second visualization in this dashboard demonstrates how an adjusted y-axis can exaggerate minor differences, making them appear more substantial than they are. This example underscores the importance of ethical data visualization practices and critical viewing. Viewers should always consider the scales and context of visualizations to avoid being misled by manipulated presentations of data. Ethical visualization ensures transparency and accuracy, fostering trust and informed decision-making.</p>
-            </div>`,
-          tableau: `
-            <div class='tableauPlaceholder' id='viz1717649544639' style='position: relative'>
-              <noscript>
-                <a href='#'><img alt='Visualizing Cuisine Preferences ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment4_17176455841450&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
-              </noscript>
-              <object class='tableauViz'  style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                <param name='embed_code_version' value='3' /> 
-                <param name='site_root' value='' />
-                <param name='name' value='assignment4_17176455841450&#47;Dashboard1' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;assignment4_17176455841450&#47;Dashboard1&#47;1.png' /> 
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en-US' />
-              </object>
-            </div>`,
-        },
-        {
-          id: 5,
-          title: "Assignment 5",
-          description: `
-            <div class="content-section">
               <h3>Comprehensive Guide to Creating Custom Interactive Plots with Bokeh</h3>
               <p>In this guide, we will walk through the steps of creating interactive plots using Bokeh. We will start with a simple example and then move on to a more complex example using real data from the Stardew Valley dataset.</p>
               <h4>Step 1: Install Bokeh</h4>
@@ -514,7 +400,7 @@ show(p_line)</code></pre>
               <div class="iframe-container">
                 <h3>Line Plot</h3>
                 <div class="iframe-wrapper-1">
-                  <iframe src="images/line_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                  <iframe src="line_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
                 </div>
               </div>
             </div>
@@ -543,7 +429,7 @@ show(p_bar)</code></pre>
               <div class="iframe-container">
                 <h3>Bar Chart</h3>
                 <div class="iframe-wrapper-1">
-                  <iframe src="images/bar_chart.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                  <iframe src="bar_chart.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
                 </div>
               </div>
             </div>
@@ -581,7 +467,7 @@ show(layout)</code></pre>
               <div class="iframe-container">
                 <h3>Combined Plot</h3>
                 <div class="iframe-wrapper-1">
-                  <iframe src="images/bokeh_custom_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                  <iframe src="bokeh_custom_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
                 </div>
               </div>
             </div>
@@ -651,7 +537,7 @@ show(layout)</code></pre>
               <div class="iframe-container">
                 <h3>Stardew Valley Combined Plot</h3>
                 <div class="iframe-wrapper-2">
-                  <iframe src="images/bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
+                  <iframe src="bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
                 </div>
               </div>
             </div>
