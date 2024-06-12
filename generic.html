@@ -468,7 +468,7 @@ show(layout)</code></pre>
 
               <div class="iframe-container">
                 <h3>Combined Plot</h3>
-                <div class="iframe-wrapper-1">
+                <div class="iframe-wrapper-2">
                   <iframe src="images/bokeh_custom_plot.html" scrolling="no" allowtransparency="true" allowfullscreen="true" frameborder="0"></iframe>
                 </div>
               </div>
@@ -479,8 +479,8 @@ show(layout)</code></pre>
               <h5>Step 7: Load and Prepare Your Data</h5>
               <p>We'll load the data from the provided spreadsheet, manually assign column names, filter to include only "Fruit" in the "Plant" column, sort by 'Sell Price 1' in descending order, and create a combined plot with horizontal bars and a line plot.</p>
               <pre><code># Load the data
-file_path = '/mnt/data/Stardew Valley - The Spreadsheet_update4.xlsx'
-sheet_name = 'Summer Crop Sales'
+file_path = '/content/Stardew Valley - The Spreadsheet_update4.xlsx'
+sheet_name = 'Summer Crops'
 df = pd.read_excel(file_path, sheet_name=sheet_name, header=None)
 
 # Manually assign column names
