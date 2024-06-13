@@ -365,20 +365,28 @@
               <h3>Comprehensive Guide to Creating Custom Interactive Plots with Bokeh</h3>
               <p>In this guide, we will walk through the steps of creating interactive plots using Bokeh. We will start with a simple example and then move on to a more complex example using real data from the <a href="https://docs.google.com/spreadsheets/d/1uA2IQ_uMLmvEZa64P3ZVMkoGGM8qMqIWAfRYsnyhGRc/edit?gid=755727048#gid=755727048"> Stardew Valley dataset. </a></p>
               <h4>Step 1: Install Bokeh</h4>
-              <p>Ensure you have Bokeh installed. You can install it using pip:</p>
+              <p>Ensure you have Bokeh installed. Bokeh is a powerful visualization library that helps you create interactive and visually appealing plots. You can install it using pip:</p>
               <pre><code>pip install bokeh</code></pre>
               <h4>Step 2: Import Required Libraries</h4>
-              <p>First, import the necessary libraries:</p>
+              <p>First, import the necessary libraries. These libraries are essential for creating and customizing plots:</p>
               <pre><code>from bokeh.plotting import figure, output_file, show, save
 from bokeh.models import ColumnDataSource, HoverTool, Slider
 from bokeh.layouts import column
 import pandas as pd</code></pre>
+              <ol>
+                <li>
+                  <p><strong>bokeh.plotting</strong>: Provides functions to create and manipulate plots.</p>
+                  <p><strong>bokeh.models</strong>: Contains various tools and widgets like ColumnDataSource, HoverTool, Slider, and CustomJS.</p>
+                  <p><strong>bokeh.layouts</strong>: Used to arrange plots and widgets in a layout.</p>
+                  <p><strong>pandas</strong>: A powerful data manipulation library.</p>
+                </li>
+              </ol>
             </div>
             
             <div class="content-section">
               <h4>Simple Plot Tutorial</h4>
               <h5>Step 3: Prepare Data</h5>
-              <p>We start with a simple dataset:</p>
+              <p>We start with a simple dataset. This step involves creating a dictionary with data that we will use for our plots. The dataset includes x-values, y-values for the line plot, y-values for the bar chart, and labels.</p>
               <pre><code>data = {
     'x': [1, 2, 3, 4, 5],
     'y_line': [6, 7, 2, 4, 5],
@@ -386,6 +394,7 @@ import pandas as pd</code></pre>
     'label': ['A', 'B', 'C', 'D', 'E']
 }</code></pre>
               <h5>Step 4: Create and Customize Line Plot</h5>
+              <p>Create a line plot using the prepared data. This involves setting up the data source, defining the plot, and customizing its appearance.</p>
               <pre><code>source_line = ColumnDataSource(data=data)
 p_line = figure(title="Line Plot", x_axis_label='X-Axis', y_axis_label='Y-Axis', tooltips=[("Label", "@label"), ("(x,y)", "($x, $y)")])
 p_line.line('x', 'y_line', line_width=2, source=source_line, legend_label="Line", color="#CBBAED")
@@ -406,6 +415,14 @@ p_line.legend.label_standoff = 5
 output_file("line_plot.html")
 save(p_line)
 show(p_line)</code></pre>
+              <ol>
+                <li>
+                  <p><strong>ColumnDataSource</strong>: This is the data source for the plot.</p>
+                  <p><strong>figure()</strong>: Creates a new plot with the specified title, axis labels, and tooltips.</p>
+                  <p><strong>line() and circle()</strong>: Adds a line and circles to the plot, representing the data points.</p>
+                  <p><strong>Customizations</strong>: Adjusting font sizes, alignments, and grid lines for better appearance.</p>
+                </li>
+              </ol>
               <div class="iframe-container">
                 <h3>Line Plot</h3>
                 <div class="iframe-wrapper-1">
@@ -416,6 +433,7 @@ show(p_line)</code></pre>
             
             <div class="content-section">
               <h5>Step 5: Create and Customize Bar Chart</h5>
+              <p>Create a bar chart using the same data. This step is similar to creating the line plot but uses bars instead.</p>
               <pre><code>source_bar = ColumnDataSource(data=data)
 p_bar = figure(title="Bar Chart", x_axis_label='X-Axis', y_axis_label='Y-Axis', tooltips=[("Label", "@label"), ("(x,y)", "($x, $y)")])
 p_bar.vbar(x='x', top='y_bar', width=0.5, source=source_bar, legend_label="Bar", color="#EC9A29", alpha=0.6)
@@ -435,6 +453,12 @@ p_bar.legend.label_standoff = 5
 output_file("bar_chart.html")
 save(p_bar)
 show(p_bar)</code></pre>
+              <ol>
+                <li>
+                  <p><strong>vbar()</strong>: Adds vertical bars to the plot to represent the data points.</p>
+                  <p><strong>Customizations</strong>:  Similar to the line plot, we adjust the font sizes, alignments, and grid lines.</p>
+                </li>
+              </ol>
               <div class="iframe-container">
                 <h3>Bar Chart</h3>
                 <div class="iframe-wrapper-1">
@@ -445,6 +469,7 @@ show(p_bar)</code></pre>
             
             <div class="content-section">
               <h5>Step 6: Create and Customize Combined Plot</h5>
+              <p>Combine the line and bar charts into a single plot. This involves creating a combined plot and adding both line and bar elements.</p>
               <pre><code>source_combined = ColumnDataSource(data=data)
 p_combined = figure(title="Combined Plot", x_axis_label='X-Axis', y_axis_label='Y-Axis', tooltips=[("Label", "@label"), ("(x,y)", "($x, $y)")])
 p_combined.line('x', 'y_line', line_width=2, source=source_combined, legend_label="Line", color="#CBBAED")
@@ -473,6 +498,12 @@ layout = column(p_combined, slider)
 output_file("bokeh_custom_plot.html")
 save(layout)
 show(layout)</code></pre>
+              <ol>
+                <li>
+                  <p><strong>vbar() and line()</strong>: Adds both bars and lines to the plot.</p>
+                  <p><strong>Slider</strong>:  A widget to interact with the plot. In this example, it does not change the plot but demonstrates how to add interactive elements.</p>
+                </li>
+              </ol>
 
               <div class="iframe-container">
                 <h3>Combined Plot</h3>
@@ -486,7 +517,7 @@ show(layout)</code></pre>
             <div class="content-section">
               <h4>Stardew Valley Plot Tutorial</h4>
               <h5>Step 7: Load and Prepare Your Data</h5>
-              <p>We'll load the data from the provided <a href="https://docs.google.com/spreadsheets/d/1uA2IQ_uMLmvEZa64P3ZVMkoGGM8qMqIWAfRYsnyhGRc/edit?gid=755727048#gid=755727048"> spreadsheet </a>, manually assign column names, filter to include only "Fruit" in the "Plant" column, sort by 'Sell Price 1' in descending order, and create a combined plot with horizontal bars and a line plot.</p>
+              <p>We'll load the data from the provided <a href="https://docs.google.com/spreadsheets/d/1uA2IQ_uMLmvEZa64P3ZVMkoGGM8qMqIWAfRYsnyhGRc/edit?gid=755727048#gid=755727048"> spreadsheet </a>, manually assign column names, convert the 'Plant' column to a categorical type to ensure the plot can use it effectively, filter to include only "Fruit" in the "Plant" column, sort by 'Sell Price 1' in descending order, and create a combined plot with horizontal bars and a line plot.</p>
               <pre><code># Load the data
 file_path = '/content/Stardew Valley - The Spreadsheet_update4.xlsx'
 sheet_name = 'Summer Crops'
@@ -511,6 +542,20 @@ df['Plant'] = df['Plant'].astype('category')
 # Create a ColumnDataSource from the DataFrame
 source = ColumnDataSource(df)</code></pre>
               <h5>Step 8: Create and Customize Combined Plot</h5>
+              <p>We'll create a combined plot that includes both horizontal bars and a line plot, and add a slider to filter the data based on the minimum 'Sell Price 1' value.</p>
+              <p>
+                1. <strong>Initialize the Plot</strong>: Create a figure for the combined plot with customizations for appearance.
+                2. <strong>Add Horizontal Bars</strong>: Add horizontal bars to represent the 'Profit' for each plant.
+                3. <strong>Add Line and Circle Elements:</strong>: Add a line and circles to represent 'Sell Price 1' for each plant.
+                4. <strong>Customize Plot Appearance:</strong>: Set the title, axis labels, and legend properties for better readability.
+                5. <strong>Create Slider Widget:</strong>: Add a slider widget to filter the data based on 'Sell Price 1'.
+                6. <strong>Add JavaScript Callback:</strong>: Attach a JavaScript callback to the slider to filter the data dynamically.
+                <ol>
+                  <li><strong>CustomJS</strong>: This code filters the data to include only crops with a 'Sell Price 1' greater than or equal to the slider's value.</li>
+                  </ol>
+                7. <strong>Create Layout with Widget:</strong>: Combine the plot and the slider into a single layout.
+                8. <strong>Save and Show Combined Plot:</strong>: Save the combined plot to an HTML file and display it.
+
               <pre><code>p_combined = figure(
     title="Stardew Valley Summer Fruit Crop Sales",
     y_axis_label='Plant',
