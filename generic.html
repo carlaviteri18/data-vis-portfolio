@@ -411,14 +411,10 @@ p_line.legend.label_standoff = 5
 output_file("line_plot.html")
 save(p_line)
 show(p_line)</code></pre>
-              <ol>
-                <li>
-                  <p><strong>ColumnDataSource</strong>: This is the data source for the plot.</p>
-                  <p><strong>figure()</strong>: Creates a new plot with the specified title, axis labels, and tooltips.</p>
-                  <p><strong>line() and circle()</strong>: Adds a line and circles to the plot, representing the data points.</p>
-                  <p><strong>Customizations</strong>: Adjusting font sizes, alignments, and grid lines for better appearance.</p>
-                </li>
-              </ol>
+                <li><strong>ColumnDataSource</strong>: This is the data source for the plot.</li>
+                <li><strong>figure()</strong>: Creates a new plot with the specified title, axis labels, and tooltips.</li>
+                <li><strong>line() and circle()</strong>: Adds a line and circles to the plot, representing the data points.</li>
+                <li><strong>Customizations</strong>: Adjusting font sizes, alignments, and grid lines for better appearance.</li>
               <div class="iframe-container">
                 <h3>Line Plot</h3>
                 <div class="iframe-wrapper-1">
@@ -449,12 +445,8 @@ p_bar.legend.label_standoff = 5
 output_file("bar_chart.html")
 save(p_bar)
 show(p_bar)</code></pre>
-              <ol>
-                <li>
-                  <p><strong>vbar()</strong>: Adds vertical bars to the plot to represent the data points.</p>
-                  <p><strong>Customizations</strong>:  Similar to the line plot, we adjust the font sizes, alignments, and grid lines.</p>
-                </li>
-              </ol>
+                <li><strong>vbar()</strong>: Adds vertical bars to the plot to represent the data points.</li>
+                <li><strong>Customizations</strong>:  Similar to the line plot, we adjust the font sizes, alignments, and grid lines.</li>
               <div class="iframe-container">
                 <h3>Bar Chart</h3>
                 <div class="iframe-wrapper-1">
@@ -494,12 +486,8 @@ layout = column(p_combined, slider)
 output_file("bokeh_custom_plot.html")
 save(layout)
 show(layout)</code></pre>
-              <ol>
-                <li>
-                  <p><strong>vbar() and line()</strong>: Adds both bars and lines to the plot.</p>
-                  <p><strong>Slider</strong>:  A widget to interact with the plot. In this example, it does not change the plot but demonstrates how to add interactive elements.</p>
-                </li>
-              </ol>
+                <li><strong>vbar() and line()</strong>: Adds both bars and lines to the plot.</li>
+                <li><strong>Slider</strong>:  A widget to interact with the plot. In this example, it does not change the plot but demonstrates how to add interactive elements.</li>
 
               <div class="iframe-container">
                 <h3>Combined Plot</h3>
@@ -539,18 +527,18 @@ df['Plant'] = df['Plant'].astype('category')
 source = ColumnDataSource(df)</code></pre>
               <h5>Step 8: Create and Customize Combined Plot</h5>
               <p>We'll create a combined plot that includes both horizontal bars and a line plot, and add a slider to filter the data based on the minimum 'Sell Price 1' value.</p>
-              <p>
-                1. <strong>Initialize the Plot</strong>: Create a figure for the combined plot with customizations for appearance.
-                2. <strong>Add Horizontal Bars</strong>: Add horizontal bars to represent the 'Profit' for each plant.
-                3. <strong>Add Line and Circle Elements:</strong>: Add a line and circles to represent 'Sell Price 1' for each plant.
-                4. <strong>Customize Plot Appearance:</strong>: Set the title, axis labels, and legend properties for better readability.
-                5. <strong>Create Slider Widget:</strong>: Add a slider widget to filter the data based on 'Sell Price 1'.
-                6. <strong>Add JavaScript Callback:</strong>: Attach a JavaScript callback to the slider to filter the data dynamically.
+
+              <p>1. <strong>Initialize the Plot</strong>: Create a figure for the combined plot with customizations for appearance.</p>
+              <p>2. <strong>Add Horizontal Bars</strong>: Add horizontal bars to represent the 'Profit' for each plant.</p>
+              <p>3. <strong>Add Line and Circle Elements:</strong>: Add a line and circles to represent 'Sell Price 1' for each plant.</p>
+              <p>4. <strong>Customize Plot Appearance:</strong>: Set the title, axis labels, and legend properties for better readability.</p>
+              <p>5. <strong>Create Slider Widget:</strong>: Add a slider widget to filter the data based on 'Sell Price 1'.</p>
+              <p>6. <strong>Add JavaScript Callback:</strong>: Attach a JavaScript callback to the slider to filter the data dynamically.
                 <ol>
                   <li><strong>CustomJS</strong>: This code filters the data to include only crops with a 'Sell Price 1' greater than or equal to the slider's value.</li>
-                  </ol>
-                7. <strong>Create Layout with Widget:</strong>: Combine the plot and the slider into a single layout.
-                8. <strong>Save and Show Combined Plot:</strong>: Save the combined plot to an HTML file and display it.
+                  </ol></p>
+              <p>7. <strong>Create Layout with Widget:</strong>: Combine the plot and the slider into a single layout.</p>
+              <p>8. <strong>Save and Show Combined Plot:</strong>: Save the combined plot to an HTML file and display it.</p>
 
               <pre><code>p_combined = figure(
     title="Stardew Valley Summer Fruit Crop Sales",
