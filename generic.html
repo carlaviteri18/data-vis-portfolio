@@ -526,21 +526,10 @@ df['Plant'] = df['Plant'].astype('category')
 # Create a ColumnDataSource from the DataFrame
 source = ColumnDataSource(df)</code></pre>
               <h5>Step 8: Create and Customize Combined Plot</h5>
-              <p>We'll create a combined plot that includes both horizontal bars and a line plot, and add a slider to filter the data based on the minimum 'Sell Price 1' value.</p>
+<p>We'll create a combined plot that includes both horizontal bars and a line plot, and add a slider to filter the data based on the minimum 'Sell Price 1' value.</p>
 
-              <p>1. <strong>Initialize the Plot</strong>: Create a figure for the combined plot with customizations for appearance.</p>
-              <p>2. <strong>Add Horizontal Bars</strong>: Add horizontal bars to represent the 'Profit' for each plant.</p>
-              <p>3. <strong>Add Line and Circle Elements:</strong>: Add a line and circles to represent 'Sell Price 1' for each plant.</p>
-              <p>4. <strong>Customize Plot Appearance:</strong>: Set the title, axis labels, and legend properties for better readability.</p>
-              <p>5. <strong>Create Slider Widget:</strong>: Add a slider widget to filter the data based on 'Sell Price 1'.</p>
-              <p>6. <strong>Add JavaScript Callback:</strong>: Attach a JavaScript callback to the slider to filter the data dynamically.
-                <ol>
-                  <li><strong>CustomJS</strong>: This code filters the data to include only crops with a 'Sell Price 1' greater than or equal to the slider's value.</li>
-                  </ol></p>
-              <p>7. <strong>Create Layout with Widget:</strong>: Combine the plot and the slider into a single layout.</p>
-              <p>8. <strong>Save and Show Combined Plot:</strong>: Save the combined plot to an HTML file and display it.</p>
-
-              <pre><code>p_combined = figure(
+<p>1. <strong>Initialize the Plot:</strong> Create a figure for the combined plot with customizations for appearance.</p>
+<pre><code>p_combined = figure(
     title="Stardew Valley Summer Fruit Crop Sales",
     y_axis_label='Plant',
     x_axis_label='Amount',
@@ -548,10 +537,19 @@ source = ColumnDataSource(df)</code></pre>
     y_range=df['Plant'].cat.categories.tolist(),
     width=800
 )
-p_combined.hbar(y='Plant', right='Profit', height=0.5, source=source, legend_label="Profit", color="#EC9A29", alpha=0.6)
-p_combined.line('Sell Price 1', 'Plant', line_width=2, source=source, legend_label="Sell Price", color="#CBBAED")
+</code></pre>
+
+<p>2. <strong>Add Horizontal Bars:</strong> Add horizontal bars to represent the 'Profit' for each plant.</p>
+<pre><code>p_combined.hbar(y='Plant', right='Profit', height=0.5, source=source, legend_label="Profit", color="#EC9A29", alpha=0.6)
+</code></pre>
+
+<p>3. <strong>Add Line and Circle Elements:</strong> Add a line and circles to represent 'Sell Price 1' for each plant.</p>
+<pre><code>p_combined.line('Sell Price 1', 'Plant', line_width=2, source=source, legend_label="Sell Price", color="#CBBAED")
 p_combined.circle('Sell Price 1', 'Plant', size=10, source=source, color="#01FDF6", alpha=0.5, legend_label="Sell Price")
-p_combined.title.text_font_size = '16pt'
+</code></pre>
+
+<p>4. <strong>Customize Plot Appearance:</strong> Set the title, axis labels, and legend properties for better readability.</p>
+<pre><code>p_combined.title.text_font_size = '16pt'
 p_combined.title.align = 'center'
 p_combined.xaxis.axis_label_text_font_size = "14pt"
 p_combined.yaxis.axis_label_text_font_size = "14pt"
@@ -563,12 +561,18 @@ p_combined.legend.label_text_font_size = "10pt"
 p_combined.legend.location = "top_right"
 p_combined.legend.background_fill_alpha = 0.4
 p_combined.legend.label_standoff = 5
+</code></pre>
 
-# Create slider widget
-slider = Slider(start=0, end=1000, value=0, step=10, title="Minimum Sell Price 1")
+<p>5. <strong>Create Slider Widget:</strong> Add a slider widget to filter the data based on 'Sell Price 1'.</p>
+<pre><code>slider = Slider(start=0, end=1000, value=0, step=10, title="Minimum Sell Price 1")
+</code></pre>
 
-# Add a JavaScript callback to filter the data based on the slider value
-callback = CustomJS(args=dict(source=source, original_source=source.data), code="""
+<p>6. <strong>Add JavaScript Callback:</strong> Attach a JavaScript callback to the slider to filter the data dynamically.</p>
+<p>    <ol>
+        <li><strong>CustomJS:</strong> This code filters the data to include only crops with a 'Sell Price 1' greater than or equal to the slider's value.</li>
+    </ol>
+</p>
+<pre><code>callback = CustomJS(args=dict(source=source, original_source=source.data), code="""
     var data = source.data;
     var original_data = original_source;
     var value = cb_obj.value;
@@ -587,12 +591,14 @@ callback = CustomJS(args=dict(source=source, original_source=source.data), code=
     source.change.emit();
 """)
 slider.js_on_change('value', callback)
+</code></pre>
 
-# Create layout with widget
-layout = column(p_combined, slider)
+<p>7. <strong>Create Layout with Widget:</strong> Combine the plot and the slider into a single layout.</p>
+<pre><code>layout = column(p_combined, slider)
+</code></pre>
 
-# Save and show combined plot
-output_file("bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html")
+<p>8. <strong>Save and Show Combined Plot:</strong> Save the combined plot to an HTML file and display it.</p>
+<pre><code>output_file("bokeh_stardew_valley_fruit_horizontal_bars_descending_plot.html")
 save(layout)
 show(layout)
 </code></pre>
