@@ -107,31 +107,34 @@
         margin-bottom: 2em;
       }
       .collapsible {
-        background-color: #f4f4f4;
-        color: #444;
+        background-color: #4caf50; /* Change to a more vibrant color */
+        color: white; /* White text for better contrast */
         cursor: pointer;
-        padding: 5px 10px;
+        padding: 10px 20px; /* Increase padding for better touch target */
         width: auto;
         border: none;
         text-align: left;
         outline: none;
-        font-size: 1.1em;
+        font-size: 1.2em; /* Increase font size for better readability */
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin: 0.5em 0;
+        transition: background-color 0.3s ease; /* Smooth transition effect */
       }
       .active,
       .collapsible:hover {
-        background-color: #ddd;
+        background-color: #45a049; /* Darken on hover or active */
       }
       .content {
-        padding: 0 18px;
+        padding: 10px 20px; /* Increase padding for better readability */
         display: none;
         overflow: hidden;
-        background-color: #f4f4f4;
-        border-radius: 10px;
+        background-color: #f9f9f9;
+        border-left: 5px solid #4caf50; /* Add a left border */
+        border-radius: 0 10px 10px 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-top: 0.5em;
+        transition: max-height 0.3s ease; /* Smooth transition for expanding */
       }
       .content code {
         display: block;
@@ -964,7 +967,7 @@
 
 <span class="keyword"># Create the dropdown menu options</span>
 <span class="keyword">dropdown_buttons</span> = [
-    {<span class="keyword">label</span>: <span class="keyword">topic</span>, <span class="keyword">method</span>: <span class="string">'update'</span>, <span class="keyword">args</span>: [{<span class="keyword">visible</span>: [<span class="keyword">t</span> == <span class="keyword">topic</span> <span class="keyword">for t</span> <span class="keyword">in df_melted</span>[<span class="string">'Topic'</span>] <span class="keyword">.unique</span>()]}, {<span class="keyword">title</span>: <span class="string">'Topic Evolution for '</span> + <span class="keyword">topic</span>]}]} <span class="keyword">for topic</span> <span class="keyword">in topic_names</span>
+    {<span class="keyword">label</span>: <span class="keyword">topic</span>, <span class="keyword">method</span>: <span class="string">'update'</span>, <span class="keyword">args</span>: [{<span class="keyword">visible</span>: [<span class="keyword">t</span> == <span class="keyword">topic</span> <span class="keyword">for t</span> <span class="keyword">in df_melted</span>[<span class="string">'Topic'</span>] <span class="keyword">.unique</span>()]}, {<span class="keyword">title</span>: <span class="string">'Topic Evolution for '</span> + <span class="keyword">topic</span>]}]} <span class="keyword">for topic</span> <span="keyword">in topic_names</span>
 ]
 
 <span class="keyword"># Add a default option</span>
@@ -976,7 +979,7 @@
 <span class="keyword">for topic</span> <span class="keyword">in df_melted</span>[<span class="keyword">Topic</span>].<span class="keyword">unique</span>():
     <span class="keyword">fig.add_trace</span>(<span class="keyword">go.Scatter</span>(
         <span class="keyword">x</span>=<span class="keyword">df_melted</span>[<span class="keyword">Chapter</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic</span>] == <span class="keyword">topic</span>],
-        <span class="keyword">y</span>=<span class="keyword">df_melted</span>[<span class="keyword">Probability</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic</span>] == <span class="keyword">topic</span>],
+        <span class="keyword">y</span>=<span class="keyword">df_melted</span>[<span class="keyword">Probability</span>][<span class="keyword">df_melted</span>[<span="keyword">Topic</span>] == <span class="keyword">topic</span>],
         <span class="keyword">mode</span>=<span class="keyword">lines</span>,
         <span class="keyword">name</span>=<span class="keyword">topic</span>,
         <span class="keyword">line</span>={<span class="keyword">color</span>: <span class="string">#A979B9</span>},  <span class="keyword"># Set line color to lilac</span>
@@ -998,7 +1001,7 @@
             <span class="keyword">bordercolor</span>: <span class="string">#985FAB</span>,  <span class="keyword"># Darker shade of lilac border</span>
             <span class="keyword">font</span>: {<span class="keyword">color</span>: <span class="string">white</span>, <span class="keyword">size</span>: 14},  <span class="keyword"># Font settings</span>
             <span class="keyword">borderwidth</span>: 2,
-            <span class="keyword">pad</span>: {<span class="keyword">r</span>: 0, <span class="keyword">t</span>: 10},
+            <span class="keyword">pad</span>: {<span class="keyword">r</span>: 0, <span="keyword">t</span>: 10},
             <span class="keyword">active</span>: 0  <span class="keyword"># Ensure the default option is highlighted</span>
         }
     ],
@@ -1011,21 +1014,21 @@
         <span class="keyword">zeroline</span>=<span class="keyword">True</span>,
         <span class="keyword">zerolinewidth</span>=2,
     },
-    <span class="keyword">yaxis</span>={<span class="keyword">range</span>=[0, <span class="keyword">df_melted</span>[<span class="keyword">Probability</span>].<span class="keyword">max</span>()],
+    <span class="keyword">yaxis</span>={<span class="keyword">range</span>=[0, <span class="keyword">df_melted</span>[<span="keyword">Probability</span>].<span class="keyword">max</span>()],
         <span class="keyword">tickmode</span>=<span class="keyword">linear</span>,
         <span class="keyword">dtick</span>=0.1,
         <span class="keyword">showgrid</span>=<span class="keyword">True</span>,
-        <span class="keyword">zeroline</span>=<span class="keyword">True</span>,
+        <span class="keyword">zeroline</span>=<span="keyword">True</span>,
     },
     <span class="keyword">title</span>={<span class="keyword">text</span>: <span class="string">Topic Evolution Over Chapters in Jane Eyre</span>,
         <span class="keyword">x</span>=0.5,
         <span class="keyword">xanchor</span>=<span class="string">center</span>,
         <span class="keyword">font</span>={<span class="keyword">size</span>: 20, <span class="keyword">color</span>: <span class="keyword">black</span>, <span class="keyword">family</span>: <span class="string">Arial</span>}
     },
-    <span class="keyword">margin</span>={<span class="keyword">l</span>: 50, <span class="keyword">r</span>: 200, <span class="keyword">t</span>: 100, <span class="keyword">b</span>: 50},  <span class="keyword"># Adjust margins as needed</span>
-    <span class="keyword">legend</span>={<span class="keyword">x</span>: 1.2,
+    <span class="keyword">margin</span>={<span class="keyword">l</span>: 50, <span="keyword">r</span>: 200, <span class="keyword">t</span>: 100, <span class="keyword">b</span>: 50},  <span class="keyword"># Adjust margins as needed</span>
+    <span class="keyword">legend</span>={<span="keyword">x</span>: 1.2,
         <span class="keyword">y</span>: 0.5,
-        <span class="keyword">title</span>={<span class="keyword">text</span>: <span class="string">Topics</span>}
+        <span class="keyword">title</span>={<span="keyword">text</span>: <span class="string">Topics</span>}
     }
 )
 
