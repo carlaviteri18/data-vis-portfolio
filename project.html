@@ -288,7 +288,7 @@
 <span class="keyword"># Save the visualization as an HTML file</span>
 <span class="keyword">pyLDAvis</span>.<span class="keyword">save_html</span>(<span class="keyword">vis</span>, <span class="string">'lda_visualization.html'</span>)</code></pre>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>Explanation:</strong> This code prepares the data for
               visualization using pyLDAvis and saves it as an HTML file. The
               visualizations help in understanding the inter-topic distances and
@@ -300,7 +300,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>User Instructions:</strong>
             </p>
             <ul style="color: #ffadbb">
@@ -348,12 +348,12 @@
 
 <span class="keyword">print</span>(<span class="string">'\nCoherence Score: '</span>, <span class="keyword">coherence_lda</span>)</code></pre>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>Explanation:</strong> This code calculates the coherence
               score for the LDA model. The score helps in evaluating the
               semantic similarity of the topics.
             </p>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               To visualize how coherence scores change with different numbers of
               topics, we can plot the coherence score for a range of topic
               numbers. This helps in identifying the optimal number of topics
@@ -407,7 +407,7 @@
 <span class="keyword"># Show the plot</span>
 <span class="keyword">fig.show</span>()</code></pre>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>Explanation:</strong> This code computes the coherence
               scores for different numbers of topics and creates an interactive
               Plotly graph to visualize the scores. The plot helps in
@@ -420,7 +420,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>User Instructions:</strong>
             </p>
             <ul style="color: #ffadbb">
@@ -854,7 +854,7 @@
 <span class="keyword"># Normalize the sentiment scores</span>
 <span class="keyword">average_topic_sentiments</span> = <span class="keyword">topic_sentiments</span> / <span class="keyword">np.where</span>(<span class="keyword">topic_chapter_counts</span> == 0, 1, <span class="keyword">topic_chapter_counts</span>)</code></pre>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>Explanation:</strong> This code calculates the average
               sentiment scores for each topic using the Vader Sentiment Analysis
               tool. The sentiment scores are then normalized based on the topic
@@ -900,7 +900,7 @@
 <span class="keyword"># Save the plot as an HTML file</span>
 <span class="keyword">fig.write_html</span>(<span class="string">"sentiment_distribution.html"</span>)</code></pre>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>Explanation:</strong> This code creates a grouped bar
               chart to visualize the sentiment distribution across topics. It
               shows the count of positive and negative sentiments for each
@@ -913,7 +913,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>User Instructions:</strong> Use the interactive bar chart
               to explore the sentiment distribution across topics. Hover over
               the bars to see the count of sentiments for each topic. The
@@ -1038,7 +1038,7 @@
 <span="keyword"># Save the interactive plot as an HTML file</span>
 <span="keyword">fig.write_html</span>(<span="string">"topic_evolution.html"</span>)</code></pre>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>Explanation:</strong> This code prepares the data for
               visualizing the topic distribution over chapters. The data is then
               melted for better plotting with Plotly.
@@ -1049,7 +1049,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>User Instructions:</strong>
             </p>
             <ul>
@@ -1446,7 +1446,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ffadbb">
+            <p style="color: #ff8599">
               <strong>User Instructions:</strong> Select a topic from the
               dropdown menu to see the text passages where the words
               contributing to that topic are highlighted. This interactive
