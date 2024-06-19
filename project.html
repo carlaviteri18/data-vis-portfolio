@@ -105,6 +105,47 @@
       .visualization {
         margin-bottom: 2em;
       }
+      .collapsible {
+        background-color: #f4f4f4;
+        color: #444;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 1.1em;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .active,
+      .collapsible:hover {
+        background-color: #ddd;
+      }
+      .content {
+        padding: 0 18px;
+        display: none;
+        overflow: hidden;
+        background-color: #f4f4f4;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .content code {
+        display: block;
+        white-space: pre-wrap;
+        background: none;
+        padding: 0;
+      }
+      .syntax-highlight .keyword {
+        color: #007d9c;
+      }
+      .syntax-highlight .string {
+        color: #d63384;
+      }
+      .syntax-highlight .comment {
+        color: #999999;
+        font-style: italic;
+      }
     </style>
   </head>
   <body class="is-preload">
@@ -187,7 +228,11 @@
               which help in capturing common phrases and improving the topic
               modeling results.
             </p>
-            <pre><code># Tokenize chapters
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Tokenize chapters
 tokenized_chapters = [preprocess(chapter) for chapter in chapters]
 
 # Build bigrams and trigrams
@@ -195,6 +240,7 @@ bigram = Phrases(tokenized_chapters, min_count=5, threshold=100)
 trigram = Phrases(bigram[tokenized_chapters], threshold=100)
 
 tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters]</code></pre>
+            </div>
           </section>
 
           <!-- Topic Modeling Section -->
@@ -223,11 +269,16 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
               metric slider can emphasize terms that are more unique to the
               topic or those that are more frequent in the overall text.
             </p>
-            <pre><code># Prepare data for pyLDAvis
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Prepare data for pyLDAvis
 vis = genvis.prepare(optimal_model, corpus, dictionary)
 
 # Save the visualization as an HTML file
 pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
+            </div>
             <p>
               <strong>Explanation:</strong> This code prepares the data for
               visualization using pyLDAvis and saves it as an HTML file. The
@@ -276,13 +327,18 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
               us assess the quality of the topics and decide on the optimal
               number of topics for our analysis.
             </p>
-            <pre><code># Calculate coherence score for LDA model
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Calculate coherence score for LDA model
 from gensim.models import CoherenceModel
 
 coherence_model_lda = CoherenceModel(model=optimal_model, texts=tokenized_chapters, dictionary=dictionary, coherence='c_v')
 coherence_lda = coherence_model_lda.get_coherence()
 
 print('\nCoherence Score: ', coherence_lda)</code></pre>
+            </div>
             <p>
               <strong>Explanation:</strong> This code calculates the coherence
               score for the LDA model. The score helps in evaluating the
@@ -294,7 +350,11 @@ print('\nCoherence Score: ', coherence_lda)</code></pre>
               numbers. This helps in identifying the optimal number of topics
               that produce the highest coherence score.
             </p>
-            <pre><code># Compute coherence scores for different numbers of topics
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Compute coherence scores for different numbers of topics
 coherence_scores = []
 for num_topics in range(2, 40, 2):
     model = LdaModel(corpus=corpus, id2word=dictionary, num_topics=num_topics, random_state=100, update_every=1, chunksize=100, passes=10, alpha='auto', per_word_topics=True)
@@ -337,6 +397,7 @@ fig.write_html("coherence_scores.html")
 
 # Show the plot
 fig.show()</code></pre>
+            </div>
             <p>
               <strong>Explanation:</strong> This code computes the coherence
               scores for different numbers of topics and creates an interactive
@@ -365,191 +426,6 @@ fig.show()</code></pre>
             </ul>
           </section>
 
-          <!-- Sentiment Analysis Section -->
-          <section class="section" id="sentiment-analysis">
-            <header>
-              <h2>Sentiment Analysis</h2>
-            </header>
-            <p>
-              Sentiment analysis assesses the emotional tone of the text. I
-              applied sentiment analysis to each topic to understand the
-              emotional tone associated with each theme. The Sentiment
-              Distribution Bar Chart visualizes the sentiment scores of the
-              topics, showing the count of positive, neutral, and negative
-              sentiments associated with each topic.
-            </p>
-            <p>
-              The x-axis represents the topics, while the y-axis represents the
-              count of chapters associated with each sentiment. The bars are
-              color-coded: lightblue for positive, lightgray for neutral, and
-              darkgray for negative sentiments.
-            </p>
-            <p>
-              The neutral sentiment count is zero due to the chosen sentiment
-              threshold values. By setting the thresholds for positive sentiment
-              to scores above 0.5 and negative sentiment to scores below -0.5, I
-              aimed to clearly differentiate between strongly positive and
-              strongly negative sentiments. This approach helps in highlighting
-              the extremes and reduces the ambiguity that often accompanies
-              neutral sentiment. This choice was intentional to focus on the
-              distinct emotional tones and their impacts on the themes within
-              the novel.
-            </p>
-            <pre><code># Calculate average sentiment scores for each topic
-topic_sentiments = np.zeros(num_topics)
-topic_token_counts = np.zeros(num_topics)
-topic_chapter_counts = np.zeros(num_topics)
-
-for i, (chapter, label) in enumerate(chapters_with_labels):
-    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
-    for topic_id, probability in topic_distribution:
-        sentiment = sia.polarity_scores(' '.join(chapter))['compound']
-        topic_sentiments[topic_id] += sentiment * probability
-        topic_token_counts[topic_id] += len(chapter) * probability
-        topic_chapter_counts[topic_id] += probability
-
-# Normalize the sentiment scores
-average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
-            <p>
-              <strong>Explanation:</strong> This code calculates the average
-              sentiment scores for each topic using the Vader Sentiment Analysis
-              tool. The sentiment scores are then normalized based on the topic
-              distribution.
-            </p>
-            <pre><code># Create a DataFrame for sentiment distribution
-sentiment_counts = []
-for topic in range(num_topics):
-    positive_count = len([sent for sent in chapter_sentiments if sent > 0.5])
-    neutral_count = len([sent for sent in chapter_sentiments if -0.5 <= sent <= 0.5])
-    negative_count = len([sent for sent in chapter_sentiments if sent < -0.5])
-    sentiment_counts.append((topic, 'Positive', positive_count))
-    sentiment_counts.append((topic, 'Neutral', neutral_count))
-    sentiment_counts.append((topic, 'Negative', negative_count))
-
-df_sentiments = pd.DataFrame(sentiment_counts, columns=['Topic', 'Sentiment', 'Count'])
-
-# Create the bar chart with Plotly
-fig = px.bar(
-    df_sentiments,
-    x='Topic',
-    y='Count',
-    color='Sentiment',
-    barmode='group',
-    title='Sentiment Distribution Across Topics in Jane Eyre',
-    color_discrete_map={'Positive': 'blue', 'Neutral': 'grey', 'Negative': 'red'}
-)
-
-# Customize the layout
-fig.update_layout(
-    xaxis_title='Topic',
-    yaxis_title='Count of Sentiments',
-    legend_title='Sentiments'
-)
-
-# Show the plot
-fig.show()
-
-# Save the plot as an HTML file
-fig.write_html("sentiment_distribution.html")</code></pre>
-            <p>
-              <strong>Explanation:</strong> This code creates a grouped bar
-              chart to visualize the sentiment distribution across topics. It
-              shows the count of positive, neutral, and negative sentiments for
-              each topic, making it easier to understand the emotional tone
-              associated with each theme.
-            </p>
-            <div class="iframe-container sentiment-iframe">
-              <iframe
-                src="images/sentimentdistribution.html"
-                onload="adjustIframeHeight(this)"
-              ></iframe>
-            </div>
-            <p>
-              <strong>User Instructions:</strong> Use the interactive bar chart
-              to explore the sentiment distribution across topics. Hover over
-              the bars to see the count of sentiments for each topic. The
-              color-coded bars help in distinguishing between positive, neutral,
-              and negative sentiments.
-            </p>
-          </section>
-
-          <!-- Topic Evolution Section -->
-          <section class="section" id="topic-evolution">
-            <header>
-              <h2>Topic Evolution Over Chapters</h2>
-            </header>
-            <p>
-              The Topic Evolution Line Chart provides a dynamic visualization of
-              how the prevalence of each topic changes over the chapters of Jane
-              Eyre. By observing these trends, we can gain insights into the
-              development and transformation of themes throughout the narrative.
-            </p>
-            <p>
-              The x-axis represents the chapter numbers, allowing you to track
-              the progression of the story, while the y-axis represents the
-              probability of each topic being prominent in the corresponding
-              chapter. This setup enables us to see how certain themes emerge,
-              peak, and fade as the story unfolds.
-            </p>
-            <p>
-              The chart includes a dropdown menu for selecting specific topics.
-              By choosing a topic from the dropdown, you can isolate its trend
-              across the chapters, making it easier to focus on individual
-              thematic developments.
-            </p>
-            <pre><code># Prepare data for topic distribution over chapters
-topic_distributions = []
-
-for i, (chapter, label) in enumerate(chapters_with_labels):
-    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
-    chapter_distribution = {'Chapter': i+1}
-    for topic_id, probability in topic_distribution:
-        chapter_distribution[f'Topic {topic_id}'] = probability
-    topic_distributions.append(chapter_distribution)
-
-df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
-
-# Melt the DataFrame for better plotting with Plotly
-df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')</code></pre>
-            <p>
-              <strong>Explanation:</strong> This code prepares the data for
-              visualizing the topic distribution over chapters. The data is then
-              melted for better plotting with Plotly.
-            </p>
-            <div class="iframe-container sentiment-iframe">
-              <iframe
-                src="images/topicevolution.html"
-                onload="adjustIframeHeight(this)"
-              ></iframe>
-            </div>
-            <p>
-              <strong>User Instructions:</strong>
-            </p>
-            <ul>
-              <li>
-                Use the dropdown menu located to the right of the chart to
-                select a specific topic. The chart will update to show the trend
-                of the chosen topic across the chapters.
-              </li>
-              <li>
-                Hover over the lines in the chart to see detailed information
-                about the topic probabilities for each chapter.
-              </li>
-              <li>
-                Pay attention to the x-axis (Chapter In The Novel) and y-axis
-                (Topic Probability) to understand how the prominence of each
-                topic evolves throughout the story.
-              </li>
-            </ul>
-            <p>
-              This visualization aims to convey how different themes are
-              distributed and how they change as the narrative progresses. By
-              isolating individual topics, you can gain deeper insights into the
-              thematic structure of Jane Eyre and how specific themes contribute
-              to the overall story.
-            </p>
-          </section>
-
           <!-- Results and Interpretation Section -->
           <section class="section" id="results">
             <header>
@@ -560,6 +436,32 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
               and their associated themes, the top positive and negative topics,
               and the chapter contributions to each topic.
             </p>
+
+            <h3>Inferred Themes</h3>
+            <p>
+              Based on the analysis, the following themes were inferred for each
+              topic:
+            </p>
+            <ul>
+              <li><strong>Topic 0:</strong> Death and Relationships</li>
+              <li><strong>Topic 1:</strong> Struggle and Survival</li>
+              <li><strong>Topic 2:</strong> Education and Society</li>
+              <li><strong>Topic 3:</strong> Illness and Reflection</li>
+              <li><strong>Topic 4:</strong> Social Interactions and Beauty</li>
+              <li><strong>Topic 5:</strong> Family and Wealth</li>
+              <li><strong>Topic 6:</strong> Nature and Romance</li>
+              <li><strong>Topic 7:</strong> Loss and Remembrance</li>
+              <li><strong>Topic 8:</strong> Childhood and Sadness</li>
+              <li><strong>Topic 9:</strong> Education and Freedom</li>
+              <li><strong>Topic 10:</strong> Social Hierarchy and Beauty</li>
+              <li><strong>Topic 11:</strong> Marriage and Human Nature</li>
+              <li><strong>Topic 12:</strong> Places and Freedom</li>
+              <li><strong>Topic 13:</strong> Emotions and Experience</li>
+              <li><strong>Topic 14:</strong> Friendship and Beauty</li>
+              <li><strong>Topic 15:</strong> Home and Calmness</li>
+              <li><strong>Topic 16:</strong> Daily Life and Education</li>
+              <li><strong>Topic 17:</strong> Home and Relationships</li>
+            </ul>
 
             <h3>Top Positive and Negative Topics</h3>
             <p>
@@ -891,6 +793,283 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
                 </ul>
               </div>
             </div>
+          </section>
+
+          <!-- Sentiment Analysis Section -->
+          <section class="section" id="sentiment-analysis">
+            <header>
+              <h2>Sentiment Analysis</h2>
+            </header>
+            <p>
+              Sentiment analysis assesses the emotional tone of the text. I
+              applied sentiment analysis to each topic to understand the
+              emotional tone associated with each theme. The Sentiment
+              Distribution Bar Chart visualizes the sentiment scores of the
+              topics, showing the count of positive and negative sentiments
+              associated with each topic.
+            </p>
+            <p>
+              The x-axis represents the topics, while the y-axis represents the
+              count of chapters associated with each sentiment. The bars are
+              color-coded: lightblue for positive and darkgray for negative
+              sentiments.
+            </p>
+            <p>
+              The neutral sentiment count is zero due to the chosen sentiment
+              threshold values. By setting the thresholds for positive sentiment
+              to scores above 0.5 and negative sentiment to scores below -0.5, I
+              aimed to clearly differentiate between strongly positive and
+              strongly negative sentiments. This approach helps in highlighting
+              the extremes and reduces the ambiguity that often accompanies
+              neutral sentiment. This choice was intentional to focus on the
+              distinct emotional tones and their impacts on the themes within
+              the novel.
+            </p>
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Calculate average sentiment scores for each topic
+topic_sentiments = np.zeros(num_topics)
+topic_token_counts = np.zeros(num_topics)
+topic_chapter_counts = np.zeros(num_topics)
+
+for i, (chapter, label) in enumerate(chapters_with_labels):
+    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
+    for topic_id, probability in topic_distribution:
+        sentiment = sia.polarity_scores(' '.join(chapter))['compound']
+        topic_sentiments[topic_id] += sentiment * probability
+        topic_token_counts[topic_id] += len(chapter) * probability
+        topic_chapter_counts[topic_id] += probability
+
+# Normalize the sentiment scores
+average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
+            </div>
+            <p>
+              <strong>Explanation:</strong> This code calculates the average
+              sentiment scores for each topic using the Vader Sentiment Analysis
+              tool. The sentiment scores are then normalized based on the topic
+              distribution.
+            </p>
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Create a DataFrame for sentiment distribution
+sentiment_counts = []
+for topic in range(num_topics):
+    positive_count = len([sent for sent in chapter_sentiments if sent > 0.5])
+    neutral_count = len([sent for sent in chapter_sentiments if -0.5 <= sent <= 0.5])
+    negative_count = len([sent for sent in chapter_sentiments if sent < -0.5])
+    sentiment_counts.append((topic, 'Positive', positive_count))
+    sentiment_counts.append((topic, 'Neutral', neutral_count))
+    sentiment_counts.append((topic, 'Negative', negative_count))
+
+df_sentiments = pd.DataFrame(sentiment_counts, columns=['Topic', 'Sentiment', 'Count'])
+
+# Create the bar chart with Plotly
+fig = px.bar(
+    df_sentiments,
+    x='Topic',
+    y='Count',
+    color='Sentiment',
+    barmode='group',
+    title='Sentiment Distribution Across Topics in Jane Eyre',
+    color_discrete_map={'Positive': 'blue', 'Neutral': 'grey', 'Negative': 'red'}
+)
+
+# Customize the layout
+fig.update_layout(
+    xaxis_title='Topic',
+    yaxis_title='Count of Sentiments',
+    legend_title='Sentiments'
+)
+
+# Show the plot
+fig.show()
+
+# Save the plot as an HTML file
+fig.write_html("sentiment_distribution.html")</code></pre>
+            </div>
+            <p>
+              <strong>Explanation:</strong> This code creates a grouped bar
+              chart to visualize the sentiment distribution across topics. It
+              shows the count of positive and negative sentiments for each
+              topic, making it easier to understand the emotional tone
+              associated with each theme.
+            </p>
+            <div class="iframe-container sentiment-iframe">
+              <iframe
+                src="images/sentiment_distribution1.html"
+                onload="adjustIframeHeight(this)"
+              ></iframe>
+            </div>
+            <p>
+              <strong>User Instructions:</strong> Use the interactive bar chart
+              to explore the sentiment distribution across topics. Hover over
+              the bars to see the count of sentiments for each topic. The
+              color-coded bars help in distinguishing between positive and
+              negative sentiments.
+            </p>
+          </section>
+
+          <!-- Topic Evolution Section -->
+          <section class="section" id="topic-evolution">
+            <header>
+              <h2>Topic Evolution Over Chapters</h2>
+            </header>
+            <p>
+              The Topic Evolution Line Chart provides a dynamic visualization of
+              how the prevalence of each topic changes over the chapters of Jane
+              Eyre. By observing these trends, we can gain insights into the
+              development and transformation of themes throughout the narrative.
+            </p>
+            <p>
+              The x-axis represents the chapter numbers, allowing you to track
+              the progression of the story, while the y-axis represents the
+              probability of each topic being prominent in the corresponding
+              chapter. This setup enables us to see how certain themes emerge,
+              peak, and fade as the story unfolds.
+            </p>
+            <p>
+              The chart includes a dropdown menu for selecting specific topics.
+              By choosing a topic from the dropdown, you can isolate its trend
+              across the chapters, making it easier to focus on individual
+              thematic developments.
+            </p>
+            <button class="collapsible">Show/Hide Code</button>
+            <div class="content">
+              <pre
+                class="syntax-highlight"
+              ><code class="python"># Prepare data for topic distribution over chapters
+topic_distributions = []
+
+for i, (chapter, label) in enumerate(chapters_with_labels):
+    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
+    chapter_distribution = {'Chapter': i+1}
+    for topic_id, probability in topic_distribution:
+        chapter_distribution[f'Topic {topic_names[topic_id]}'] = probability
+    topic_distributions.append(chapter_distribution)
+
+df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
+
+# Melt the DataFrame for better plotting with Plotly
+df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')
+
+# Create the dropdown menu options
+dropdown_buttons = [
+    {'label': topic, 'method': 'update', 'args': [{'visible': [t == topic for t in df_melted['Topic'].unique()]}, {'title': f'Topic Evolution for {topic}'}]} for topic in topic_names
+]
+
+# Add a default option
+dropdown_buttons.insert(0, {'label': 'Choose a topic :)', 'method': 'update', 'args': [{'visible': [False] * len(df_melted['Topic'].unique())}, {'title': 'Topic Evolution Over Chapters in Jane Eyre'}]})
+
+# Create the interactive line chart with dropdown
+fig = go.Figure()
+
+for topic in df_melted['Topic'].unique():
+    fig.add_trace(go.Scatter(
+        x=df_melted['Chapter'][df_melted['Topic'] == topic],
+        y=df_melted['Probability'][df_melted['Topic'] == topic],
+        mode='lines',
+        name=topic,
+        line=dict(color='#A979B9'),  # Set line color to lilac
+        visible=False  # Initially set all traces to be invisible
+    ))
+
+# Add the dropdown menu
+fig.update_layout(
+    updatemenus=[
+        {
+            'buttons': dropdown_buttons,
+            'direction': 'down',
+            'showactive': True,
+            'x': 1.01,
+            'xanchor': 'left',
+            'y': 1.02,
+            'yanchor': 'top',
+            'bgcolor': '#A979B9',  # Darker lilac background
+            'bordercolor': '#985FAB',  # Darker shade of lilac border
+            'font': {'color': 'white', 'size': 14},  # Font settings
+            'borderwidth': 2,
+            'pad': {'r': 0, 't': 10},
+            'active': 0  # Ensure the default option is highlighted
+        }
+    ],
+    xaxis_title='Chapter In The Novel',
+    yaxis_title='Topic Probability',
+    xaxis=dict(
+        range=[0.01, df_melted['Chapter'].max()],
+        tickmode='linear',
+        dtick=5,
+        showgrid=True,
+        zeroline=True,
+        zerolinewidth=2,
+    ),
+    yaxis=dict(
+        range=[0, df_melted['Probability'].max()],
+        tickmode='linear',
+        dtick=0.1,
+        showgrid=True,
+        zeroline=True,
+    ),
+    title=dict(
+        text='Topic Evolution Over Chapters in Jane Eyre',
+        x=0.5,
+        xanchor='center',
+        font=dict(size=20, color='black', family='Arial')
+    ),
+    margin=dict(l=50, r=200, t=100, b=50),  # Adjust margins as needed
+    legend=dict(
+        x=1.2,
+        y=0.5,
+        title=dict(text='Topics')
+    )
+)
+
+# Show the plot
+fig.show()
+
+# Save the interactive plot as an HTML file
+fig.write_html("topic_evolution.html")</code></pre>
+            </div>
+            <p>
+              <strong>Explanation:</strong> This code prepares the data for
+              visualizing the topic distribution over chapters. The data is then
+              melted for better plotting with Plotly.
+            </p>
+            <div class="iframe-container sentiment-iframe">
+              <iframe
+                src="images/topic_evolution1.html"
+                onload="adjustIframeHeight(this)"
+              ></iframe>
+            </div>
+            <p>
+              <strong>User Instructions:</strong>
+            </p>
+            <ul>
+              <li>
+                Use the dropdown menu located to the right of the chart to
+                select a specific topic. The chart will update to show the trend
+                of the chosen topic across the chapters.
+              </li>
+              <li>
+                Hover over the lines in the chart to see detailed information
+                about the topic probabilities for each chapter.
+              </li>
+              <li>
+                Pay attention to the x-axis (Chapter In The Novel) and y-axis
+                (Topic Probability) to understand how the prominence of each
+                topic evolves throughout the story.
+              </li>
+            </ul>
+            <p>
+              This visualization aims to convey how different themes are
+              distributed and how they change as the narrative progresses. By
+              isolating individual topics, you can gain deeper insights into the
+              thematic structure of Jane Eyre and how specific themes contribute
+              to the overall story.
+            </p>
           </section>
 
           <!-- Chapter Contributions Section -->
@@ -1332,5 +1511,21 @@ df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', v
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.display === "block") {
+            content.style.display = "none";
+          } else {
+            content.style.display = "block";
+          }
+        });
+      }
+    </script>
   </body>
 </html>
