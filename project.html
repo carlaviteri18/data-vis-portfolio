@@ -101,6 +101,7 @@
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-bottom: 2em;
+        overflow-x: auto;
       }
       .visualization {
         margin-bottom: 2em;
@@ -109,14 +110,15 @@
         background-color: #f4f4f4;
         color: #444;
         cursor: pointer;
-        padding: 10px;
-        width: 100%;
+        padding: 5px 10px;
+        width: auto;
         border: none;
         text-align: left;
         outline: none;
         font-size: 1.1em;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 0.5em 0;
       }
       .active,
       .collapsible:hover {
@@ -129,6 +131,7 @@
         background-color: #f4f4f4;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 0.5em;
       }
       .content code {
         display: block;
@@ -145,6 +148,9 @@
       .syntax-highlight .comment {
         color: #999999;
         font-style: italic;
+      }
+      .syntax-highlight .number {
+        color: #ff4500;
       }
     </style>
   </head>
@@ -232,14 +238,14 @@
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Tokenize chapters
-tokenized_chapters = [preprocess(chapter) for chapter in chapters]
+              ><code class="python"><span class="keyword"># Tokenize chapters</span>
+<span class="keyword">tokenized_chapters</span> = [<span class="keyword">preprocess</span>(<span class="keyword">chapter</span>) <span class="keyword">for</span> <span class="keyword">chapter</span> <span class="keyword">in</span> <span class="keyword">chapters</span>]
 
-# Build bigrams and trigrams
-bigram = Phrases(tokenized_chapters, min_count=5, threshold=100)
-trigram = Phrases(bigram[tokenized_chapters], threshold=100)
+<span class="keyword"># Build bigrams and trigrams</span>
+<span class="keyword">bigram</span> = <span class="keyword">Phrases</span>(<span class="keyword">tokenized_chapters</span>, <span class="keyword">min_count</span>=5, <span class="keyword">threshold</span>=100)
+<span class="keyword">trigram</span> = <span class="keyword">Phrases</span>(<span class="keyword">bigram</span>[<span class="keyword">tokenized_chapters</span>], <span class="keyword">threshold</span>=100)
 
-tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters]</code></pre>
+<span class="keyword">tokenized_chapters</span> = [<span class="keyword">trigram</span>[<span class="keyword">bigram</span>[<span class="keyword">chapter</span>]] <span class="keyword">for</span> <span class="keyword">chapter</span> <span class="keyword">in</span> <span class="keyword">tokenized_chapters</span>]</code></pre>
             </div>
           </section>
 
@@ -273,11 +279,11 @@ tokenized_chapters = [trigram[bigram[chapter]] for chapter in tokenized_chapters
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Prepare data for pyLDAvis
-vis = genvis.prepare(optimal_model, corpus, dictionary)
+              ><code class="python"><span class="keyword"># Prepare data for pyLDAvis</span>
+<span class="keyword">vis</span> = <span class="keyword">genvis</span>.<span class="keyword">prepare</span>(<span class="keyword">optimal_model</span>, <span class="keyword">corpus</span>, <span class="keyword">dictionary</span>)
 
-# Save the visualization as an HTML file
-pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
+<span class="keyword"># Save the visualization as an HTML file</span>
+<span class="keyword">pyLDAvis</span>.<span class="keyword">save_html</span>(<span class="keyword">vis</span>, <span class="string">'lda_visualization.html'</span>)</code></pre>
             </div>
             <p>
               <strong>Explanation:</strong> This code prepares the data for
@@ -331,13 +337,13 @@ pyLDAvis.save_html(vis, 'lda_visualization.html')</code></pre>
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Calculate coherence score for LDA model
-from gensim.models import CoherenceModel
+              ><code class="python"><span class="keyword"># Calculate coherence score for LDA model</span>
+<span class="keyword">from gensim.models</span> <span class="keyword">import CoherenceModel</span>
 
-coherence_model_lda = CoherenceModel(model=optimal_model, texts=tokenized_chapters, dictionary=dictionary, coherence='c_v')
-coherence_lda = coherence_model_lda.get_coherence()
+<span class="keyword">coherence_model_lda</span> = <span class="keyword">CoherenceModel</span>(<span class="keyword">model</span>=<span class="keyword">optimal_model</span>, <span class="keyword">texts</span>=<span class="keyword">tokenized_chapters</span>, <span class="keyword">dictionary</span>=<span class="keyword">dictionary</span>, <span class="keyword">coherence</span>=<span class="string">'c_v'</span>)
+<span class="keyword">coherence_lda</span> = <span class="keyword">coherence_model_lda</span>.<span class="keyword">get_coherence</span>()
 
-print('\nCoherence Score: ', coherence_lda)</code></pre>
+<span class="keyword">print</span>(<span class="string">'\nCoherence Score: '</span>, <span class="keyword">coherence_lda</span>)</code></pre>
             </div>
             <p>
               <strong>Explanation:</strong> This code calculates the coherence
@@ -354,49 +360,49 @@ print('\nCoherence Score: ', coherence_lda)</code></pre>
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Compute coherence scores for different numbers of topics
-coherence_scores = []
-for num_topics in range(2, 40, 2):
-    model = LdaModel(corpus=corpus, id2word=dictionary, num_topics=num_topics, random_state=100, update_every=1, chunksize=100, passes=10, alpha='auto', per_word_topics=True)
-    coherence_model = CoherenceModel(model=model, texts=tokenized_chapters, dictionary=dictionary, coherence='c_v')
-    coherence_scores.append((num_topics, coherence_model.get_coherence()))
+              ><code class="python"><span class="keyword"># Compute coherence scores for different numbers of topics</span>
+<span class="keyword">coherence_scores</span> = []
+<span class="keyword">for num_topics</span> <span class="keyword">in range</span>(2, 40, 2):
+    <span class="keyword">model</span> = <span class="keyword">LdaModel</span>(<span class="keyword">corpus</span>=<span class="keyword">corpus</span>, <span class="keyword">id2word</span>=<span class="keyword">dictionary</span>, <span class="keyword">num_topics</span>=<span class="keyword">num_topics</span>, <span class="keyword">random_state</span>=100, <span class="keyword">update_every</span>=1, <span class="keyword">chunksize</span>=100, <span class="keyword">passes</span>=10, <span class="keyword">alpha</span>=<span class="string">'auto'</span>, <span class="keyword">per_word_topics</span>=<span class="keyword">True</span>)
+    <span class="keyword">coherence_model</span> = <span class="keyword">CoherenceModel</span>(<span class="keyword">model</span>=<span class="keyword">model</span>, <span class="keyword">texts</span>=<span class="keyword">tokenized_chapters</span>, <span class="keyword">dictionary</span>=<span class="keyword">dictionary</span>, <span class="keyword">coherence</span>=<span class="string">'c_v'</span>)
+    <span class="keyword">coherence_scores</span>.<span class="keyword">append</span>((<span class="keyword">num_topics</span>, <span class="keyword">coherence_model</span>.<span class="keyword">get_coherence</span>()))
 
-# Prepare data for Plotly visualization
-x = list(range(2, 40, 2))
-data = {
-    "Number of Topics": x,
-    "Coherence Score": [score for num_topics, score in coherence_scores]
+<span class="keyword"># Prepare data for Plotly visualization</span>
+<span class="keyword">x</span> = <span class="keyword">list</span>(<span class="keyword">range</span>(2, 40, 2))
+<span class="keyword">data</span> = {
+    <span class="string">"Number of Topics"</span>: <span class="keyword">x</span>,
+    <span class="string">"Coherence Score"</span>: [<span class="keyword">score</span> <span class="keyword">for num_topics</span>, <span class="keyword">score</span> <span class="keyword">in coherence_scores</span>]
 }
 
-df = pd.DataFrame(data)
+<span class="keyword">df</span> = <span class="keyword">pd.DataFrame</span>(<span class="keyword">data</span>)
 
-# Create an interactive Plotly graph
-fig = px.line(df, x="Number of Topics", y="Coherence Score", markers=True,
-              title="Coherence Scores for Different Numbers of Topics",
-              labels={"Number of Topics": "Number of Topics", "Coherence Score": "Coherence Score"},
-              template="plotly_white")
+<span class="keyword"># Create an interactive Plotly graph</span>
+<span class="keyword">fig</span> = <span class="keyword">px.line</span>(<span class="keyword">df</span>, <span class="keyword">x</span>=<span class="string">"Number of Topics"</span>, <span class="keyword">y</span>=<span class="string">"Coherence Score"</span>, <span class="keyword">markers</span>=<span class="keyword">True</span>,
+              <span class="keyword">title</span>=<span class="string">"Coherence Scores for Different Numbers of Topics"</span>,
+              <span class="keyword">labels</span>={<span class="string">"Number of Topics"</span>: <span class="string">"Number of Topics"</span>, <span class="string">"Coherence Score"</span>: <span class="string">"Coherence Score"</span>},
+              <span class="keyword">template</span>=<span class="string">"plotly_white"</span>)
 
-# Customize the layout to make it visually appealing
-fig.update_traces(line=dict(color="#A979B9", width=4), marker=dict(size=10, color="#A979B9"))
-fig.update_layout(
-    title_font=dict(size=20, family="Arial", color="#4A4A4A"),
-    xaxis=dict(title_font=dict(size=16, family="Arial", color="#4A4A4A"),
-               tickfont=dict(size=12, family="Arial", color="#4A4A4A")),
-    yaxis=dict(title_font=dict(size=16, family="Arial", color="#4A4A4A"),
-               tickfont=dict(size=12, family="Arial", color="#4A4A4A")),
-    hovermode="x unified",
-    hoverlabel=dict(font_size=14, font_family="Arial"),
-    margin=dict(l=50, r=50, t=80, b=50),
-    plot_bgcolor="#FFFFFF",
-    paper_bgcolor="#FFFFFF",
-    showlegend=False
+<span class="keyword"># Customize the layout to make it visually appealing</span>
+<span class="keyword">fig.update_traces</span>(<span class="keyword">line</span>={<span class="keyword">color</span>: <span class="string">"#A979B9"</span>, <span class="keyword">width</span>: 4}, <span class="keyword">marker</span>={<span class="keyword">size</span>: 10, <span class="keyword">color</span>: <span class="string">"#A979B9"</span>})
+<span class="keyword">fig.update_layout</span>(
+    <span class="keyword">title_font</span>={<span class="keyword">size</span>: 20, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
+    <span class="keyword">xaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
+               <span class="keyword">tickfont</span>: {<span class="keyword">size</span>: 12, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>}},
+    <span class="keyword">yaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
+               <span class="keyword">tickfont</span>: {<span class="keyword">size</span>: 12, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>}},
+    <span class="keyword">hovermode</span>: <span class="string">"x unified"</span>,
+    <span class="keyword">hoverlabel</span>: {<span class="keyword">font_size</span>: 14, <span class="keyword">font_family</span>: <span class="string">"Arial"</span>},
+    <span class="keyword">margin</span>: {<span class="keyword">l</span>: 50, <span class="keyword">r</span>: 50, <span class="keyword">t</span>: 80, <span class="keyword">b</span>: 50},
+    <span class="keyword">plot_bgcolor</span>: <span class="string">"#FFFFFF"</span>,
+    <span class="keyword">paper_bgcolor</span>: <span class="string">"#FFFFFF"</span>,
+    <span class="keyword">showlegend</span>: <span class="keyword">False</span>
 )
 
-# Save the plot as an HTML file
-fig.write_html("coherence_scores.html")
+<span class="keyword"># Save the plot as an HTML file</span>
+<span class="keyword">fig.write_html</span>(<span class="string">"coherence_scores.html"</span>)
 
-# Show the plot
-fig.show()</code></pre>
+<span class="keyword"># Show the plot</span>
+<span class="keyword">fig.show</span>()</code></pre>
             </div>
             <p>
               <strong>Explanation:</strong> This code computes the coherence
@@ -829,21 +835,21 @@ fig.show()</code></pre>
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Calculate average sentiment scores for each topic
-topic_sentiments = np.zeros(num_topics)
-topic_token_counts = np.zeros(num_topics)
-topic_chapter_counts = np.zeros(num_topics)
+              ><code class="python"><span class="keyword"># Calculate average sentiment scores for each topic</span>
+<span class="keyword">topic_sentiments</span> = <span class="keyword">np.zeros</span>(<span class="keyword">num_topics</span>)
+<span class="keyword">topic_token_counts</span> = <span class="keyword">np.zeros</span>(<span class="keyword">num_topics</span>)
+<span class="keyword">topic_chapter_counts</span> = <span class="keyword">np.zeros</span>(<span class="keyword">num_topics</span>)
 
-for i, (chapter, label) in enumerate(chapters_with_labels):
-    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
-    for topic_id, probability in topic_distribution:
-        sentiment = sia.polarity_scores(' '.join(chapter))['compound']
-        topic_sentiments[topic_id] += sentiment * probability
-        topic_token_counts[topic_id] += len(chapter) * probability
-        topic_chapter_counts[topic_id] += probability
+<span class="keyword">for i</span>, (<span class="keyword">chapter</span>, <span class="keyword">label</span>) <span class="keyword">in enumerate</span>(<span class="keyword">chapters_with_labels</span>):
+    <span class="keyword">topic_distribution</span> = <span class="keyword">optimal_model</span>.<span class="keyword">get_document_topics</span>(<span class="keyword">corpus</span>[<span class="keyword">i</span>], <span class="keyword">minimum_probability</span>=0)
+    <span class="keyword">for topic_id</span>, <span class="keyword">probability</span> <span class="keyword">in topic_distribution</span>:
+        <span class="keyword">sentiment</span> = <span class="keyword">sia.polarity_scores</span>(<span class="string">' '</span>.<span class="keyword">join</span>(<span class="keyword">chapter</span>))[<span class="keyword">compound</span>]
+        <span class="keyword">topic_sentiments</span>[<span class="keyword">topic_id</span>] += <span class="keyword">sentiment</span> * <span class="keyword">probability</span>
+        <span class="keyword">topic_token_counts</span>[<span class="keyword">topic_id</span>] += <span class="keyword">len</span>(<span class="keyword">chapter</span>) * <span class="keyword">probability</span>
+        <span class="keyword">topic_chapter_counts</span>[<span class="keyword">topic_id</span>] += <span class="keyword">probability</span>
 
-# Normalize the sentiment scores
-average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0, 1, topic_chapter_counts)</code></pre>
+<span class="keyword"># Normalize the sentiment scores</span>
+<span class="keyword">average_topic_sentiments</span> = <span class="keyword">topic_sentiments</span> / <span class="keyword">np.where</span>(<span class="keyword">topic_chapter_counts</span> == 0, 1, <span class="keyword">topic_chapter_counts</span>)</code></pre>
             </div>
             <p>
               <strong>Explanation:</strong> This code calculates the average
@@ -855,41 +861,41 @@ average_topic_sentiments = topic_sentiments / np.where(topic_chapter_counts == 0
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Create a DataFrame for sentiment distribution
-sentiment_counts = []
-for topic in range(num_topics):
-    positive_count = len([sent for sent in chapter_sentiments if sent > 0.5])
-    neutral_count = len([sent for sent in chapter_sentiments if -0.5 <= sent <= 0.5])
-    negative_count = len([sent for sent in chapter_sentiments if sent < -0.5])
-    sentiment_counts.append((topic, 'Positive', positive_count))
-    sentiment_counts.append((topic, 'Neutral', neutral_count))
-    sentiment_counts.append((topic, 'Negative', negative_count))
+              ><code class="python"><span class="keyword"># Create a DataFrame for sentiment distribution</span>
+<span class="keyword">sentiment_counts</span> = []
+<span class="keyword">for topic</span> <span class="keyword">in range</span>(<span class="keyword">num_topics</span>):
+    <span class="keyword">positive_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if sent</span> > 0.5])
+    <span class="keyword">neutral_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if -0.5 <= sent <= 0.5</span>])
+    <span class="keyword">negative_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if sent</span> < -0.5])
+    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Positive'</span>, <span class="keyword">positive_count</span>))
+    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Neutral'</span>, <span class="keyword">neutral_count</span>))
+    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Negative'</span>, <span="keyword">negative_count</span>))
 
-df_sentiments = pd.DataFrame(sentiment_counts, columns=['Topic', 'Sentiment', 'Count'])
+<span class="keyword">df_sentiments</span> = <span class="keyword">pd.DataFrame</span>(<span class="keyword">sentiment_counts</span>, <span class="keyword">columns</span>=[<span class="string">'Topic'</span>, <span class="string">'Sentiment'</span>, <span class="string">'Count'</span>])
 
-# Create the bar chart with Plotly
-fig = px.bar(
-    df_sentiments,
-    x='Topic',
-    y='Count',
-    color='Sentiment',
-    barmode='group',
-    title='Sentiment Distribution Across Topics in Jane Eyre',
-    color_discrete_map={'Positive': 'blue', 'Neutral': 'grey', 'Negative': 'red'}
+<span class="keyword"># Create the bar chart with Plotly</span>
+<span class="keyword">fig</span> = <span class="keyword">px.bar</span>(
+    <span class="keyword">df_sentiments</span>,
+    <span class="keyword">x</span>=<span class="string">'Topic'</span>,
+    <span class="keyword">y</span>=<span class="string">'Count'</span>,
+    <span class="keyword">color</span>=<span class="string">'Sentiment'</span>,
+    <span class="keyword">barmode</span>=<span class="string">'group'</span>,
+    <span class="keyword">title</span>=<span class="string">'Sentiment Distribution Across Topics in Jane Eyre'</span>,
+    <span class="keyword">color_discrete_map</span>={<span class="string">'Positive'</span>: <span class="string">'blue'</span>, <span class="string">'Neutral'</span>: <span class="string">'grey'</span>, <span class="string">'Negative'</span>: <span class="string">'red'</span>}
 )
 
-# Customize the layout
-fig.update_layout(
-    xaxis_title='Topic',
-    yaxis_title='Count of Sentiments',
-    legend_title='Sentiments'
+<span class="keyword"># Customize the layout</span>
+<span class="keyword">fig.update_layout</span>(
+    <span class="keyword">xaxis_title</span>=<span class="string">'Topic'</span>,
+    <span class="keyword">yaxis_title</span>=<span class="string">'Count of Sentiments'</span>,
+    <span class="keyword">legend_title</span>=<span class="string">'Sentiments'</span>
 )
 
-# Show the plot
-fig.show()
+<span class="keyword"># Show the plot</span>
+<span class="keyword">fig.show</span>()
 
-# Save the plot as an HTML file
-fig.write_html("sentiment_distribution.html")</code></pre>
+<span class="keyword"># Save the plot as an HTML file</span>
+<span class="keyword">fig.write_html</span>(<span class="string">"sentiment_distribution.html"</span>)</code></pre>
             </div>
             <p>
               <strong>Explanation:</strong> This code creates a grouped bar
@@ -941,97 +947,93 @@ fig.write_html("sentiment_distribution.html")</code></pre>
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"># Prepare data for topic distribution over chapters
-topic_distributions = []
+              ><code class="python"><span class="keyword"># Prepare data for topic distribution over chapters</span>
+<span class="keyword">topic_distributions</span> = []
 
-for i, (chapter, label) in enumerate(chapters_with_labels):
-    topic_distribution = optimal_model.get_document_topics(corpus[i], minimum_probability=0)
-    chapter_distribution = {'Chapter': i+1}
-    for topic_id, probability in topic_distribution:
-        chapter_distribution[f'Topic {topic_names[topic_id]}'] = probability
-    topic_distributions.append(chapter_distribution)
+<span class="keyword">for i</span>, (<span class="keyword">chapter</span>, <span class="keyword">label</span>) <span class="keyword">in enumerate</span>(<span class="keyword">chapters_with_labels</span>):
+    <span class="keyword">topic_distribution</span> = <span class="keyword">optimal_model</span>.<span class="keyword">get_document_topics</span>(<span class="keyword">corpus</span>[<span class="keyword">i</span>], <span class="keyword">minimum_probability</span>=0)
+    <span class="keyword">chapter_distribution</span> = {<span class="string">'Chapter'</span>: <span class="keyword">i</span>+1}
+    <span class="keyword">for topic_id</span>, <span class="keyword">probability</span> <span class="keyword">in topic_distribution</span>:
+        <span class="keyword">chapter_distribution</span>[<span class="string">'Topic '</span> + <span class="keyword">topic_names</span>[<span class="keyword">topic_id</span>]] = <span class="keyword">probability</span>
+    <span class="keyword">topic_distributions</span>.<span class="keyword">append</span>(<span class="keyword">chapter_distribution</span>)
 
-df_topic_distributions = pd.DataFrame(topic_distributions).fillna(0)
+<span class="keyword">df_topic_distributions</span> = <span class="keyword">pd.DataFrame</span>(<span class="keyword">topic_distributions</span>).<span class="keyword">fillna</span>(0)
 
-# Melt the DataFrame for better plotting with Plotly
-df_melted = df_topic_distributions.melt(id_vars=['Chapter'], var_name='Topic', value_name='Probability')
+<span class="keyword"># Melt the DataFrame for better plotting with Plotly</span>
+<span class="keyword">df_melted</span> = <span class="keyword">df_topic_distributions</span>.<span class="keyword">melt</span>(<span class="keyword">id_vars</span>=[<span class="string">'Chapter'</span>], <span class="keyword">var_name</span>=<span class="string">'Topic'</span>, <span class="keyword">value_name</span>=<span class="string">'Probability'</span>)
 
-# Create the dropdown menu options
-dropdown_buttons = [
-    {'label': topic, 'method': 'update', 'args': [{'visible': [t == topic for t in df_melted['Topic'].unique()]}, {'title': f'Topic Evolution for {topic}'}]} for topic in topic_names
+<span class="keyword"># Create the dropdown menu options</span>
+<span class="keyword">dropdown_buttons</span> = [
+    {<span class="keyword">label</span>: <span class="keyword">topic</span>, <span class="keyword">method</span>: <span class="string">'update'</span>, <span class="keyword">args</span>: [{<span class="keyword">visible</span>: [<span class="keyword">t</span> == <span class="keyword">topic</span> <span class="keyword">for t</span> <span class="keyword">in df_melted</span>[<span class="string">'Topic'</span>] <span class="keyword">.unique</span>()]}, {<span class="keyword">title</span>: <span class="string">'Topic Evolution for '</span> + <span class="keyword">topic</span>]}]} <span class="keyword">for topic</span> <span class="keyword">in topic_names</span>
 ]
 
-# Add a default option
-dropdown_buttons.insert(0, {'label': 'Choose a topic :)', 'method': 'update', 'args': [{'visible': [False] * len(df_melted['Topic'].unique())}, {'title': 'Topic Evolution Over Chapters in Jane Eyre'}]})
+<span class="keyword"># Add a default option</span>
+<span class="keyword">dropdown_buttons</span>.<span class="keyword">insert</span>(0, {<span class="keyword">label</span>: <span class="string">'Choose a topic :)'</span>, <span class="keyword">method</span>: <span class="string">'update'</span>, <span class="keyword">args</span>: [{<span class="keyword">visible</span>: [<span class="keyword">False</span>] * <span class="keyword">len(df_melted</span>[<span class="string">'Topic'</span>].<span class="keyword">unique</span>())}, {<span class="keyword">title</span>: <span class="string">'Topic Evolution Over Chapters in Jane Eyre'</span>}]})
 
-# Create the interactive line chart with dropdown
-fig = go.Figure()
+<span class="keyword"># Create the interactive line chart with dropdown</span>
+<span class="keyword">fig</span> = <span class="keyword">go.Figure</span>()
 
-for topic in df_melted['Topic'].unique():
-    fig.add_trace(go.Scatter(
-        x=df_melted['Chapter'][df_melted['Topic'] == topic],
-        y=df_melted['Probability'][df_melted['Topic'] == topic],
-        mode='lines',
-        name=topic,
-        line=dict(color='#A979B9'),  # Set line color to lilac
-        visible=False  # Initially set all traces to be invisible
+<span class="keyword">for topic</span> <span class="keyword">in df_melted</span>[<span class="keyword">Topic</span>].<span class="keyword">unique</span>():
+    <span class="keyword">fig.add_trace</span>(<span class="keyword">go.Scatter</span>(
+        <span class="keyword">x</span>=<span class="keyword">df_melted</span>[<span class="keyword">Chapter</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic</span>] == <span class="keyword">topic</span>],
+        <span class="keyword">y</span>=<span class="keyword">df_melted</span>[<span class="keyword">Probability</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic</span>] == <span class="keyword">topic</span>],
+        <span class="keyword">mode</span>=<span class="keyword">lines</span>,
+        <span class="keyword">name</span>=<span class="keyword">topic</span>,
+        <span class="keyword">line</span>={<span class="keyword">color</span>: <span class="string">#A979B9</span>},  <span class="keyword"># Set line color to lilac</span>
+        <span class="keyword">visible</span>=<span class="keyword">False</span>  <span class="keyword"># Initially set all traces to be invisible</span>
     ))
 
-# Add the dropdown menu
-fig.update_layout(
-    updatemenus=[
+<span class="keyword"># Add the dropdown menu</span>
+<span class="keyword">fig.update_layout</span>(
+    <span class="keyword">updatemenus</span>=[
         {
-            'buttons': dropdown_buttons,
-            'direction': 'down',
-            'showactive': True,
-            'x': 1.01,
-            'xanchor': 'left',
-            'y': 1.02,
-            'yanchor': 'top',
-            'bgcolor': '#A979B9',  # Darker lilac background
-            'bordercolor': '#985FAB',  # Darker shade of lilac border
-            'font': {'color': 'white', 'size': 14},  # Font settings
-            'borderwidth': 2,
-            'pad': {'r': 0, 't': 10},
-            'active': 0  # Ensure the default option is highlighted
+            <span class="keyword">buttons</span>: <span class="keyword">dropdown_buttons</span>,
+            <span class="keyword">direction</span>: <span class="string">down</span>,
+            <span class="keyword">showactive</span>: <span class="keyword">True</span>,
+            <span class="keyword">x</span>: 1.01,
+            <span class="keyword">xanchor</span>: <span class="string">left</span>,
+            <span class="keyword">y</span>: 1.02,
+            <span class="keyword">yanchor</span>: <span class="string">top</span>,
+            <span class="keyword">bgcolor</span>: <span class="string">#A979B9</span>,  <span class="keyword"># Darker lilac background</span>
+            <span class="keyword">bordercolor</span>: <span class="string">#985FAB</span>,  <span class="keyword"># Darker shade of lilac border</span>
+            <span class="keyword">font</span>: {<span class="keyword">color</span>: <span class="string">white</span>, <span class="keyword">size</span>: 14},  <span class="keyword"># Font settings</span>
+            <span class="keyword">borderwidth</span>: 2,
+            <span class="keyword">pad</span>: {<span class="keyword">r</span>: 0, <span class="keyword">t</span>: 10},
+            <span class="keyword">active</span>: 0  <span class="keyword"># Ensure the default option is highlighted</span>
         }
     ],
-    xaxis_title='Chapter In The Novel',
-    yaxis_title='Topic Probability',
-    xaxis=dict(
-        range=[0.01, df_melted['Chapter'].max()],
-        tickmode='linear',
-        dtick=5,
-        showgrid=True,
-        zeroline=True,
-        zerolinewidth=2,
-    ),
-    yaxis=dict(
-        range=[0, df_melted['Probability'].max()],
-        tickmode='linear',
-        dtick=0.1,
-        showgrid=True,
-        zeroline=True,
-    ),
-    title=dict(
-        text='Topic Evolution Over Chapters in Jane Eyre',
-        x=0.5,
-        xanchor='center',
-        font=dict(size=20, color='black', family='Arial')
-    ),
-    margin=dict(l=50, r=200, t=100, b=50),  # Adjust margins as needed
-    legend=dict(
-        x=1.2,
-        y=0.5,
-        title=dict(text='Topics')
-    )
+    <span class="keyword">xaxis_title</span>=<span class="string">'Chapter In The Novel'</span>,
+    <span class="keyword">yaxis_title</span>=<span class="string">'Topic Probability'</span>,
+    <span class="keyword">xaxis</span>={<span class="keyword">range</span>=[0.01, <span class="keyword">df_melted</span>[<span class="keyword">Chapter</span>].<span class="keyword">max</span>()],
+        <span class="keyword">tickmode</span>=<span class="keyword">linear</span>,
+        <span class="keyword">dtick</span>=5,
+        <span class="keyword">showgrid</span>=<span class="keyword">True</span>,
+        <span class="keyword">zeroline</span>=<span class="keyword">True</span>,
+        <span class="keyword">zerolinewidth</span>=2,
+    },
+    <span class="keyword">yaxis</span>={<span class="keyword">range</span>=[0, <span class="keyword">df_melted</span>[<span class="keyword">Probability</span>].<span class="keyword">max</span>()],
+        <span class="keyword">tickmode</span>=<span class="keyword">linear</span>,
+        <span class="keyword">dtick</span>=0.1,
+        <span class="keyword">showgrid</span>=<span class="keyword">True</span>,
+        <span class="keyword">zeroline</span>=<span class="keyword">True</span>,
+    },
+    <span class="keyword">title</span>={<span class="keyword">text</span>: <span class="string">Topic Evolution Over Chapters in Jane Eyre</span>,
+        <span class="keyword">x</span>=0.5,
+        <span class="keyword">xanchor</span>=<span class="string">center</span>,
+        <span class="keyword">font</span>={<span class="keyword">size</span>: 20, <span class="keyword">color</span>: <span class="keyword">black</span>, <span class="keyword">family</span>: <span class="string">Arial</span>}
+    },
+    <span class="keyword">margin</span>={<span class="keyword">l</span>: 50, <span class="keyword">r</span>: 200, <span class="keyword">t</span>: 100, <span class="keyword">b</span>: 50},  <span class="keyword"># Adjust margins as needed</span>
+    <span class="keyword">legend</span>={<span class="keyword">x</span>: 1.2,
+        <span class="keyword">y</span>: 0.5,
+        <span class="keyword">title</span>={<span class="keyword">text</span>: <span class="string">Topics</span>}
+    }
 )
 
-# Show the plot
-fig.show()
+<span class="keyword"># Show the plot</span>
+<span class="keyword">fig.show</span>()
 
-# Save the interactive plot as an HTML file
-fig.write_html("topic_evolution.html")</code></pre>
+<span class="keyword"># Save the interactive plot as an HTML file</span>
+<span class="keyword">fig.write_html</span>(<span class="string">"topic_evolution.html"</span>)</code></pre>
             </div>
             <p>
               <strong>Explanation:</strong> This code prepares the data for
