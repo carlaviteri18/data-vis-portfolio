@@ -123,7 +123,7 @@
       }
       .active,
       .collapsible:hover {
-        background-color: #eaebec; /* Darken pastel pink on hover or active */
+        background-color: #eaebec; /* Light gray color on hover or active */
       }
       .content {
         padding: 10px 20px; /* Increase padding for better readability */
@@ -249,6 +249,13 @@
 <span class="keyword">trigram</span> = <span class="keyword">Phrases</span>(<span class="keyword">bigram</span>[<span class="keyword">tokenized_chapters</span>], <span class="keyword">threshold</span>=100)
 
 <span class="keyword">tokenized_chapters</span> = [<span class="keyword">trigram</span>[<span class="keyword">bigram</span>[<span class="keyword">chapter</span>]] <span class="keyword">for</span> <span class="keyword">chapter</span> <span class="keyword">in</span> <span class="keyword">tokenized_chapters</span>]</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code demonstrates how to
+                tokenize chapters and build bigrams and trigrams to prepare the
+                text for LDA modeling. Tokenization breaks the text into
+                individual words, while bigrams and trigrams capture common
+                phrases to improve topic modeling results.
+              </p>
             </div>
           </section>
 
@@ -287,13 +294,13 @@
 
 <span class="keyword"># Save the visualization as an HTML file</span>
 <span class="keyword">pyLDAvis</span>.<span class="keyword">save_html</span>(<span class="keyword">vis</span>, <span class="string">'lda_visualization.html'</span>)</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code prepares the data for
+                visualization using pyLDAvis and saves it as an HTML file. The
+                visualizations help in understanding the inter-topic distances
+                and the relevance of terms within topics.
+              </p>
             </div>
-            <p>
-              <strong>Explanation:</strong> This code prepares the data for
-              visualization using pyLDAvis and saves it as an HTML file. The
-              visualizations help in understanding the inter-topic distances and
-              the relevance of terms within topics.
-            </p>
             <div class="iframe-container">
               <iframe
                 src="images/lda_visualization.html"
@@ -347,12 +354,12 @@
 <span class="keyword">coherence_lda</span> = <span class="keyword">coherence_model_lda</span>.<span class="keyword">get_coherence</span>()
 
 <span class="keyword">print</span>(<span class="string">'\nCoherence Score: '</span>, <span class="keyword">coherence_lda</span>)</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code calculates the coherence
+                score for the LDA model. The score helps in evaluating the
+                semantic similarity of the topics.
+              </p>
             </div>
-            <p>
-              <strong>Explanation:</strong> This code calculates the coherence
-              score for the LDA model. The score helps in evaluating the
-              semantic similarity of the topics.
-            </p>
             <p>
               To visualize how coherence scores change with different numbers of
               topics, we can plot the coherence score for a range of topic
@@ -389,7 +396,7 @@
 <span class="keyword">fig.update_traces</span>(<span class="keyword">line</span>={<span class="keyword">color</span>: <span class="string">"#A979B9"</span>, <span class="keyword">width</span>: 4}, <span class="keyword">marker</span>={<span class="keyword">size</span>: 10, <span class="keyword">color</span>: <span class="string">"#A979B9"</span>})
 <span class="keyword">fig.update_layout</span>(
     <span class="keyword">title_font</span>={<span class="keyword">size</span>: 20, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
-    <span class="keyword">xaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
+    <span class="keyword">xaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
                <span class="keyword">tickfont</span>: {<span class="keyword">size</span>: 12, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>}},
     <span class="keyword">yaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
                <span class="keyword">tickfont</span>: {<span class="keyword">size</span>: 12, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>}},
@@ -402,18 +409,18 @@
 )
 
 <span class="keyword"># Save the plot as an HTML file</span>
-<span class="keyword">fig.write_html</span>(<span class="string">"coherence_scores.html"</span>)
+<span="keyword">fig.write_html</span>(<span class="string">"coherence_scores.html"</span>)
 
 <span class="keyword"># Show the plot</span>
 <span class="keyword">fig.show</span>()</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code computes the coherence
+                scores for different numbers of topics and creates an
+                interactive Plotly graph to visualize the scores. The plot helps
+                in identifying the number of topics that maximizes the coherence
+                score.
+              </p>
             </div>
-            <p>
-              <strong>Explanation:</strong> This code computes the coherence
-              scores for different numbers of topics and creates an interactive
-              Plotly graph to visualize the scores. The plot helps in
-              identifying the number of topics that maximizes the coherence
-              score.
-            </p>
             <div class="iframe-container sentiment-iframe">
               <iframe
                 src="images/coherence_scores.html"
@@ -853,13 +860,13 @@
 
 <span class="keyword"># Normalize the sentiment scores</span>
 <span class="keyword">average_topic_sentiments</span> = <span class="keyword">topic_sentiments</span> / <span class="keyword">np.where</span>(<span class="keyword">topic_chapter_counts</span> == 0, 1, <span class="keyword">topic_chapter_counts</span>)</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code calculates the average
+                sentiment scores for each topic using the Vader Sentiment
+                Analysis tool. The sentiment scores are then normalized based on
+                the topic distribution.
+              </p>
             </div>
-            <p>
-              <strong>Explanation:</strong> This code calculates the average
-              sentiment scores for each topic using the Vader Sentiment Analysis
-              tool. The sentiment scores are then normalized based on the topic
-              distribution.
-            </p>
             <button class="collapsible">Show/Hide Code</button>
             <div class="content">
               <pre
@@ -872,7 +879,7 @@
     <span class="keyword">negative_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if sent</span> < -0.5])
     <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Positive'</span>, <span class="keyword">positive_count</span>))
     <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Neutral'</span>, <span class="keyword">neutral_count</span>))
-    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Negative'</span>, <span="keyword">negative_count</span>))
+    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Negative'</span>, <span class="keyword">negative_count</span>))
 
 <span class="keyword">df_sentiments</span> = <span class="keyword">pd.DataFrame</span>(<span class="keyword">sentiment_counts</span>, <span class="keyword">columns</span>=[<span class="string">'Topic'</span>, <span class="string">'Sentiment'</span>, <span class="string">'Count'</span>])
 
@@ -899,14 +906,14 @@
 
 <span class="keyword"># Save the plot as an HTML file</span>
 <span class="keyword">fig.write_html</span>(<span class="string">"sentiment_distribution.html"</span>)</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code creates a grouped bar
+                chart to visualize the sentiment distribution across topics. It
+                shows the count of positive and negative sentiments for each
+                topic, making it easier to understand the emotional tone
+                associated with each theme.
+              </p>
             </div>
-            <p>
-              <strong>Explanation:</strong> This code creates a grouped bar
-              chart to visualize the sentiment distribution across topics. It
-              shows the count of positive and negative sentiments for each
-              topic, making it easier to understand the emotional tone
-              associated with each theme.
-            </p>
             <div class="iframe-container sentiment-iframe">
               <iframe
                 src="images/sentiment_distribution1.html"
@@ -967,7 +974,7 @@
 
 <span class="keyword"># Create the dropdown menu options</span>
 <span class="keyword">dropdown_buttons</span> = [
-    {<span class="keyword">label</span>: <span class="keyword">topic</span>, <span class="keyword">method</span>: <span class="string">'update'</span>, <span class="keyword">args</span>: [{<span class="keyword">visible</span>: [<span class="keyword">t</span> == <span class="keyword">topic</span> <span class="keyword">for t</span> <span class="keyword">in df_melted</span>[<span class="string">'Topic'</span>] <span class="keyword">.unique</span>()]}, {<span class="keyword">title</span>: <span class="string">'Topic Evolution for '</span> + <span class="keyword">topic</span>]}]} <span class="keyword">for topic</span> <span="keyword">in topic_names</span>
+    {<span class="keyword">label</span>: <span class="keyword">topic</span>, <span class="keyword">method</span>: <span class="string">'update'</span>, <span class="keyword">args</span>: [{<span class="keyword">visible</span>: [<span class="keyword">t</span> == <span class="keyword">topic</span> <span class="keyword">for t</span> <span class="keyword">in df_melted</span>[<span class="string">'Topic'</span>] <span class="keyword">.unique</span>()]}, {<span class="keyword">title</span>: <span class="string">'Topic Evolution for '</span> + <span class="keyword">topic</span>]}]} <span class="keyword">for topic</span> <span class="keyword">in topic_names</span>
 ]
 
 <span class="keyword"># Add a default option</span>
@@ -978,9 +985,9 @@
 
 <span class="keyword">for topic</span> <span class="keyword">in df_melted</span>[<span class="keyword">Topic</span>].<span class="keyword">unique</span>():
     <span class="keyword">fig.add_trace</span>(<span class="keyword">go.Scatter</span>(
-        <span class="keyword">x</span>=<span class="keyword">df_melted</span>[<span class="keyword">Chapter</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic</span>] == <span class="keyword">topic</span>],
-        <span class="keyword">y</span>=<span class="keyword">df_melted</span>[<span class="keyword">Probability</span>][<span class="keyword">df_melted</span>[<span="keyword">Topic</span>] == <span class="keyword">topic</span>],
-        <span class="keyword">mode</span>=<span class="keyword">lines</span>,
+        <span class="keyword">x</span>=<span class="keyword">df_melted</span>[<span class="keyword">Chapter</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic'</span>] == <span class="keyword">topic</span>],
+        <span class="keyword">y</span>=<span class="keyword">df_melted</span>[<span class="keyword">Probability</span>][<span class="keyword">df_melted</span>[<span class="keyword">Topic</span>] == <span class="keyword">topic</span>],
+        <span class="keyword">mode</span>=<span="keyword">lines</span>,
         <span class="keyword">name</span>=<span class="keyword">topic</span>,
         <span class="keyword">line</span>={<span class="keyword">color</span>: <span class="string">#A979B9</span>},  <span class="keyword"># Set line color to lilac</span>
         <span class="keyword">visible</span>=<span class="keyword">False</span>  <span class="keyword"># Initially set all traces to be invisible</span>
@@ -1001,7 +1008,7 @@
             <span class="keyword">bordercolor</span>: <span class="string">#985FAB</span>,  <span class="keyword"># Darker shade of lilac border</span>
             <span class="keyword">font</span>: {<span class="keyword">color</span>: <span class="string">white</span>, <span class="keyword">size</span>: 14},  <span class="keyword"># Font settings</span>
             <span class="keyword">borderwidth</span>: 2,
-            <span class="keyword">pad</span>: {<span class="keyword">r</span>: 0, <span="keyword">t</span>: 10},
+            <span class="keyword">pad</span>: {<span class="keyword">r</span>: 0, <span class="keyword">t</span>: 10},
             <span class="keyword">active</span>: 0  <span class="keyword"># Ensure the default option is highlighted</span>
         }
     ],
@@ -1014,7 +1021,7 @@
         <span class="keyword">zeroline</span>=<span class="keyword">True</span>,
         <span class="keyword">zerolinewidth</span>=2,
     },
-    <span class="keyword">yaxis</span>={<span class="keyword">range</span>=[0, <span class="keyword">df_melted</span>[<span="keyword">Probability</span>].<span class="keyword">max</span>()],
+    <span class="keyword">yaxis</span>={<span class="keyword">range</span>=[0, <span class="keyword">df_melted</span>[<span class="keyword">Probability</span>].<span class="keyword">max</span>()],
         <span class="keyword">tickmode</span>=<span class="keyword">linear</span>,
         <span class="keyword">dtick</span>=0.1,
         <span class="keyword">showgrid</span>=<span class="keyword">True</span>,
@@ -1025,10 +1032,10 @@
         <span class="keyword">xanchor</span>=<span class="string">center</span>,
         <span class="keyword">font</span>={<span class="keyword">size</span>: 20, <span class="keyword">color</span>: <span class="keyword">black</span>, <span class="keyword">family</span>: <span class="string">Arial</span>}
     },
-    <span class="keyword">margin</span>={<span class="keyword">l</span>: 50, <span="keyword">r</span>: 200, <span class="keyword">t</span>: 100, <span class="keyword">b</span>: 50},  <span class="keyword"># Adjust margins as needed</span>
-    <span class="keyword">legend</span>={<span="keyword">x</span>: 1.2,
+    <span="keyword">margin</span>={<span="keyword">l</span>: 50, <span class="keyword">r</span>: 200, <span class="keyword">t</span>: 100, <span class="keyword">b</span>: 50},  <span class="keyword"># Adjust margins as needed</span>
+    <span class="keyword">legend</span>={<span class="keyword">x</span>: 1.2,
         <span class="keyword">y</span>: 0.5,
-        <span class="keyword">title</span>={<span="keyword">text</span>: <span class="string">Topics</span>}
+        <span class="keyword">title</span>={<span class="keyword">text</span>: <span class="string">Topics</span>}
     }
 )
 
@@ -1037,12 +1044,12 @@
 
 <span class="keyword"># Save the interactive plot as an HTML file</span>
 <span class="keyword">fig.write_html</span>(<span class="string">"topic_evolution.html"</span>)</code></pre>
+              <p>
+                <strong>Explanation:</strong> This code prepares the data for
+                visualizing the topic distribution over chapters. The data is
+                then melted for better plotting with Plotly.
+              </p>
             </div>
-            <p>
-              <strong>Explanation:</strong> This code prepares the data for
-              visualizing the topic distribution over chapters. The data is then
-              melted for better plotting with Plotly.
-            </p>
             <div class="iframe-container sentiment-iframe">
               <iframe
                 src="images/topic_evolution1.html"
@@ -1524,10 +1531,10 @@
         coll[i].addEventListener("click", function () {
           this.classList.toggle("active");
           var content = this.nextElementSibling;
-          if (content.style.display === "block") {
-            content.style.display = "none";
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
           } else {
-            content.style.display = "block";
+            content.style.maxHeight = content.scrollHeight + "px";
           }
         });
       }
