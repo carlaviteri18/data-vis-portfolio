@@ -155,6 +155,11 @@
       .syntax-highlight .number {
         color: #ff4500;
       }
+      .user-instructions,
+      .user-instructions ul {
+        color: #ff8599;
+        font-size: 1.1em; /* Adjust font size for better readability */
+      }
     </style>
   </head>
   <body class="is-preload">
@@ -288,7 +293,7 @@
 <span class="keyword"># Save the visualization as an HTML file</span>
 <span class="keyword">pyLDAvis</span>.<span class="keyword">save_html</span>(<span class="keyword">vis</span>, <span class="string">'lda_visualization.html'</span>)</code></pre>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>Explanation:</strong> This code prepares the data for
               visualization using pyLDAvis and saves it as an HTML file. The
               visualizations help in understanding the inter-topic distances and
@@ -300,10 +305,10 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>User Instructions:</strong>
             </p>
-            <ul style="color: #ffadbb">
+            <ul class="user-instructions">
               <li>
                 Hover over the circles in the Intertopic Distance Map to see the
                 topic number and its prevalence. Click on a circle to focus on
@@ -348,12 +353,12 @@
 
 <span class="keyword">print</span>(<span class="string">'\nCoherence Score: '</span>, <span class="keyword">coherence_lda</span>)</code></pre>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>Explanation:</strong> This code calculates the coherence
               score for the LDA model. The score helps in evaluating the
               semantic similarity of the topics.
             </p>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               To visualize how coherence scores change with different numbers of
               topics, we can plot the coherence score for a range of topic
               numbers. This helps in identifying the optimal number of topics
@@ -380,34 +385,34 @@
 <span class="keyword">df</span> = <span class="keyword">pd.DataFrame</span>(<span class="keyword">data</span>)
 
 <span class="keyword"># Create an interactive Plotly graph</span>
-<span class="keyword">fig</span> = <span class="keyword">px.line</span>(<span class="keyword">df</span>, <span class="keyword">x</span>=<span class="string">"Number of Topics"</span>, <span class="keyword">y</span>=<span class="string">"Coherence Score"</span>, <span class="keyword">markers</span>=<span class="keyword">True</span>,
-              <span class="keyword">title</span>=<span class="string">"Coherence Scores for Different Numbers of Topics"</span>,
-              <span class="keyword">labels</span>={<span class="string">"Number of Topics"</span>: <span class="string">"Number of Topics"</span>, <span class="string">"Coherence Score"</span>: <span class="string">"Coherence Score"</span>},
-              <span class="keyword">template</span>=<span class="string">"plotly_white"</span>)
+<span class="keyword">fig</span> = <span class="keyword">px.line</span>(<span class="keyword">df</span>, <span class="keyword">x</span>=<span class="string">"Number of Topics"</span>, <span class="keyword">y</span>=<span class="string">"Coherence Score"</span>, <span class="keyword">markers</span>=<span="keyword">True</span>,
+              <span class="keyword">title</span>=<span="string">"Coherence Scores for Different Numbers of Topics"</span>,
+              <span class="keyword">labels</span>={<span class="string">"Number of Topics"</span>: <span class="string">"Number of Topics"</span>, <span class="string">"Coherence Score"</span>: <span="string">"Coherence Score"</span>},
+              <span class="keyword">template</span>=<span="string">"plotly_white"</span>)
 
 <span class="keyword"># Customize the layout to make it visually appealing</span>
-<span class="keyword">fig.update_traces</span>(<span class="keyword">line</span>={<span class="keyword">color</span>: <span class="string">"#A979B9"</span>, <span class="keyword">width</span>: 4}, <span class="keyword">marker</span>={<span class="keyword">size</span>: 10, <span class="keyword">color</span>: <span class="string">"#A979B9"</span>})
-<span class="keyword">fig.update_layout</span>(
-    <span class="keyword">title_font</span>={<span class="keyword">size</span>: 20, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
-    <span class="keyword">xaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
-               <span class="keyword">tickfont</span>: {<span class="keyword">size</span>: 12, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>}},
-    <span class="keyword">yaxis</span>={<span class="keyword">title_font</span>: {<span class="keyword">size</span>: 16, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>},
-               <span class="keyword">tickfont</span>: {<span class="keyword">size</span>: 12, <span class="keyword">family</span>: <span class="string">"Arial"</span>, <span class="keyword">color</span>: <span class="string">"#4A4A4A"</span>}},
-    <span class="keyword">hovermode</span>: <span class="string">"x unified"</span>,
-    <span class="keyword">hoverlabel</span>: {<span class="keyword">font_size</span>: 14, <span class="keyword">font_family</span>: <span class="string">"Arial"</span>},
-    <span class="keyword">margin</span>: {<span class="keyword">l</span>: 50, <span class="keyword">r</span>: 50, <span class="keyword">t</span>: 80, <span class="keyword">b</span>: 50},
-    <span class="keyword">plot_bgcolor</span>: <span class="string">"#FFFFFF"</span>,
-    <span class="keyword">paper_bgcolor</span>: <span class="string">"#FFFFFF"</span>,
-    <span class="keyword">showlegend</span>: <span class="keyword">False</span>
+<span="keyword">fig.update_traces</span>(<span="keyword">line</span>={<span="keyword">color</span>: <span="string">"#A979B9"</span>, <span="keyword">width</span>: 4}, <span="keyword">marker</span>={<span="keyword">size</span>: 10, <span="keyword">color</span>: <span="string">"#A979B9"</span>})
+<span="keyword">fig.update_layout</span>(
+    <span="keyword">title_font</span>={<span="keyword">size</span>: 20, <span="keyword">family</span>: <span="string">"Arial"</span>, <span="keyword">color</span>: <span="string">"#4A4A4A"</span>},
+    <span="keyword">xaxis</span>={<span="keyword">title_font</span>: {<span="keyword">size</span>: 16, <span="keyword">family</span>: <span="string">"Arial"</span>, <span="keyword">color</span>: <span="string">"#4A4A4A"</span>},
+               <span="keyword">tickfont</span>: {<span="keyword">size</span>: 12, <span="keyword">family</span>: <span="string">"Arial"</span>, <span="keyword">color</span>: <span="string">"#4A4A4A"</span>}},
+    <span="keyword">yaxis</span>={<span="keyword">title_font</span>: {<span="keyword">size</span>: 16, <span="keyword">family</span>: <span="string">"Arial"</span>, <span="keyword">color</span>: <span="string">"#4A4A4A"</span>},
+               <span="keyword">tickfont</span>: {<span="keyword">size</span>: 12, <span="keyword">family</span>: <span="string">"Arial"</span>, <span="keyword">color</span>: <span="string">"#4A4A4A"</span>}},
+    <span="keyword">hovermode</span>: <span="string">"x unified"</span>,
+    <span="keyword">hoverlabel</span>: {<span="keyword">font_size</span>: 14, <span="keyword">font_family</span>: <span="string">"Arial"</span>},
+    <span="keyword">margin</span>: {<span="keyword">l</span>: 50, <span="keyword">r</span>: 50, <span="keyword">t</span>: 80, <span="keyword">b</span>: 50},
+    <span="keyword">plot_bgcolor</span>: <span="string">"#FFFFFF"</span>,
+    <span="keyword">paper_bgcolor</span>: <span="string">"#FFFFFF"</span>,
+    <span="keyword">showlegend</span>: <span="keyword">False</span>
 )
 
-<span class="keyword"># Save the plot as an HTML file</span>
-<span class="keyword">fig.write_html</span>(<span class="string">"coherence_scores.html"</span>)
+<span="keyword"># Save the plot as an HTML file</span>
+<span="keyword">fig.write_html</span>(<span="string">"coherence_scores.html"</span>)
 
-<span class="keyword"># Show the plot</span>
-<span class="keyword">fig.show</span>()</code></pre>
+<span="keyword"># Show the plot</span>
+<span="keyword">fig.show</span>()</code></pre>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>Explanation:</strong> This code computes the coherence
               scores for different numbers of topics and creates an interactive
               Plotly graph to visualize the scores. The plot helps in
@@ -420,10 +425,10 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>User Instructions:</strong>
             </p>
-            <ul style="color: #ffadbb">
+            <ul class="user-instructions">
               <li>
                 Hover over the line plot to see the exact coherence score for
                 each number of topics.
@@ -841,20 +846,20 @@
               ><code class="python"><span class="keyword"># Calculate average sentiment scores for each topic</span>
 <span class="keyword">topic_sentiments</span> = <span class="keyword">np.zeros</span>(<span class="keyword">num_topics</span>)
 <span class="keyword">topic_token_counts</span> = <span class="keyword">np.zeros</span>(<span class="keyword">num_topics</span>)
-<span class="keyword">topic_chapter_counts</span> = <span class="keyword">np.zeros</span>(<span class="keyword">num_topics</span>)
+<span class="keyword">topic_chapter_counts</span> = <span="keyword">np.zeros</span>(<span="keyword">num_topics</span>)
 
-<span class="keyword">for i</span>, (<span class="keyword">chapter</span>, <span class="keyword">label</span>) <span class="keyword">in enumerate</span>(<span class="keyword">chapters_with_labels</span>):
-    <span class="keyword">topic_distribution</span> = <span class="keyword">optimal_model</span>.<span class="keyword">get_document_topics</span>(<span class="keyword">corpus</span>[<span class="keyword">i</span>], <span class="keyword">minimum_probability</span>=0)
-    <span class="keyword">for topic_id</span>, <span class="keyword">probability</span> <span class="keyword">in topic_distribution</span>:
-        <span class="keyword">sentiment</span> = <span class="keyword">sia.polarity_scores</span>(<span class="string">' '</span>.<span class="keyword">join</span>(<span class="keyword">chapter</span>))[<span class="keyword">compound</span>]
-        <span class="keyword">topic_sentiments</span>[<span class="keyword">topic_id</span>] += <span class="keyword">sentiment</span> * <span class="keyword">probability</span>
-        <span class="keyword">topic_token_counts</span>[<span class="keyword">topic_id</span>] += <span class="keyword">len</span>(<span class="keyword">chapter</span>) * <span class="keyword">probability</span>
-        <span class="keyword">topic_chapter_counts</span>[<span class="keyword">topic_id</span>] += <span class="keyword">probability</span>
+<span class="keyword">for i</span>, (<span="keyword">chapter</span>, <span="keyword">label</span>) <span="keyword">in enumerate</span>(<span="keyword">chapters_with_labels</span>):
+    <span class="keyword">topic_distribution</span> = <span="keyword">optimal_model</span>.<span="keyword">get_document_topics</span>(<span="keyword">corpus</span>[<span="keyword">i</span>], <span="keyword">minimum_probability</span>=0)
+    <span class="keyword">for topic_id</span>, <span="keyword">probability</span> <span="keyword">in topic_distribution</span>:
+        <span class="keyword">sentiment</span> = <span="keyword">sia.polarity_scores</span>(<span="string">' '</span>.<span="keyword">join</span>(<span="keyword">chapter</span>))[<span="keyword">compound</span>]
+        <span class="keyword">topic_sentiments</span>[<span="keyword">topic_id</span>] += <span="keyword">sentiment</span> * <span="keyword">probability</span>
+        <span class="keyword">topic_token_counts</span>[<span="keyword">topic_id</span>] += <span="keyword">len</span>(<span="keyword">chapter</span>) * <span="keyword">probability</span>
+        <span="keyword">topic_chapter_counts</span>[<span="keyword">topic_id</span>] += <span="keyword">probability</span>
 
 <span class="keyword"># Normalize the sentiment scores</span>
-<span class="keyword">average_topic_sentiments</span> = <span class="keyword">topic_sentiments</span> / <span class="keyword">np.where</span>(<span class="keyword">topic_chapter_counts</span> == 0, 1, <span class="keyword">topic_chapter_counts</span>)</code></pre>
+<span="keyword">average_topic_sentiments</span> = <span="keyword">topic_sentiments</span> / <span="keyword">np.where</span>(<span="keyword">topic_chapter_counts</span> == 0, 1, <span="keyword">topic_chapter_counts</span>)</code></pre>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>Explanation:</strong> This code calculates the average
               sentiment scores for each topic using the Vader Sentiment Analysis
               tool. The sentiment scores are then normalized based on the topic
@@ -866,41 +871,41 @@
                 class="syntax-highlight"
               ><code class="python"><span class="keyword"># Create a DataFrame for sentiment distribution</span>
 <span class="keyword">sentiment_counts</span> = []
-<span class="keyword">for topic</span> <span class="keyword">in range</span>(<span class="keyword">num_topics</span>):
-    <span class="keyword">positive_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if sent</span> > 0.5])
-    <span class="keyword">neutral_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if -0.5 <= sent <= 0.5</span>])
-    <span class="keyword">negative_count</span> = <span class="keyword">len</span>([<span class="keyword">sent</span> <span class="keyword">for sent</span> <span class="keyword">in chapter_sentiments</span> <span class="keyword">if sent</span> < -0.5])
-    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Positive'</span>, <span class="keyword">positive_count</span>))
-    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Neutral'</span>, <span class="keyword">neutral_count</span>))
-    <span class="keyword">sentiment_counts</span>.<span class="keyword">append</span>((<span class="keyword">topic</span>, <span class="string">'Negative'</span>, <span="keyword">negative_count</span>))
+<span="keyword">for topic</span> <span="keyword">in range</span>(<span="keyword">num_topics</span>):
+    <span="keyword">positive_count</span> = <span="keyword">len</span>([<span="keyword">sent</span> <span="keyword">for sent</span> <span="keyword">in chapter_sentiments</span> <span="keyword">if sent</span> > 0.5])
+    <span="keyword">neutral_count</span> = <span="keyword">len</span>([<span="keyword">sent</span> <span="keyword">for sent</span> <span="keyword">in chapter_sentiments</span> <span="keyword">if -0.5 <= sent <= 0.5</span>])
+    <span="keyword">negative_count</span> = <span="keyword">len</span>([<span="keyword">sent</span> <span="keyword">for sent</span> <span="keyword">in chapter_sentiments</span> <span="keyword">if sent</span> < -0.5])
+    <span="keyword">sentiment_counts</span>.<span="keyword">append</span>((<span="keyword">topic</span>, <span="string">'Positive'</span>, <span="keyword">positive_count</span>))
+    <span="keyword">sentiment_counts</span>.<span="keyword">append</span>((<span="keyword">topic</span>, <span="string">'Neutral'</span>, <span="keyword">neutral_count</span>))
+    <span="keyword">sentiment_counts</span>.<span="keyword">append</span>((<span="keyword">topic</span>, <span="string">'Negative'</span>, <span="keyword">negative_count</span>))
 
-<span class="keyword">df_sentiments</span> = <span class="keyword">pd.DataFrame</span>(<span class="keyword">sentiment_counts</span>, <span class="keyword">columns</span>=[<span class="string">'Topic'</span>, <span class="string">'Sentiment'</span>, <span class="string">'Count'</span>])
+<span="keyword">df_sentiments</span> = <span="keyword">pd.DataFrame</span>(<span="keyword">sentiment_counts</span>, <span="keyword">columns</span>=[<span="string">'Topic'</span>, <span="string">'Sentiment'</span>, <span="string">'Count'</span>])
 
-<span class="keyword"># Create the bar chart with Plotly</span>
-<span class="keyword">fig</span> = <span class="keyword">px.bar</span>(
-    <span class="keyword">df_sentiments</span>,
-    <span class="keyword">x</span>=<span="string">'Topic'</span>,
-    <span class="keyword">y</span>=<span class="string">'Count'</span>,
-    <span class="keyword">color</span>=<span class="string">'Sentiment'</span>,
-    <span class="keyword">barmode</span>=<span="string">'group'</span>,
-    <span class="keyword">title</span>=<span class="string">'Sentiment Distribution Across Topics in Jane Eyre'</span>,
-    <span class="keyword">color_discrete_map</span>={<span="string">'Positive'</span>: <span class="string">'blue'</span>, <span="string">'Neutral'</span>: <span="string">'grey'</span>, <span="string">'Negative'</span>: <span class="string">'red'</span>}
+<span="keyword"># Create the bar chart with Plotly</span>
+<span="keyword">fig</span> = <span="keyword">px.bar</span>(
+    <span="keyword">df_sentiments</span>,
+    <span="keyword">x</span>=<span="string">'Topic'</span>,
+    <span="keyword">y</span>=<span="string">'Count'</span>,
+    <span="keyword">color</span>=<span="string">'Sentiment'</span>,
+    <span="keyword">barmode</span>=<span="string">'group'</span>,
+    <span="keyword">title</span>=<span="string">'Sentiment Distribution Across Topics in Jane Eyre'</span>,
+    <span="keyword">color_discrete_map</span>={<span="string">'Positive'</span>: <span="string">'blue'</span>, <span="string">'Neutral'</span>: <span="string">'grey'</span>, <span="string">'Negative'</span>: <span="string">'red'</span>}
 )
 
-<span class="keyword"># Customize the layout</span>
-<span class="keyword">fig.update_layout</span>(
-    <span class="keyword">xaxis_title</span>=<span class="string">'Topic'</span>,
-    <span="keyword">yaxis_title</span>=<span class="string">'Count of Sentiments'</span>,
-    <span class="keyword">legend_title</span>=<span class="string">'Sentiments'</span>
+<span="keyword"># Customize the layout</span>
+<span="keyword">fig.update_layout</span>(
+    <span="keyword">xaxis_title</span>=<span="string">'Topic'</span>,
+    <span="keyword">yaxis_title</span>=<span="string">'Count of Sentiments'</span>,
+    <span="keyword">legend_title</span>=<span="string">'Sentiments'</span>
 )
 
-<span class="keyword"># Show the plot</span>
-<span class="keyword">fig.show</span>()
+<span="keyword"># Show the plot</span>
+<span="keyword">fig.show</span>()
 
-<span class="keyword"># Save the plot as an HTML file</span>
-<span class="keyword">fig.write_html</span>(<span class="string">"sentiment_distribution.html"</span>)</code></pre>
+<span="keyword"># Save the plot as an HTML file</span>
+<span="keyword">fig.write_html</span>(<span="string">"sentiment_distribution.html"</span>)</code></pre>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>Explanation:</strong> This code creates a grouped bar
               chart to visualize the sentiment distribution across topics. It
               shows the count of positive and negative sentiments for each
@@ -913,7 +918,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>User Instructions:</strong> Use the interactive bar chart
               to explore the sentiment distribution across topics. Hover over
               the bars to see the count of sentiments for each topic. The
@@ -950,30 +955,30 @@
             <div class="content">
               <pre
                 class="syntax-highlight"
-              ><code class="python"><span class="keyword"># Prepare data for topic distribution over chapters</span>
-<span class="keyword">topic_distributions</span> = []
+              ><code class="python"><span="keyword"># Prepare data for topic distribution over chapters</span>
+<span="keyword">topic_distributions</span> = []
 
-<span class="keyword">for i</span>, (<span class="keyword">chapter</span>, <span="keyword">label</span>) <span="keyword">in enumerate</span>(<span="keyword">chapters_with_labels</span>):
-    <span class="keyword">topic_distribution</span> = <span="keyword">optimal_model</span>.<span="keyword">get_document_topics</span>(<span="keyword">corpus</span>[<span="keyword">i</span>], <span="keyword">minimum_probability</span>=0)
-    <span class="keyword">chapter_distribution</span> = {<span class="string">'Chapter'</span>: <span="keyword">i</span>+1}
-    <span class="keyword">for topic_id</span>, <span="keyword">probability</span> <span="keyword">in topic_distribution</span>:
-        <span class="keyword">chapter_distribution</span>[<span="string">'Topic '</span> + <span="keyword">topic_names</span>[<span="keyword">topic_id</span>]] = <span="keyword">probability</span>
+<span="keyword">for i</span>, (<span="keyword">chapter</span>, <span="keyword">label</span>) <span="keyword">in enumerate</span>(<span="keyword">chapters_with_labels</span>):
+    <span="keyword">topic_distribution</span> = <span="keyword">optimal_model</span>.<span="keyword">get_document_topics</span>(<span="keyword">corpus</span>[<span="keyword">i</span>], <span="keyword">minimum_probability</span>=0)
+    <span="keyword">chapter_distribution</span> = {<span="string">'Chapter'</span>: <span="keyword">i</span>+1}
+    <span="keyword">for topic_id</span>, <span="keyword">probability</span> <span="keyword">in topic_distribution</span>:
+        <span="keyword">chapter_distribution</span>[<span="string">'Topic '</span> + <span="keyword">topic_names</span>[<span="keyword">topic_id</span>]] = <span="keyword">probability</span>
     <span="keyword">topic_distributions</span>.<span="keyword">append</span>(<span="keyword">chapter_distribution</span>)
 
-<span class="keyword">df_topic_distributions</span> = <span="keyword">pd.DataFrame</span>(<span="keyword">topic_distributions</span>).<span="keyword">fillna</span>(0)
+<span="keyword">df_topic_distributions</span> = <span="keyword">pd.DataFrame</span>(<span="keyword">topic_distributions</span>).<span="keyword">fillna</span>(0)
 
-<span class="keyword"># Melt the DataFrame for better plotting with Plotly</span>
+<span="keyword"># Melt the DataFrame for better plotting with Plotly</span>
 <span="keyword">df_melted</span> = <span="keyword">df_topic_distributions</span>.<span="keyword">melt</span>(<span="keyword">id_vars</span>=[<span="string">'Chapter'</span>], <span="keyword">var_name</span>=<span="string">'Topic'</span>, <span="keyword">value_name</span>=<span="string">'Probability'</span>)
 
-<span class="keyword"># Create the dropdown menu options</span>
+<span="keyword"># Create the dropdown menu options</span>
 <span="keyword">dropdown_buttons</span> = [
     {<span="keyword">label</span>: <span="keyword">topic</span>, <span="keyword">method</span>: <span="string">'update'</span>, <span="keyword">args</span>: [{<span="keyword">visible</span>: [<span="keyword">t</span> == <span="keyword">topic</span> <span="keyword">for t</span> <span="keyword">in df_melted</span>[<span="string">'Topic'</span>] <span="keyword">.unique</span>()]}, {<span="keyword">title</span>: <span="string">'Topic Evolution for '</span> + <span="keyword">topic</span>]}]} <span="keyword">for topic</span> <span="keyword">in topic_names</span>
 ]
 
-<span class="keyword"># Add a default option</span>
+<span="keyword"># Add a default option</span>
 <span="keyword">dropdown_buttons</span>.<span="keyword">insert</span>(0, {<span="keyword">label</span>: <span="string">'Choose a topic :)'</span>, <span="keyword">method</span>: <span="string">'update'</span>, <span="keyword">args</span>: [{<span="keyword">visible</span>: [<span="keyword">False</span>] * <span="keyword">len(df_melted</span>[<span="string">'Topic'</span>].<span="keyword">unique</span>())}, {<span="keyword">title</span>: <span="string">'Topic Evolution Over Chapters in Jane Eyre'</span>}]})
 
-<span class="keyword"># Create the interactive line chart with dropdown</span>
+<span="keyword"># Create the interactive line chart with dropdown</span>
 <span="keyword">fig</span> = <span="keyword">go.Figure</span>()
 
 <span="keyword">for topic</span> <span="keyword">in df_melted</span>[<span="keyword">Topic</span>].<span="keyword">unique</span>():
@@ -1038,7 +1043,7 @@
 <span="keyword"># Save the interactive plot as an HTML file</span>
 <span="keyword">fig.write_html</span>(<span="string">"topic_evolution.html"</span>)</code></pre>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>Explanation:</strong> This code prepares the data for
               visualizing the topic distribution over chapters. The data is then
               melted for better plotting with Plotly.
@@ -1049,9 +1054,10 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>User Instructions:</strong>
-            <ul>
+            </p>
+            <ul class="user-instructions">
               <li>
                 Use the dropdown menu located to the right of the chart to
                 select a specific topic. The chart will update to show the trend
@@ -1067,7 +1073,7 @@
                 topic evolves throughout the story.
               </li>
             </ul>
-            </p>
+
             <p>
               This visualization aims to convey how different themes are
               distributed and how they change as the narrative progresses. By
@@ -1446,7 +1452,7 @@
                 onload="adjustIframeHeight(this)"
               ></iframe>
             </div>
-            <p style="color: #ff8599">
+            <p class="user-instructions">
               <strong>User Instructions:</strong> Select a topic from the
               dropdown menu to see the text passages where the words
               contributing to that topic are highlighted. This interactive
